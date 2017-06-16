@@ -1,0 +1,6 @@
+framework module Pods_Scratchpad {
+  umbrella header "Pods-Scratchpad-umbrella.h"
+
+  export *
+  module * { export * }
+}
