@@ -61,6 +61,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="35B-W4-K04" kind="show" identifier="ShowDetails" id="Uwj-XU-eIQ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -79,6 +82,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OCO-29-2Y2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="169" y="139"/>
+        </scene>
+        <!--Details-->
+        <scene sceneID="2tk-5m-JId">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Details" id="35B-W4-K04" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R0o-B4-bkE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="822" y="139"/>
         </scene>
     </scenes>
 </document>

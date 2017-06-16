@@ -1,7 +1,9 @@
 import Foundation
 
+typealias NoteIdentifier = String
+
 struct Note {
-	let identifier: String
+	let identifier: NoteIdentifier
 	let title:      String
 	let text:       String
 	let updatedAt:  Date

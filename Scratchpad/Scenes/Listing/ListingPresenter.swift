@@ -51,7 +51,7 @@ class ListingPresenter {
 }
 
 struct ListingViewModel {
-	let identifier:  String
+	let identifier:  NoteIdentifier
 	let title:       String
 	let lastUpdated: String
 }
