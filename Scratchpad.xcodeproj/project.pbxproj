@@ -12,11 +12,11 @@
 		34E7A04B1EF4725F004EEDA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34E7A0431EF4725F004EEDA8 /* Assets.xcassets */; };
 		34E7A04C1EF4725F004EEDA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E7A0451EF4725F004EEDA8 /* LaunchScreen.storyboard */; };
 		34E7A04D1EF4725F004EEDA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E7A0471EF4725F004EEDA8 /* Main.storyboard */; };
-		34E7A04E1EF4725F004EEDA8 /* ListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E7A04A1EF4725F004EEDA8 /* ListingViewController.swift */; };
 		34E7A0501EF473DB004EEDA8 /* ListingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E7A04F1EF473DB004EEDA8 /* ListingPresenter.swift */; };
 		34E7A0521EF473E4004EEDA8 /* ListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E7A0511EF473E4004EEDA8 /* ListingView.swift */; };
 		34E7A0561EF47491004EEDA8 /* DateFormatter_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E7A0551EF47491004EEDA8 /* DateFormatter_Extension.swift */; };
 		34E7A0591EF474D1004EEDA8 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E7A0581EF474D1004EEDA8 /* Note.swift */; };
+		34E7A05B1EF47B05004EEDA8 /* ListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E7A05A1EF47B05004EEDA8 /* ListingViewController.swift */; };
 		4B0208012675C70AF884D93B /* Pods_Scratchpad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C4111CEAC649619716B94AF /* Pods_Scratchpad.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,11 +28,11 @@
 		34E7A0431EF4725F004EEDA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		34E7A0461EF4725F004EEDA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		34E7A0481EF4725F004EEDA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		34E7A04A1EF4725F004EEDA8 /* ListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListingViewController.swift; path = ../ListingViewController.swift; sourceTree = "<group>"; };
 		34E7A04F1EF473DB004EEDA8 /* ListingPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingPresenter.swift; sourceTree = "<group>"; };
 		34E7A0511EF473E4004EEDA8 /* ListingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingView.swift; sourceTree = "<group>"; };
 		34E7A0551EF47491004EEDA8 /* DateFormatter_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatter_Extension.swift; sourceTree = "<group>"; };
 		34E7A0581EF474D1004EEDA8 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		34E7A05A1EF47B05004EEDA8 /* ListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingViewController.swift; sourceTree = "<group>"; };
 		609853B7468DC2D81B0FF691 /* Pods-Scratchpad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scratchpad.release.xcconfig"; path = "Pods/Target Support Files/Pods-Scratchpad/Pods-Scratchpad.release.xcconfig"; sourceTree = "<group>"; };
 		6C4111CEAC649619716B94AF /* Pods_Scratchpad.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Scratchpad.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85E072E039390EFBEE3670C3 /* Pods-Scratchpad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scratchpad.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Scratchpad/Pods-Scratchpad.debug.xcconfig"; sourceTree = "<group>"; };
@@ -112,7 +112,7 @@
 			children = (
 				34E7A04F1EF473DB004EEDA8 /* ListingPresenter.swift */,
 				34E7A0511EF473E4004EEDA8 /* ListingView.swift */,
-				34E7A04A1EF4725F004EEDA8 /* ListingViewController.swift */,
+				34E7A05A1EF47B05004EEDA8 /* ListingViewController.swift */,
 				34E7A0471EF4725F004EEDA8 /* Main.storyboard */,
 			);
 			path = Listing;
@@ -268,10 +268,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34E7A04E1EF4725F004EEDA8 /* ListingViewController.swift in Sources */,
 				34E7A0561EF47491004EEDA8 /* DateFormatter_Extension.swift in Sources */,
 				34E7A0521EF473E4004EEDA8 /* ListingView.swift in Sources */,
 				34E7A02F1EF46548004EEDA8 /* AppDelegate.swift in Sources */,
+				34E7A05B1EF47B05004EEDA8 /* ListingViewController.swift in Sources */,
 				34E7A0501EF473DB004EEDA8 /* ListingPresenter.swift in Sources */,
 				34E7A0591EF474D1004EEDA8 /* Note.swift in Sources */,
 			);
