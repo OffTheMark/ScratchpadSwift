@@ -13,6 +13,7 @@
 		34E7A04C1EF4725F004EEDA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E7A0451EF4725F004EEDA8 /* LaunchScreen.storyboard */; };
 		34E7A04D1EF4725F004EEDA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E7A0471EF4725F004EEDA8 /* Main.storyboard */; };
 		34E7A04E1EF4725F004EEDA8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E7A04A1EF4725F004EEDA8 /* ViewController.swift */; };
+		34E7A0591EF474D1004EEDA8 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E7A0581EF474D1004EEDA8 /* Note.swift */; };
 		4B0208012675C70AF884D93B /* Pods_Scratchpad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C4111CEAC649619716B94AF /* Pods_Scratchpad.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		34E7A0461EF4725F004EEDA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		34E7A0481EF4725F004EEDA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		34E7A04A1EF4725F004EEDA8 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
+		34E7A0581EF474D1004EEDA8 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		609853B7468DC2D81B0FF691 /* Pods-Scratchpad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scratchpad.release.xcconfig"; path = "Pods/Target Support Files/Pods-Scratchpad/Pods-Scratchpad.release.xcconfig"; sourceTree = "<group>"; };
 		6C4111CEAC649619716B94AF /* Pods_Scratchpad.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Scratchpad.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85E072E039390EFBEE3670C3 /* Pods-Scratchpad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scratchpad.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Scratchpad/Pods-Scratchpad.debug.xcconfig"; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				34E7A02E1EF46548004EEDA8 /* AppDelegate.swift */,
 				34E7A0401EF46A5E004EEDA8 /* GoogleService-Info.plist */,
 				34E7A03A1EF46548004EEDA8 /* Info.plist */,
+				34E7A0571EF474C4004EEDA8 /* Models */,
 				34E7A0421EF4725F004EEDA8 /* Resource */,
 				34E7A0441EF4725F004EEDA8 /* Scenes */,
 			);
@@ -104,6 +107,14 @@
 				34E7A04A1EF4725F004EEDA8 /* ViewController.swift */,
 			);
 			path = Listing;
+			sourceTree = "<group>";
+		};
+		34E7A0571EF474C4004EEDA8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				34E7A0581EF474D1004EEDA8 /* Note.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		4C11018F08E2B1D6C1808AB2 /* Pods */ = {
@@ -242,6 +253,7 @@
 			files = (
 				34E7A04E1EF4725F004EEDA8 /* ViewController.swift in Sources */,
 				34E7A02F1EF46548004EEDA8 /* AppDelegate.swift in Sources */,
+				34E7A0591EF474D1004EEDA8 /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
