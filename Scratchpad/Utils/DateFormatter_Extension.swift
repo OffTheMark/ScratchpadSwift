@@ -1,9 +1,9 @@
 import Foundation
 
-private var cachedFormatters = [String : DateFormatter]()
+private var cachedFormatters = [String: DateFormatter]()
 
 extension DateFormatter {
-	
+
 	static func cached(withFormat format: String) -> DateFormatter {
 		if let cachedFormatter = cachedFormatters[format] {
 			return cachedFormatter
@@ -13,5 +13,5 @@ extension DateFormatter {
 		cachedFormatters[format] = formatter
 		return formatter
 	}
-	
+
 }
