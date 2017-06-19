@@ -85,7 +85,7 @@ extension CreationTableViewController: UITextViewDelegate {
 // MARK:- CreationView
 
 extension CreationTableViewController: CreationView {
-	func set(viewModel model: CreationViewModel) {
+	func display(viewModel model: CreationViewModel) {
 		self.viewModel = model
 	}
 	
