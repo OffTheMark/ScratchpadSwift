@@ -16,7 +16,7 @@ class CreationPresenter {
 	}
 	
 	func prepareView() {
-		self.view?.set(viewModel: CreationViewModel())
+		self.view?.display(viewModel: CreationViewModel())
 	}
 	
 	func createNote(model: CreationViewModel) {
