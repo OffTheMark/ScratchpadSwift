@@ -23,22 +23,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="917-cH-f4e" userLabel="Header View">
-                                <rect key="frame" x="16" y="40" width="343" height="86.5"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="86.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kia-X5-f15">
-                                        <rect key="frame" x="8" y="8" width="327" height="20.5"/>
+                                        <rect key="frame" x="8" y="8" width="359" height="20.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeA-Re-tJa">
-                                        <rect key="frame" x="8" y="36.5" width="327" height="17"/>
+                                        <rect key="frame" x="8" y="36.5" width="359" height="17"/>
                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Updated" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsW-Xu-fgj">
-                                        <rect key="frame" x="8" y="61.5" width="327" height="17"/>
+                                        <rect key="frame" x="8" y="61.5" width="359" height="17"/>
                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -59,7 +59,7 @@
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Text" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nwt-WT-eXr">
-                                <rect key="frame" x="16" y="134.5" width="343" height="532.5"/>
+                                <rect key="frame" x="16" y="114.5" width="343" height="552.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -69,11 +69,11 @@
                         <constraints>
                             <constraint firstItem="nwt-WT-eXr" firstAttribute="top" secondItem="917-cH-f4e" secondAttribute="bottom" constant="8" id="4yw-y1-xh9"/>
                             <constraint firstItem="nwt-WT-eXr" firstAttribute="leading" secondItem="16Y-04-wc4" secondAttribute="leadingMargin" id="Dt6-lp-x1v"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="917-cH-f4e" secondAttribute="leading" id="ZsX-d8-a6n"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="917-cH-f4e" secondAttribute="trailing" id="aeK-rX-lZc"/>
+                            <constraint firstAttribute="leading" secondItem="917-cH-f4e" secondAttribute="leading" id="ZsX-d8-a6n"/>
+                            <constraint firstAttribute="trailing" secondItem="917-cH-f4e" secondAttribute="trailing" id="aeK-rX-lZc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nwt-WT-eXr" secondAttribute="trailing" id="h8i-0Q-rdl"/>
                             <constraint firstItem="XWZ-G4-f6O" firstAttribute="top" secondItem="nwt-WT-eXr" secondAttribute="bottom" id="mko-Xk-EcB"/>
-                            <constraint firstItem="917-cH-f4e" firstAttribute="top" secondItem="QIK-7h-Kou" secondAttribute="bottom" constant="20" id="vXk-vX-UhV"/>
+                            <constraint firstItem="917-cH-f4e" firstAttribute="top" secondItem="QIK-7h-Kou" secondAttribute="bottom" id="vXk-vX-UhV"/>
                         </constraints>
                     </view>
                     <connections>
