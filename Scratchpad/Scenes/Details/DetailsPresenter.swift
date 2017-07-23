@@ -6,7 +6,6 @@ class DetailsPresenter {
 	// MARK: Properties
 
 	weak private var view: DetailsView?
-	private let noteIdentifier:  String
 	private let noteReference:   DatabaseReference
 	private var referenceHandle: UInt?
 
@@ -14,10 +13,9 @@ class DetailsPresenter {
 
 	init(view: DetailsView, for identifier: String) {
 		self.view = view
-		self.noteIdentifier = identifier
 		self.noteReference = Database.database()
 									 .reference(withPath: "notes")
-									 .child(self.noteIdentifier)
+									 .child(identifier)
 		self.referenceHandle = self.noteReference.observe(.value, with: {
 			snapshot in
 			if let value = snapshot.value as? [String:Any] {
