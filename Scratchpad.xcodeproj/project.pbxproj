@@ -11,7 +11,11 @@
 		3419CCD41F15080D00203E14 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3419CCD31F15080D00203E14 /* ValidationError.swift */; };
 		3433120F1F13ED9E001D110D /* TextViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3433120E1F13ED9E001D110D /* TextViewTableViewCell.xib */; };
 		343312111F13EDC6001D110D /* TextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343312101F13EDC6001D110D /* TextViewTableViewCell.swift */; };
-		34D1F47D1F2453AE000F3198 /* CreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D1F47C1F2453AE000F3198 /* CreationViewController.swift */; };
+		34D1F4851F24EE85000F3198 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D1F4841F24EE85000F3198 /* TextFieldView.swift */; };
+		34D1F4871F24EF4C000F3198 /* TextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34D1F4861F24EF4C000F3198 /* TextFieldView.xib */; };
+		34D1F48A1F253134000F3198 /* DateFormatter_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D1F4891F253134000F3198 /* DateFormatter_Extension.swift */; };
+		34D1F48C1F253142000F3198 /* UIStackView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D1F48B1F253142000F3198 /* UIStackView_Extension.swift */; };
+		34D1F48E1F253427000F3198 /* CreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D1F48D1F253427000F3198 /* CreationViewController.swift */; };
 		34E7A02F1EF46548004EEDA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E7A02E1EF46548004EEDA8 /* AppDelegate.swift */; };
 		34E7A0411EF46A5E004EEDA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34E7A0401EF46A5E004EEDA8 /* GoogleService-Info.plist */; };
 		34E7A04B1EF4725F004EEDA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34E7A0431EF4725F004EEDA8 /* Assets.xcassets */; };
@@ -19,7 +23,6 @@
 		34E7A04D1EF4725F004EEDA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E7A0471EF4725F004EEDA8 /* Main.storyboard */; };
 		34E7A0501EF473DB004EEDA8 /* ListingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E7A04F1EF473DB004EEDA8 /* ListingPresenter.swift */; };
 		34E7A0521EF473E4004EEDA8 /* ListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E7A0511EF473E4004EEDA8 /* ListingView.swift */; };
-		34E7A0561EF47491004EEDA8 /* DateFormatter_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E7A0551EF47491004EEDA8 /* DateFormatter_Extension.swift */; };
 		34E7A0591EF474D1004EEDA8 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E7A0581EF474D1004EEDA8 /* Note.swift */; };
 		34E7A05B1EF47B05004EEDA8 /* ListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E7A05A1EF47B05004EEDA8 /* ListingViewController.swift */; };
 		34E7A0611EF47B6F004EEDA8 /* Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E7A05D1EF47B6F004EEDA8 /* Details.storyboard */; };
@@ -36,7 +39,11 @@
 		3419CCD31F15080D00203E14 /* ValidationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
 		3433120E1F13ED9E001D110D /* TextViewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewTableViewCell.xib; sourceTree = "<group>"; };
 		343312101F13EDC6001D110D /* TextViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewTableViewCell.swift; sourceTree = "<group>"; };
-		34D1F47C1F2453AE000F3198 /* CreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreationViewController.swift; sourceTree = "<group>"; };
+		34D1F4841F24EE85000F3198 /* TextFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		34D1F4861F24EF4C000F3198 /* TextFieldView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldView.xib; sourceTree = "<group>"; };
+		34D1F4891F253134000F3198 /* DateFormatter_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatter_Extension.swift; sourceTree = "<group>"; };
+		34D1F48B1F253142000F3198 /* UIStackView_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackView_Extension.swift; sourceTree = "<group>"; };
+		34D1F48D1F253427000F3198 /* CreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreationViewController.swift; sourceTree = "<group>"; };
 		34E7A02B1EF46548004EEDA8 /* Scratchpad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scratchpad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34E7A02E1EF46548004EEDA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34E7A03A1EF46548004EEDA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -46,7 +53,6 @@
 		34E7A0481EF4725F004EEDA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		34E7A04F1EF473DB004EEDA8 /* ListingPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingPresenter.swift; sourceTree = "<group>"; };
 		34E7A0511EF473E4004EEDA8 /* ListingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingView.swift; sourceTree = "<group>"; };
-		34E7A0551EF47491004EEDA8 /* DateFormatter_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatter_Extension.swift; sourceTree = "<group>"; };
 		34E7A0581EF474D1004EEDA8 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		34E7A05A1EF47B05004EEDA8 /* ListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingViewController.swift; sourceTree = "<group>"; };
 		34E7A05D1EF47B6F004EEDA8 /* Details.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Details.storyboard; sourceTree = "<group>"; };
@@ -93,8 +99,19 @@
 			children = (
 				3433120E1F13ED9E001D110D /* TextViewTableViewCell.xib */,
 				343312101F13EDC6001D110D /* TextViewTableViewCell.swift */,
+				34D1F4841F24EE85000F3198 /* TextFieldView.swift */,
+				34D1F4861F24EF4C000F3198 /* TextFieldView.xib */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		34D1F4881F253125000F3198 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				34D1F4891F253134000F3198 /* DateFormatter_Extension.swift */,
+				34D1F48B1F253142000F3198 /* UIStackView_Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		34E7A0221EF46548004EEDA8 = {
@@ -163,7 +180,7 @@
 		34E7A0541EF47482004EEDA8 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				34E7A0551EF47491004EEDA8 /* DateFormatter_Extension.swift */,
+				34D1F4881F253125000F3198 /* Extensions */,
 				3419CCD21F1507F700203E14 /* Validation */,
 			);
 			path = Utils;
@@ -194,7 +211,7 @@
 				3419CCD01F13F6F600203E14 /* Creation.storyboard */,
 				34E7A06A1EF48755004EEDA8 /* CreationPresenter.swift */,
 				34E7A06C1EF48761004EEDA8 /* CreationView.swift */,
-				34D1F47C1F2453AE000F3198 /* CreationViewController.swift */,
+				34D1F48D1F253427000F3198 /* CreationViewController.swift */,
 			);
 			path = Creation;
 			sourceTree = "<group>";
@@ -277,6 +294,7 @@
 				3419CCD11F13F6F600203E14 /* Creation.storyboard in Resources */,
 				34E7A0411EF46A5E004EEDA8 /* GoogleService-Info.plist in Resources */,
 				34E7A04D1EF4725F004EEDA8 /* Main.storyboard in Resources */,
+				34D1F4871F24EF4C000F3198 /* TextFieldView.xib in Resources */,
 				3433120F1F13ED9E001D110D /* TextViewTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,8 +354,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34E7A0561EF47491004EEDA8 /* DateFormatter_Extension.swift in Sources */,
 				34E7A0521EF473E4004EEDA8 /* ListingView.swift in Sources */,
+				34D1F48C1F253142000F3198 /* UIStackView_Extension.swift in Sources */,
 				34E7A0641EF47B6F004EEDA8 /* DetailsViewController.swift in Sources */,
 				34E7A02F1EF46548004EEDA8 /* AppDelegate.swift in Sources */,
 				343312111F13EDC6001D110D /* TextViewTableViewCell.swift in Sources */,
@@ -347,9 +365,11 @@
 				3419CCD41F15080D00203E14 /* ValidationError.swift in Sources */,
 				34E7A0631EF47B6F004EEDA8 /* DetailsView.swift in Sources */,
 				34E7A0501EF473DB004EEDA8 /* ListingPresenter.swift in Sources */,
+				34D1F4851F24EE85000F3198 /* TextFieldView.swift in Sources */,
+				34D1F48E1F253427000F3198 /* CreationViewController.swift in Sources */,
+				34D1F48A1F253134000F3198 /* DateFormatter_Extension.swift in Sources */,
 				34E7A0591EF474D1004EEDA8 /* Note.swift in Sources */,
 				34E7A06B1EF48755004EEDA8 /* CreationPresenter.swift in Sources */,
-				34D1F47D1F2453AE000F3198 /* CreationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

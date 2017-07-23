@@ -6,18 +6,14 @@ class CreationViewController: UIViewController {
 	
 	@IBOutlet fileprivate weak var saveButton: UIBarButtonItem!
 	@IBOutlet fileprivate var contentView: UIView!
-	@IBOutlet fileprivate weak var titleLabel: UILabel!
-	@IBOutlet fileprivate weak var textLabel: UILabel!
-	@IBOutlet private weak var titleFieldView: UIView!
-	@IBOutlet private weak var textFieldView: UIView!
-	@IBOutlet fileprivate weak var titleTextView: UITextView!
-	@IBOutlet fileprivate weak var textTextView: UITextView!
+	@IBOutlet fileprivate weak var fieldsStackView: UIStackView!
 	
 	// MARK:- Properties
 	
 	fileprivate var presenter: CreationPresenter?
 	fileprivate var viewModel: CreationViewModel?
-	fileprivate var validationErrors: [ValidationError]?
+	fileprivate var titleTextFieldView: TextFieldView?
+	fileprivate var textTextFieldView: TextFieldView?
 	
 	// MARK:- UIViewController
 	
@@ -31,19 +27,13 @@ class CreationViewController: UIViewController {
 		
 		self.contentView.backgroundColor = UIColor(red: 0.94, green: 0.94, blue: 0.96, alpha: 1)
 		
-		self.titleLabel.text = "Title".uppercased()
-		self.titleLabel.textColor = UIColor.darkGray
+		self.fieldsStackView.removeAllArrangedSubviews()
 		
-		self.textLabel.text = "Text".uppercased()
-		self.textLabel.textColor = UIColor.darkGray
+		self.titleTextFieldView = TextFieldView.make(identifier: CreationFieldIdentifier.title.rawValue, titleText: "Title", delegate: self)
+		self.fieldsStackView.addArrangedSubview(self.titleTextFieldView!)
 		
-		self.titleTextView.delegate = self
-		self.titleTextView.isScrollEnabled = false
-		self.titleTextView.tag = CreationFieldIdentifier.title.rawValue
-	
-		self.textTextView.delegate = self
-		self.textTextView.isScrollEnabled = false
-		self.textTextView.tag = CreationFieldIdentifier.text.rawValue
+		self.textTextFieldView = TextFieldView.make(identifier: CreationFieldIdentifier.text.rawValue, titleText: "Text", delegate: self)
+		self.fieldsStackView.addArrangedSubview(self.textTextFieldView!)
 		
 		self.saveButton.isEnabled = false
 		
@@ -58,34 +48,17 @@ class CreationViewController: UIViewController {
 			self.presenter?.createNote(model: model)
 		}
 	}
-	
-	func dismissKeyboard() {
-		self.view.endEditing(true)
-	}
 }
 
-extension CreationViewController: UITextViewDelegate {
-	// MARK:- UITextViewDelegate
-	
-	func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-		let textFieldToolbar = UIToolbar()
-		let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-		let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(dismissKeyboard))
-		
-		textFieldToolbar.items = [flexibleSpace, doneButton]
-		textFieldToolbar.sizeToFit()
-		
-		textView.inputAccessoryView = textFieldToolbar
-		
-		return true
-	}
-	
-	func textViewDidChange(_ textView: UITextView) {
-		if textView.tag == CreationFieldIdentifier.title.rawValue {
-			self.viewModel?.title = textView.text
+extension CreationViewController: TextFieldViewDelegate {
+	func textDidChange(identifier: FieldIdentifier, text: String) {
+		if identifier == CreationFieldIdentifier.title.rawValue {
+			self.viewModel?.title = text
+			self.titleTextFieldView?.errors = nil
 		}
-		else if textView.tag == CreationFieldIdentifier.text.rawValue {
-			self.viewModel?.text = textView.text
+		else if identifier == CreationFieldIdentifier.text.rawValue {
+			self.viewModel?.text = text
+			self.textTextFieldView?.errors = nil
 		}
 		
 		self.saveButton.isEnabled = true
@@ -100,7 +73,25 @@ extension CreationViewController: CreationView {
 	}
 	
 	func display(errors: [ValidationError]) {
-		self.validationErrors = errors
+		if !errors.isEmpty {
+			let titleErrors = errors.filter { $0.field == CreationFieldIdentifier.title.rawValue }
+			let textErrors = errors.filter { $0.field == CreationFieldIdentifier.text.rawValue }
+			
+			self.titleTextFieldView?.errors = titleErrors
+			self.textTextFieldView?.errors = textErrors
+			
+			if !titleErrors.isEmpty {
+				self.titleTextFieldView?.textView.becomeFirstResponder()
+			}
+			else if !textErrors.isEmpty {
+				self.textTextFieldView?.textView.becomeFirstResponder()
+			}
+		}
+		else {
+			self.titleTextFieldView?.errors = nil
+			self.textTextFieldView?.errors = nil
+		}
+		
 		self.saveButton.isEnabled = false
 	}
 	
