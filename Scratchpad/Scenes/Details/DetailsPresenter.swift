@@ -5,10 +5,10 @@ class DetailsPresenter {
 
 	// MARK: Properties
 
-	weak var view:            DetailsView?
-	let noteIdentifier:  String
-	let noteReference:   DatabaseReference
-	var referenceHandle: UInt?
+	weak private var view:            DetailsView?
+	private let noteIdentifier:  String
+	private let noteReference:   DatabaseReference
+	private var referenceHandle: UInt?
 
 	// MARK: DetailsPresenter
 

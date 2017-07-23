@@ -4,8 +4,8 @@ import UIKit
 class CreationViewController: UIViewController {
 	// MARK:- Outlets
 	
-	@IBOutlet weak var saveButton: UIBarButtonItem!
-	@IBOutlet weak var tableView: UITableView!
+	@IBOutlet fileprivate weak var saveButton: UIBarButtonItem!
+	@IBOutlet fileprivate weak var tableView: UITableView!
 	
 	// MARK:- Properties
 	
