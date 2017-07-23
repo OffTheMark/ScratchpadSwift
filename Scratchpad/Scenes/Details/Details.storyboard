@@ -18,7 +18,7 @@
                         <viewControllerLayoutGuide type="top" id="QIK-7h-Kou"/>
                         <viewControllerLayoutGuide type="bottom" id="XWZ-G4-f6O"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="16Y-04-wc4">
+                    <view key="view" contentMode="scaleToFill" id="16Y-04-wc4" userLabel="Content View">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -58,21 +58,33 @@
                                     <constraint firstAttribute="bottom" secondItem="hsW-Xu-fgj" secondAttribute="bottom" constant="8" id="yNk-0M-IXu"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Text" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nwt-WT-eXr">
-                                <rect key="frame" x="16" y="115" width="343" height="508"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KoV-S2-2uN" userLabel="Details View">
+                                <rect key="frame" x="0.0" y="107" width="375" height="516"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Text" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nwt-WT-eXr">
+                                        <rect key="frame" x="8" y="8" width="359" height="500"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <constraints>
+                                    <constraint firstItem="nwt-WT-eXr" firstAttribute="leading" secondItem="KoV-S2-2uN" secondAttribute="leadingMargin" id="Gi2-iu-hyu"/>
+                                    <constraint firstItem="nwt-WT-eXr" firstAttribute="trailing" secondItem="KoV-S2-2uN" secondAttribute="trailingMargin" id="QX7-mi-M9u"/>
+                                    <constraint firstItem="nwt-WT-eXr" firstAttribute="bottom" secondItem="KoV-S2-2uN" secondAttribute="bottomMargin" id="Z2r-2A-Lm3"/>
+                                    <constraint firstItem="nwt-WT-eXr" firstAttribute="top" secondItem="KoV-S2-2uN" secondAttribute="topMargin" id="isW-1E-vms"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="nwt-WT-eXr" firstAttribute="top" secondItem="917-cH-f4e" secondAttribute="bottom" constant="8" id="4yw-y1-xh9"/>
-                            <constraint firstItem="nwt-WT-eXr" firstAttribute="leading" secondItem="16Y-04-wc4" secondAttribute="leadingMargin" id="Dt6-lp-x1v"/>
+                            <constraint firstAttribute="trailing" secondItem="KoV-S2-2uN" secondAttribute="trailing" id="86k-fl-wWA"/>
+                            <constraint firstItem="KoV-S2-2uN" firstAttribute="top" secondItem="917-cH-f4e" secondAttribute="bottom" id="B2o-yd-WZ6"/>
+                            <constraint firstItem="KoV-S2-2uN" firstAttribute="leading" secondItem="16Y-04-wc4" secondAttribute="leading" id="Tpl-lU-Y61"/>
                             <constraint firstAttribute="leading" secondItem="917-cH-f4e" secondAttribute="leading" id="ZsX-d8-a6n"/>
                             <constraint firstAttribute="trailing" secondItem="917-cH-f4e" secondAttribute="trailing" id="aeK-rX-lZc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="nwt-WT-eXr" secondAttribute="trailing" id="h8i-0Q-rdl"/>
-                            <constraint firstItem="XWZ-G4-f6O" firstAttribute="top" secondItem="nwt-WT-eXr" secondAttribute="bottom" id="mko-Xk-EcB"/>
+                            <constraint firstItem="XWZ-G4-f6O" firstAttribute="top" secondItem="KoV-S2-2uN" secondAttribute="bottom" id="jrW-7A-vqa"/>
                             <constraint firstItem="917-cH-f4e" firstAttribute="top" secondItem="QIK-7h-Kou" secondAttribute="bottom" id="vXk-vX-UhV"/>
                         </constraints>
                     </view>
