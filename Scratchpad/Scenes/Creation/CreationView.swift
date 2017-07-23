@@ -1,7 +1,9 @@
 import Foundation
 
 protocol CreationView: class {
-	func display(viewModel model: CreationViewModel)
+	func display(model: CreationViewModel)
+	
+	func display(errors: [ValidationError])
 	
 	func endCreation()
 }
