@@ -5,7 +5,7 @@ class DetailsPresenter {
 
 	// MARK: Properties
 
-	let view:            DetailsView
+	weak var view:            DetailsView?
 	let noteIdentifier:  String
 	let noteReference:   DatabaseReference
 	var referenceHandle: UInt?
@@ -20,10 +20,16 @@ class DetailsPresenter {
 									 .child(self.noteIdentifier)
 		self.referenceHandle = self.noteReference.observe(.value, with: {
 			snapshot in
-			let value = snapshot.value as! [String:Any]
-			let note  = Note.make(from: value)
-			self.view.update(viewModel: self.convert(note: note))
+			if let value = snapshot.value as? [String:Any] {
+				let note  = Note.make(from: value)
+				self.view?.update(viewModel: self.convert(note: note))
+			}
 		})
+	}
+	
+	func deleteNote() {
+		self.noteReference.removeValue()
+		self.view?.endDetails()
 	}
 
 	deinit {
@@ -32,7 +38,7 @@ class DetailsPresenter {
 		}
 	}
 
-	internal func convert(note: Note) -> DetailsViewModel {
+	fileprivate func convert(note: Note) -> DetailsViewModel {
 		let formatter = DateFormatter.cached(withFormat: "MM/dd/yyyy")
 		return DetailsViewModel(
 				identifier: note.identifier,

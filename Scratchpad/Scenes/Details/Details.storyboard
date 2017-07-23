@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="C4x-Wd-odH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="C4x-Wd-odH">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--Details View Controller-->
         <scene sceneID="Ams-Fc-9xX">
             <objects>
-                <viewController storyboardIdentifier="DetailsViewController" id="C4x-Wd-odH" customClass="DetailsViewController" customModule="Scratchpad" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailsViewController" automaticallyAdjustsScrollViewInsets="NO" id="C4x-Wd-odH" customClass="DetailsViewController" customModule="Scratchpad" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QIK-7h-Kou"/>
                         <viewControllerLayoutGuide type="bottom" id="XWZ-G4-f6O"/>
@@ -23,22 +23,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="917-cH-f4e" userLabel="Header View">
-                                <rect key="frame" x="0.0" y="20" width="375" height="86.5"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="87"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kia-X5-f15">
-                                        <rect key="frame" x="8" y="8" width="359" height="20.5"/>
+                                        <rect key="frame" x="8" y="8" width="359" height="21"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeA-Re-tJa">
-                                        <rect key="frame" x="8" y="36.5" width="359" height="17"/>
+                                        <rect key="frame" x="8" y="37" width="359" height="17"/>
                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Updated" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsW-Xu-fgj">
-                                        <rect key="frame" x="8" y="61.5" width="359" height="17"/>
+                                        <rect key="frame" x="8" y="62" width="359" height="17"/>
                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -59,7 +59,7 @@
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Text" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nwt-WT-eXr">
-                                <rect key="frame" x="16" y="114.5" width="343" height="552.5"/>
+                                <rect key="frame" x="16" y="115" width="343" height="508"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -76,8 +76,19 @@
                             <constraint firstItem="917-cH-f4e" firstAttribute="top" secondItem="QIK-7h-Kou" secondAttribute="bottom" id="vXk-vX-UhV"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="1fy-qe-8Am"/>
+                        <barButtonItem title="Delete" id="ynR-w5-TJe">
+                            <connections>
+                                <action selector="deleteNote:" destination="C4x-Wd-odH" id="DH1-qZ-AGn"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="qWc-Oa-bbK"/>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="createdLabel" destination="MeA-Re-tJa" id="mbs-2g-Uuo"/>
+                        <outlet property="deleteButton" destination="ynR-w5-TJe" id="rrl-1J-MpD"/>
                         <outlet property="textTextView" destination="nwt-WT-eXr" id="SLI-ZR-qTk"/>
                         <outlet property="titleLabel" destination="Kia-X5-f15" id="SJa-ix-KFb"/>
                         <outlet property="updatedLabel" destination="hsW-Xu-fgj" id="izi-we-ueh"/>
