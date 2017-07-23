@@ -5,7 +5,7 @@ class DetailsPresenter {
 
 	// MARK: Properties
 
-	weak private var view:            DetailsView?
+	weak private var view: DetailsView?
 	private let noteIdentifier:  String
 	private let noteReference:   DatabaseReference
 	private var referenceHandle: UInt?
@@ -21,12 +21,12 @@ class DetailsPresenter {
 		self.referenceHandle = self.noteReference.observe(.value, with: {
 			snapshot in
 			if let value = snapshot.value as? [String:Any] {
-				let note  = Note.make(from: value)
+				let note = Note.make(from: value)
 				self.view?.update(viewModel: self.convert(note: note))
 			}
 		})
 	}
-	
+
 	func deleteNote() {
 		self.noteReference.removeValue()
 		self.view?.endDetails()

@@ -35,11 +35,11 @@ class ListingViewController: UITableViewController {
 
 		return cell
 	}
-	
+
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "ShowDetails",
-			let destination = segue.destination as? DetailsViewController,
-			let noteIndex = self.tableView.indexPathForSelectedRow?.row {
+		   let destination = segue.destination as? DetailsViewController,
+		   let noteIndex = self.tableView.indexPathForSelectedRow?.row {
 			destination.noteIdentifier = self.viewModels[noteIndex].identifier
 		}
 	}

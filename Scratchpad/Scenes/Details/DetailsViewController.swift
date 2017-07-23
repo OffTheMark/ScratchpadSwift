@@ -5,7 +5,7 @@ class DetailsViewController: UIViewController {
 	// MARK:- Properties
 
 	var noteIdentifier: String?
-	fileprivate var presenter:      DetailsPresenter?
+	fileprivate var presenter: DetailsPresenter?
 
 	@IBOutlet weak fileprivate var titleLabel:   UILabel!
 	@IBOutlet weak fileprivate var createdLabel: UILabel!
@@ -20,12 +20,12 @@ class DetailsViewController: UIViewController {
 
 		self.presenter = DetailsPresenter(view: self, for: self.noteIdentifier!)
 	}
-	
+
 	//MARK:- DetailsViewController
-	
+
 	@IBAction func deleteNote(_ sender: Any) {
 		let alertController = UIAlertController(title: "Delete Note", message: "Are you sure you wish to delete this note?", preferredStyle: .alert)
-		let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+		let cancelAction    = UIAlertAction(title: "Cancel", style: .default, handler: nil)
 		let confirmAction = UIAlertAction(title: "Yes", style: .default) {
 			result -> Void in
 			self.presenter?.deleteNote()
@@ -45,7 +45,7 @@ extension DetailsViewController: DetailsView {
 		self.updatedLabel.text = "Last updated on \(viewModel.lastUpdated)"
 		self.textTextView.text = viewModel.text
 	}
-	
+
 	func endDetails() {
 		self.navigationController?.popViewController(animated: true)
 	}

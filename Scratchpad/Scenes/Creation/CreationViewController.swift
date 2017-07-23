@@ -3,45 +3,47 @@ import UIKit
 
 class CreationViewController: UIViewController {
 	// MARK:- Outlets
-	
+
 	@IBOutlet fileprivate weak var saveButton: UIBarButtonItem!
 	@IBOutlet fileprivate var contentView: UIView!
 	@IBOutlet fileprivate weak var fieldsStackView: UIStackView!
-	
+
 	// MARK:- Properties
-	
-	fileprivate var presenter: CreationPresenter?
-	fileprivate var viewModel: CreationViewModel?
+
+	fileprivate var presenter:          CreationPresenter?
+	fileprivate var viewModel:          CreationViewModel?
 	fileprivate var titleTextFieldView: TextFieldView?
-	fileprivate var textTextFieldView: TextFieldView?
-	
+	fileprivate var textTextFieldView:  TextFieldView?
+
 	// MARK:- UIViewController
-	
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		defer { self.presenter?.prepareView() }
-		
+
+		defer {
+			self.presenter?.prepareView()
+		}
+
 		self.title = "Create Note"
 		self.automaticallyAdjustsScrollViewInsets = false
-		
+
 		self.contentView.backgroundColor = UIColor(red: 0.94, green: 0.94, blue: 0.96, alpha: 1)
-		
+
 		self.fieldsStackView.removeAllArrangedSubviews()
-		
+
 		self.titleTextFieldView = TextFieldView.make(identifier: CreationFieldIdentifier.title.rawValue, titleText: "Title", delegate: self)
 		self.fieldsStackView.addArrangedSubview(self.titleTextFieldView!)
-		
+
 		self.textTextFieldView = TextFieldView.make(identifier: CreationFieldIdentifier.text.rawValue, titleText: "Text", delegate: self)
 		self.fieldsStackView.addArrangedSubview(self.textTextFieldView!)
-		
+
 		self.saveButton.isEnabled = false
-		
+
 		self.presenter = CreationPresenter(view: self)
 	}
-	
+
 	// MARK:- CreationTableViewController
-	
+
 	@IBAction func saveNote(_ sender: Any) {
 		if let model = self.viewModel {
 			self.saveButton.isEnabled = false
@@ -60,26 +62,30 @@ extension CreationViewController: TextFieldViewDelegate {
 			self.viewModel?.text = text
 			self.textTextFieldView?.errors = nil
 		}
-		
+
 		self.saveButton.isEnabled = true
 	}
 }
 
 extension CreationViewController: CreationView {
 	// MARK:- CreationView
-	
+
 	func display(model: CreationViewModel) {
 		self.viewModel = model
 	}
-	
+
 	func display(errors: [ValidationError]) {
 		if !errors.isEmpty {
-			let titleErrors = errors.filter { $0.field == CreationFieldIdentifier.title.rawValue }
-			let textErrors = errors.filter { $0.field == CreationFieldIdentifier.text.rawValue }
-			
+			let titleErrors = errors.filter {
+				$0.field == CreationFieldIdentifier.title.rawValue
+			}
+			let textErrors = errors.filter {
+				$0.field == CreationFieldIdentifier.text.rawValue
+			}
+
 			self.titleTextFieldView?.errors = titleErrors
 			self.textTextFieldView?.errors = textErrors
-			
+
 			if !titleErrors.isEmpty {
 				self.titleTextFieldView?.textView.becomeFirstResponder()
 			}
@@ -91,10 +97,10 @@ extension CreationViewController: CreationView {
 			self.titleTextFieldView?.errors = nil
 			self.textTextFieldView?.errors = nil
 		}
-		
+
 		self.saveButton.isEnabled = false
 	}
-	
+
 	func endCreation() {
 		self.navigationController?.popViewController(animated: true)
 	}
