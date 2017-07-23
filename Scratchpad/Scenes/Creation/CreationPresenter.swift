@@ -10,8 +10,8 @@ class CreationPresenter {
 	
 	// MARK: Properties
 	
-	weak var view: CreationView?
-	let notesReference:  DatabaseReference
+	weak private var view: CreationView?
+	private let notesReference:  DatabaseReference
 	
 	// MARK: CreationPresenter
 	
