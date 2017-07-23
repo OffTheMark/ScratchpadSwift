@@ -5,26 +5,19 @@ class CreationViewController: UIViewController {
 	// MARK:- Outlets
 	
 	@IBOutlet fileprivate weak var saveButton: UIBarButtonItem!
-	@IBOutlet fileprivate weak var tableView: UITableView!
+	@IBOutlet fileprivate var contentView: UIView!
+	@IBOutlet fileprivate weak var titleLabel: UILabel!
+	@IBOutlet fileprivate weak var textLabel: UILabel!
+	@IBOutlet private weak var titleFieldView: UIView!
+	@IBOutlet private weak var textFieldView: UIView!
+	@IBOutlet fileprivate weak var titleTextView: UITextView!
+	@IBOutlet fileprivate weak var textTextView: UITextView!
 	
 	// MARK:- Properties
 	
 	fileprivate var presenter: CreationPresenter?
-	fileprivate var viewModel: CreationViewModel? {
-		didSet {
-			self.saveButton.isEnabled = true
-		}
-	}
-	fileprivate var validationErrors: [ValidationError]? {
-		didSet {
-			if let errors = self.validationErrors, !errors.isEmpty {
-				self.saveButton.isEnabled = false
-			}
-			else {
-				self.saveButton.isEnabled = true
-			}
-		}
-	}
+	fileprivate var viewModel: CreationViewModel?
+	fileprivate var validationErrors: [ValidationError]?
 	
 	// MARK:- UIViewController
 	
@@ -36,12 +29,21 @@ class CreationViewController: UIViewController {
 		self.title = "Create Note"
 		self.automaticallyAdjustsScrollViewInsets = false
 		
-		self.tableView.estimatedRowHeight = 50
-		self.tableView.rowHeight = UITableViewAutomaticDimension
-		self.tableView.allowsSelection = false
-		self.tableView.dataSource = self
-		self.tableView.delegate = self
-		self.tableView.register(UINib(nibName: "TextViewTableViewCell", bundle: nil), forCellReuseIdentifier: "TextViewTableViewCell")
+		self.contentView.backgroundColor = UIColor(red: 0.94, green: 0.94, blue: 0.96, alpha: 1)
+		
+		self.titleLabel.text = "Title".uppercased()
+		self.titleLabel.textColor = UIColor.darkGray
+		
+		self.textLabel.text = "Text".uppercased()
+		self.textLabel.textColor = UIColor.darkGray
+		
+		self.titleTextView.delegate = self
+		self.titleTextView.isScrollEnabled = false
+		self.titleTextView.tag = CreationFieldIdentifier.title.rawValue
+	
+		self.textTextView.delegate = self
+		self.textTextView.isScrollEnabled = false
+		self.textTextView.tag = CreationFieldIdentifier.text.rawValue
 		
 		self.saveButton.isEnabled = false
 		
@@ -62,51 +64,6 @@ class CreationViewController: UIViewController {
 	}
 }
 
-extension CreationViewController: UITableViewDataSource {
-	// MARK:- UITableViewDataSource
-	
-	func numberOfSections(in tableView: UITableView) -> Int {
-		return 2
-	}
-	
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 1
-	}
-	
-	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		guard section < 2 else {
-			return nil
-		}
-		
-		if section == 0 {
-			return "Title"
-		}
-		else {
-			return "Text"
-		}
-	}
-	
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = self.tableView.dequeueReusableCell(withIdentifier: "TextViewTableViewCell") as! TextViewTableViewCell
-		let fieldIdentifier: CreationFieldIdentifier
-		if indexPath.section == 0 {
-			fieldIdentifier = .title
-		}
-		else {
-			fieldIdentifier = .text
-		}
-		
-		cell.textView.delegate = self
-		cell.textView.tag = fieldIdentifier.rawValue
-		return cell
-	}
-}
-
-extension CreationViewController: UITableViewDelegate {
-	// MARK:- UITableViewDelegate
-	
-}
-
 extension CreationViewController: UITextViewDelegate {
 	// MARK:- UITextViewDelegate
 	
@@ -124,19 +81,14 @@ extension CreationViewController: UITextViewDelegate {
 	}
 	
 	func textViewDidChange(_ textView: UITextView) {
-		let currentOffSet = self.tableView.contentOffset
-		UIView.setAnimationsEnabled(false)
-		self.tableView.beginUpdates()
-		self.tableView.endUpdates()
-		UIView.setAnimationsEnabled(true)
-		self.tableView.setContentOffset(currentOffSet, animated: false)
-		
 		if textView.tag == CreationFieldIdentifier.title.rawValue {
 			self.viewModel?.title = textView.text
 		}
 		else if textView.tag == CreationFieldIdentifier.text.rawValue {
 			self.viewModel?.text = textView.text
 		}
+		
+		self.saveButton.isEnabled = true
 	}
 }
 
@@ -149,6 +101,7 @@ extension CreationViewController: CreationView {
 	
 	func display(errors: [ValidationError]) {
 		self.validationErrors = errors
+		self.saveButton.isEnabled = false
 	}
 	
 	func endCreation() {
