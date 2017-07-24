@@ -16,7 +16,6 @@ class ListingPresenter {
 		self.notesReference = Database.database()
 									  .reference(withPath: "notes")
 		self.referenceHandle = self.notesReference
-				.queryOrdered(byChild: "updatedAt")
 				.observe(.value, with: {
 					snapshot in
 					var notes = [Note]()
@@ -27,6 +26,12 @@ class ListingPresenter {
 						let note         = Note.make(from: itemValue)
 						notes.append(note)
 					}
+					
+					notes.sort {
+						(leftNote, rightNote) -> Bool in
+						return leftNote.updatedAt > rightNote.updatedAt
+					}
+					
 					self.view?.update(with: self.convert(notes: notes))
 				})
 	}
