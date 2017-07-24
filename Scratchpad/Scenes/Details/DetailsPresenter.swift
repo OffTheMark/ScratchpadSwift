@@ -24,16 +24,16 @@ class DetailsPresenter {
 			}
 		})
 	}
-
-	func deleteNote() {
-		self.noteReference.removeValue()
-		self.view?.endDetails()
-	}
-
+	
 	deinit {
 		if let handle = self.referenceHandle {
 			self.noteReference.removeObserver(withHandle: handle)
 		}
+	}
+
+	func deleteNote() {
+		self.noteReference.removeValue()
+		self.view?.endDetails()
 	}
 
 	fileprivate func convert(note: Note) -> DetailsViewModel {

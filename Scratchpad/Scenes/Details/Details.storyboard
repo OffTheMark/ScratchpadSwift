@@ -90,6 +90,12 @@
                     </view>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="1fy-qe-8Am"/>
+                        <barButtonItem title="Edit" id="Fbd-H8-iHB">
+                            <connections>
+                                <segue destination="o2Y-mY-rs7" kind="show" identifier="ShowEdition" id="15J-r4-NWa"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="P00-rz-lh2"/>
                         <barButtonItem title="Delete" id="ynR-w5-TJe">
                             <connections>
                                 <action selector="deleteNote:" destination="C4x-Wd-odH" id="DH1-qZ-AGn"/>
@@ -101,6 +107,7 @@
                     <connections>
                         <outlet property="createdLabel" destination="MeA-Re-tJa" id="mbs-2g-Uuo"/>
                         <outlet property="deleteButton" destination="ynR-w5-TJe" id="rrl-1J-MpD"/>
+                        <outlet property="editButton" destination="Fbd-H8-iHB" id="STq-BD-1w5"/>
                         <outlet property="textTextView" destination="nwt-WT-eXr" id="SLI-ZR-qTk"/>
                         <outlet property="titleLabel" destination="Kia-X5-f15" id="SJa-ix-KFb"/>
                         <outlet property="updatedLabel" destination="hsW-Xu-fgj" id="izi-we-ueh"/>
@@ -109,6 +116,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MqY-3J-6Th" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-108" y="-361.16941529235385"/>
+        </scene>
+        <!--Edition-->
+        <scene sceneID="uxv-La-Lca">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Edition" id="o2Y-mY-rs7" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OpY-UZ-e6K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-108" y="82"/>
         </scene>
     </scenes>
 </document>

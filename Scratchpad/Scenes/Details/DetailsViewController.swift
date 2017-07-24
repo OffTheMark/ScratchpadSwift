@@ -11,6 +11,7 @@ class DetailsViewController: UIViewController {
 	@IBOutlet weak fileprivate var createdLabel: UILabel!
 	@IBOutlet weak fileprivate var updatedLabel: UILabel!
 	@IBOutlet weak fileprivate var textTextView: UITextView!
+	@IBOutlet weak fileprivate var editButton: UIBarButtonItem!
 	@IBOutlet weak fileprivate var deleteButton: UIBarButtonItem!
 
 	// MARK:- UIViewController
@@ -18,7 +19,18 @@ class DetailsViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		self.editButton.title = "Edit"
+		
+		self.deleteButton.title = "Delete"
+		
 		self.presenter = DetailsPresenter(view: self, for: self.noteIdentifier!)
+	}
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "ShowEdition",
+			let destination = segue.destination as? EditionViewController {
+			destination.noteIdentifier = self.noteIdentifier
+		}
 	}
 
 	//MARK:- DetailsViewController
