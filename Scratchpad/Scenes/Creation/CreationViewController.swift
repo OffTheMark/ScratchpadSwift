@@ -37,6 +37,7 @@ class CreationViewController: UIViewController {
 		self.textTextFieldView = TextFieldView.make(identifier: CreationFieldIdentifier.text.rawValue, title: "Text", delegate: self)
 		self.fieldsStackView.addArrangedSubview(self.textTextFieldView!)
 
+		self.saveButton.title = "Save"
 		self.saveButton.isEnabled = false
 
 		self.presenter = CreationPresenter(view: self)
