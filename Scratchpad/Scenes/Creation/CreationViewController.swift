@@ -10,8 +10,8 @@ class CreationViewController: UIViewController {
 
 	// MARK:- Properties
 
-	fileprivate var presenter:          CreationPresenter?
-	fileprivate var viewModel:          CreationViewModel?
+	private var presenter:          CreationPresenter?
+	fileprivate var model:          CreationViewModel?
 	fileprivate var titleTextFieldView: TextFieldView?
 	fileprivate var textTextFieldView:  TextFieldView?
 
@@ -45,7 +45,7 @@ class CreationViewController: UIViewController {
 	// MARK:- CreationTableViewController
 
 	@IBAction func saveNote(_ sender: Any) {
-		if let model = self.viewModel {
+		if let model = self.model {
 			self.saveButton.isEnabled = false
 			self.presenter?.createNote(model: model)
 		}
@@ -55,11 +55,11 @@ class CreationViewController: UIViewController {
 extension CreationViewController: TextFieldViewDelegate {
 	func textDidChange(identifier: FieldIdentifier, text: String) {
 		if identifier == CreationFieldIdentifier.title.rawValue {
-			self.viewModel?.title = text
+			self.model?.title = text
 			self.titleTextFieldView?.errors = nil
 		}
 		else if identifier == CreationFieldIdentifier.text.rawValue {
-			self.viewModel?.text = text
+			self.model?.text = text
 			self.textTextFieldView?.errors = nil
 		}
 
@@ -71,7 +71,7 @@ extension CreationViewController: CreationView {
 	// MARK:- CreationView
 
 	func display(model: CreationViewModel) {
-		self.viewModel = model
+		self.model = model
 	}
 
 	func display(errors: [ValidationError]) {
