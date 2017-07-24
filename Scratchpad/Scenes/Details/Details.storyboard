@@ -23,46 +23,45 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="917-cH-f4e" userLabel="Header View">
-                                <rect key="frame" x="0.0" y="20" width="375" height="87"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="86.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kia-X5-f15">
-                                        <rect key="frame" x="8" y="8" width="359" height="21"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeA-Re-tJa">
-                                        <rect key="frame" x="8" y="37" width="359" height="17"/>
-                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Updated" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsW-Xu-fgj">
-                                        <rect key="frame" x="8" y="62" width="359" height="17"/>
-                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="vDh-Ld-vBP" userLabel="Labels Stack View">
+                                        <rect key="frame" x="8" y="8" width="359" height="70.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kia-X5-f15">
+                                                <rect key="frame" x="0.0" y="0.0" width="359" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeA-Re-tJa">
+                                                <rect key="frame" x="0.0" y="28.5" width="359" height="17"/>
+                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Updated" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsW-Xu-fgj">
+                                                <rect key="frame" x="0.0" y="53.5" width="359" height="17"/>
+                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.93999999999999995" green="0.93999999999999995" blue="0.95999999999999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="Kia-X5-f15" firstAttribute="top" secondItem="917-cH-f4e" secondAttribute="top" constant="8" id="1kw-mJ-NUZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="MeA-Re-tJa" secondAttribute="trailing" constant="8" id="4HG-33-S5h"/>
-                                    <constraint firstItem="MeA-Re-tJa" firstAttribute="leading" secondItem="917-cH-f4e" secondAttribute="leading" constant="8" id="4Wa-6K-k5r"/>
-                                    <constraint firstAttribute="trailing" secondItem="hsW-Xu-fgj" secondAttribute="trailing" constant="8" id="Kgj-6i-gDG"/>
-                                    <constraint firstItem="Kia-X5-f15" firstAttribute="leading" secondItem="917-cH-f4e" secondAttribute="leading" constant="8" id="Vzg-az-V63"/>
-                                    <constraint firstItem="MeA-Re-tJa" firstAttribute="top" secondItem="Kia-X5-f15" secondAttribute="bottom" constant="8" id="WGE-mT-MT7"/>
-                                    <constraint firstItem="hsW-Xu-fgj" firstAttribute="top" secondItem="MeA-Re-tJa" secondAttribute="bottom" constant="8" id="gMc-f2-dHX"/>
-                                    <constraint firstItem="hsW-Xu-fgj" firstAttribute="leading" secondItem="917-cH-f4e" secondAttribute="leading" constant="8" id="ge2-xp-rzk"/>
-                                    <constraint firstAttribute="trailing" secondItem="Kia-X5-f15" secondAttribute="trailing" constant="8" id="uUv-y9-6a9"/>
-                                    <constraint firstAttribute="bottom" secondItem="hsW-Xu-fgj" secondAttribute="bottom" constant="8" id="yNk-0M-IXu"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="vDh-Ld-vBP" secondAttribute="trailing" id="l6l-6q-E4e"/>
+                                    <constraint firstItem="vDh-Ld-vBP" firstAttribute="leading" secondItem="917-cH-f4e" secondAttribute="leadingMargin" id="uYz-NI-jz8"/>
+                                    <constraint firstItem="vDh-Ld-vBP" firstAttribute="top" secondItem="917-cH-f4e" secondAttribute="topMargin" id="vGM-aT-yX1"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="vDh-Ld-vBP" secondAttribute="bottom" id="vmB-aT-rNj"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KoV-S2-2uN" userLabel="Details View">
-                                <rect key="frame" x="0.0" y="107" width="375" height="516"/>
+                                <rect key="frame" x="0.0" y="106.5" width="375" height="516.5"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Text" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nwt-WT-eXr">
-                                        <rect key="frame" x="8" y="8" width="359" height="500"/>
+                                        <rect key="frame" x="8" y="8" width="359" height="500.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -108,6 +107,7 @@
                         <outlet property="createdLabel" destination="MeA-Re-tJa" id="mbs-2g-Uuo"/>
                         <outlet property="deleteButton" destination="ynR-w5-TJe" id="rrl-1J-MpD"/>
                         <outlet property="editButton" destination="Fbd-H8-iHB" id="STq-BD-1w5"/>
+                        <outlet property="headerView" destination="917-cH-f4e" id="rUk-3Y-LdT"/>
                         <outlet property="textTextView" destination="nwt-WT-eXr" id="SLI-ZR-qTk"/>
                         <outlet property="titleLabel" destination="Kia-X5-f15" id="SJa-ix-KFb"/>
                         <outlet property="updatedLabel" destination="hsW-Xu-fgj" id="izi-we-ueh"/>
