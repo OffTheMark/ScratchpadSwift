@@ -5,9 +5,9 @@ class ListingPresenter {
 
 	// MARK: Properties
 
-	weak var view: ListingView?
-	let notesReference:  DatabaseReference
-	var referenceHandle: UInt?
+	private weak var view: ListingView?
+	private let notesReference:  DatabaseReference
+	private var referenceHandle: UInt?
 
 	// MARK: ListingPresenter
 
@@ -48,10 +48,4 @@ class ListingPresenter {
 			)
 		}
 	}
-}
-
-struct ListingViewModel {
-	let identifier:  NoteIdentifier
-	let title:       String
-	let lastUpdated: String
 }
