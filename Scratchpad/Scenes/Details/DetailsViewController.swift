@@ -22,7 +22,9 @@ class DetailsViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		self.headerView.backgroundColor = UIColor(red: 0.94, green: 0.94, blue: 0.96, alpha: 1)
+		self.title = "Note Details"
+		
+		self.headerView.backgroundColor = ColorTheme.lightBackground
 		
 		self.editButton.title = "Edit"
 		

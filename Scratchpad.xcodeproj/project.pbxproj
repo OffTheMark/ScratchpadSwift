@@ -18,6 +18,7 @@
 		34D1F4941F253EBE000F3198 /* EditionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D1F4931F253EBE000F3198 /* EditionPresenter.swift */; };
 		34D1F4961F253EC9000F3198 /* EditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D1F4951F253EC9000F3198 /* EditionViewController.swift */; };
 		34D1F4981F253ED3000F3198 /* EditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D1F4971F253ED3000F3198 /* EditionView.swift */; };
+		34D1F49B1F26488B000F3198 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D1F49A1F26488B000F3198 /* ColorTheme.swift */; };
 		34E7A02F1EF46548004EEDA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E7A02E1EF46548004EEDA8 /* AppDelegate.swift */; };
 		34E7A0411EF46A5E004EEDA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34E7A0401EF46A5E004EEDA8 /* GoogleService-Info.plist */; };
 		34E7A04B1EF4725F004EEDA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34E7A0431EF4725F004EEDA8 /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		34D1F4931F253EBE000F3198 /* EditionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditionPresenter.swift; sourceTree = "<group>"; };
 		34D1F4951F253EC9000F3198 /* EditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditionViewController.swift; sourceTree = "<group>"; };
 		34D1F4971F253ED3000F3198 /* EditionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditionView.swift; sourceTree = "<group>"; };
+		34D1F49A1F26488B000F3198 /* ColorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
 		34E7A02B1EF46548004EEDA8 /* Scratchpad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scratchpad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34E7A02E1EF46548004EEDA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34E7A03A1EF46548004EEDA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -127,6 +129,14 @@
 			path = Edition;
 			sourceTree = "<group>";
 		};
+		34D1F4991F264872000F3198 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				34D1F49A1F26488B000F3198 /* ColorTheme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
 		34E7A0221EF46548004EEDA8 = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				34D1F4881F253125000F3198 /* Extensions */,
+				34D1F4991F264872000F3198 /* Theme */,
 				3419CCD21F1507F700203E14 /* Validation */,
 			);
 			path = Utils;
@@ -374,6 +385,7 @@
 				34E7A02F1EF46548004EEDA8 /* AppDelegate.swift in Sources */,
 				34E7A0621EF47B6F004EEDA8 /* DetailsPresenter.swift in Sources */,
 				34D1F4981F253ED3000F3198 /* EditionView.swift in Sources */,
+				34D1F49B1F26488B000F3198 /* ColorTheme.swift in Sources */,
 				34D1F4941F253EBE000F3198 /* EditionPresenter.swift in Sources */,
 				34E7A06D1EF48761004EEDA8 /* CreationView.swift in Sources */,
 				34E7A05B1EF47B05004EEDA8 /* ListingViewController.swift in Sources */,

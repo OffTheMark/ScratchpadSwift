@@ -37,11 +37,11 @@ class TextFieldView: UIView {
 				for error in errors {
 					self.errorsStackView.addArrangedSubview(self.makeLabelForError(error))
 				}
-				self.titleLabel.textColor = UIColor.red
+				self.titleLabel.textColor = ColorTheme.errorText
 				self.errorsView.isHidden = false
 			}
 			else {
-				self.titleLabel.textColor = UIColor.darkGray
+				self.titleLabel.textColor = ColorTheme.darkText
 				self.errorsView.isHidden = true
 			}
 		}
@@ -52,7 +52,7 @@ class TextFieldView: UIView {
 	override func awakeFromNib() {
 		super.awakeFromNib()
 
-		self.titleLabel.textColor = UIColor.darkGray
+		self.titleLabel.textColor = ColorTheme.darkText
 
 		self.textView.delegate = self
 		self.textView.isScrollEnabled = false
@@ -78,7 +78,7 @@ class TextFieldView: UIView {
 	private func makeLabelForError(_ error: ValidationError) -> UILabel {
 		let label = UILabel()
 		label.text = error.description
-		label.textColor = UIColor.red
+		label.textColor = ColorTheme.errorText
 		label.font = UIFont.systemFont(ofSize: 13)
 		label.numberOfLines = 0
 		label.lineBreakMode = .byWordWrapping

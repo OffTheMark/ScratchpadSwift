@@ -27,7 +27,7 @@ class CreationViewController: UIViewController {
 		self.title = "Create Note"
 		self.automaticallyAdjustsScrollViewInsets = false
 
-		self.contentView.backgroundColor = UIColor(red: 0.94, green: 0.94, blue: 0.96, alpha: 1)
+		self.contentView.backgroundColor = ColorTheme.lightBackground
 
 		self.fieldsStackView.removeAllArrangedSubviews()
 
