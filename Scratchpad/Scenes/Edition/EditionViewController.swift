@@ -35,7 +35,6 @@ class EditionViewController: UIViewController {
 		self.fieldsStackView.addArrangedSubview(self.textTextFieldView!)
 
 		self.saveButton.title = "Save"
-		self.saveButton.isEnabled = false
 
 		self.presenter = EditionPresenter(view: self, identifier: self.noteIdentifier!)
 	}
