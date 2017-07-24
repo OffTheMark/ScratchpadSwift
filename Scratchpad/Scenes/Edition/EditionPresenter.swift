@@ -12,7 +12,7 @@ class EditionPresenter {
 	weak private var view: EditionView?
 	private let noteReference:   DatabaseReference
 	private var referenceHandle: UInt?
-	private var initialModel: EditionViewModel?
+	private var initialModel:    EditionViewModel?
 
 	init(view: EditionView, identifier: NoteIdentifier) {
 		self.view = view
@@ -22,7 +22,7 @@ class EditionPresenter {
 		self.noteReference.observeSingleEvent(of: .value, with: {
 			snapshot in
 			if let value = snapshot.value as? [String:Any] {
-				let note = Note.make(from: value)
+				let note  = Note.make(from: value)
 				let model = self.convert(note: note)
 				self.initialModel = model
 				self.view?.display(model: model)
@@ -55,15 +55,15 @@ class EditionPresenter {
 			self.view?.display(errors: validationErrors)
 		}
 	}
-	
+
 	func canSafelyCancel(model: EditionViewModel) -> Bool {
 		guard let initialModel = self.initialModel else {
 			return false
 		}
-		
+
 		return initialModel == model
 	}
-	
+
 	func cancelEdition() {
 		self.view?.endEdition()
 	}

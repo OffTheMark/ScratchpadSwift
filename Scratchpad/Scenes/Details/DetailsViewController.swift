@@ -3,17 +3,17 @@ import UIKit
 
 class DetailsViewController: UIViewController {
 	// MARK:- Outlets
-	
-	@IBOutlet weak private var headerView: UIView!
+
+	@IBOutlet weak private var     headerView:   UIView!
 	@IBOutlet weak fileprivate var titleLabel:   UILabel!
 	@IBOutlet weak fileprivate var createdLabel: UILabel!
 	@IBOutlet weak fileprivate var updatedLabel: UILabel!
 	@IBOutlet weak fileprivate var textTextView: UITextView!
-	@IBOutlet weak fileprivate var editButton: UIBarButtonItem!
+	@IBOutlet weak fileprivate var editButton:   UIBarButtonItem!
 	@IBOutlet weak fileprivate var deleteButton: UIBarButtonItem!
-	
+
 	// MARK:- Properties
-	
+
 	var noteIdentifier: String?
 	fileprivate var presenter: DetailsPresenter?
 
@@ -23,19 +23,19 @@ class DetailsViewController: UIViewController {
 		super.viewDidLoad()
 
 		self.title = "Note Details"
-		
+
 		self.headerView.backgroundColor = ColorTheme.lightBackground
-		
+
 		self.editButton.title = "Edit"
-		
+
 		self.deleteButton.title = "Delete"
-		
+
 		self.presenter = DetailsPresenter(view: self, for: self.noteIdentifier!)
 	}
-	
+
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "ShowEdition",
-			let destination = segue.destination as? EditionViewController {
+		   let destination = segue.destination as? EditionViewController {
 			destination.noteIdentifier = self.noteIdentifier
 		}
 	}

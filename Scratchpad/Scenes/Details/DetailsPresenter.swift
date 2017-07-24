@@ -24,7 +24,7 @@ class DetailsPresenter {
 			}
 		})
 	}
-	
+
 	deinit {
 		if let handle = self.referenceHandle {
 			self.noteReference.removeObserver(withHandle: handle)

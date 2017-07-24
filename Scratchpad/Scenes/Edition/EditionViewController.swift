@@ -26,7 +26,7 @@ class EditionViewController: UIViewController {
 
 		self.navigationItem.setHidesBackButton(true, animated: false)
 		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelEdition))
-		
+
 		self.contentView.backgroundColor = ColorTheme.lightBackground
 
 		self.fieldsStackView.removeAllArrangedSubviews()
@@ -50,10 +50,10 @@ class EditionViewController: UIViewController {
 			self.presenter?.saveNote(model: model)
 		}
 	}
-	
+
 	func cancelEdition() {
 		if let model = model,
-			self.presenter?.canSafelyCancel(model: model) ?? false {
+		   self.presenter?.canSafelyCancel(model: model) ?? false {
 			self.presenter?.cancelEdition()
 		}
 		else {

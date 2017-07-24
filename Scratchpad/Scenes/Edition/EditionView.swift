@@ -16,6 +16,6 @@ struct EditionViewModel: Equatable {
 
 func ==(left: EditionViewModel, right: EditionViewModel) -> Bool {
 	return left.identifier.hashValue == right.identifier.hashValue &&
-		left.title.hashValue == right.title.hashValue &&
-		left.text.hashValue == right.text.hashValue
+		   left.title.hashValue == right.title.hashValue &&
+		   left.text.hashValue == right.text.hashValue
 }

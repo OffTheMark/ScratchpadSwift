@@ -26,7 +26,7 @@ class CreationViewController: UIViewController {
 
 		self.title = "Create Note"
 		self.automaticallyAdjustsScrollViewInsets = false
-		
+
 		self.navigationItem.setHidesBackButton(true, animated: false)
 		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelCreation))
 
@@ -39,7 +39,7 @@ class CreationViewController: UIViewController {
 
 		self.textTextFieldView = TextFieldView.make(identifier: CreationFieldIdentifier.text.rawValue, title: "Text", delegate: self)
 		self.fieldsStackView.addArrangedSubview(self.textTextFieldView!)
-		
+
 		self.saveButton.title = "Save"
 		self.saveButton.isEnabled = false
 
@@ -54,10 +54,10 @@ class CreationViewController: UIViewController {
 			self.presenter?.createNote(model: model)
 		}
 	}
-	
+
 	func cancelCreation() {
 		if let model = model,
-			self.presenter?.canSafelyCancel(model: model) ?? false {
+		   self.presenter?.canSafelyCancel(model: model) ?? false {
 			self.presenter?.cancelCreation()
 		}
 		else {
@@ -76,7 +76,7 @@ class CreationViewController: UIViewController {
 
 extension CreationViewController: TextFieldViewDelegate {
 	// MARK:- TextFieldViewDelegate
-	
+
 	func textDidChange(identifier: FieldIdentifier, text: String) {
 		if identifier == CreationFieldIdentifier.title.rawValue {
 			self.model?.title = text
@@ -96,6 +96,8 @@ extension CreationViewController: CreationView {
 
 	func display(model: CreationViewModel) {
 		self.model = model
+		self.titleTextFieldView?.text = model.title
+		self.textTextFieldView?.text = model.text
 	}
 
 	func display(errors: [ValidationError]) {
