@@ -2,23 +2,28 @@ import Foundation
 import UIKit
 
 class DetailsViewController: UIViewController {
-	// MARK:- Properties
-
-	var noteIdentifier: String?
-	fileprivate var presenter: DetailsPresenter?
-
+	// MARK:- Outlets
+	
+	@IBOutlet weak private var headerView: UIView!
 	@IBOutlet weak fileprivate var titleLabel:   UILabel!
 	@IBOutlet weak fileprivate var createdLabel: UILabel!
 	@IBOutlet weak fileprivate var updatedLabel: UILabel!
 	@IBOutlet weak fileprivate var textTextView: UITextView!
 	@IBOutlet weak fileprivate var editButton: UIBarButtonItem!
 	@IBOutlet weak fileprivate var deleteButton: UIBarButtonItem!
+	
+	// MARK:- Properties
+	
+	var noteIdentifier: String?
+	fileprivate var presenter: DetailsPresenter?
 
 	// MARK:- UIViewController
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		self.headerView.backgroundColor = UIColor(red: 0.94, green: 0.94, blue: 0.96, alpha: 1)
+		
 		self.editButton.title = "Edit"
 		
 		self.deleteButton.title = "Delete"
