@@ -8,7 +8,7 @@ class ListingViewController: UITableViewController {
 	// MARK: Properties
 
 	private var     presenter: ListingPresenter?
-	fileprivate var viewModels = [ListingViewModel]()
+	fileprivate var models = [ListingViewModel]()
 
 	// MARK: UIViewController
 
@@ -26,7 +26,7 @@ class ListingViewController: UITableViewController {
 		if segue.identifier == "ShowDetails",
 		   let destination = segue.destination as? DetailsViewController,
 		   let noteIndex = self.tableView.indexPathForSelectedRow?.row {
-			destination.noteIdentifier = self.viewModels[noteIndex].identifier
+			destination.noteIdentifier = self.models[noteIndex].identifier
 		}
 	}
 
@@ -37,15 +37,15 @@ class ListingViewController: UITableViewController {
 	}
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return self.viewModels.count
+		return self.models.count
 	}
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell      = self.tableView.dequeueReusableCell(withIdentifier: "NoteCell")!
-		let viewModel = self.viewModels[indexPath.row]
+		let cell  = self.tableView.dequeueReusableCell(withIdentifier: "NoteCell")!
+		let model = self.models[indexPath.row]
 
-		cell.textLabel?.text = viewModel.title
-		cell.detailTextLabel?.text = viewModel.lastUpdated
+		cell.textLabel?.text = model.title
+		cell.detailTextLabel?.text = model.lastUpdated
 
 		return cell
 	}
@@ -54,8 +54,8 @@ class ListingViewController: UITableViewController {
 extension ListingViewController: ListingView {
 	// MARK:- ListingView
 
-	func update(with viewModels: [ListingViewModel]) {
-		self.viewModels = viewModels
+	func update(with models: [ListingViewModel]) {
+		self.models = models
 		self.tableView.reloadData()
 	}
 }
