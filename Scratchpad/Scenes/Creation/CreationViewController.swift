@@ -10,8 +10,8 @@ class CreationViewController: UIViewController {
 
 	// MARK:- Properties
 
-	private var presenter:          CreationPresenter?
-	fileprivate var model:          CreationViewModel?
+	private var     presenter:          CreationPresenter?
+	fileprivate var model:              CreationViewModel?
 	fileprivate var titleTextFieldView: TextFieldView?
 	fileprivate var textTextFieldView:  TextFieldView?
 

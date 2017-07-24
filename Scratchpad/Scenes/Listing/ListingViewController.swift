@@ -2,12 +2,12 @@ import UIKit
 
 class ListingViewController: UITableViewController {
 	// MARK:- Outlets
-	
+
 	@IBOutlet weak var createButton: UIBarButtonItem!
-	
+
 	// MARK: Properties
 
-	private var presenter: ListingPresenter?
+	private var     presenter: ListingPresenter?
 	fileprivate var viewModels = [ListingViewModel]()
 
 	// MARK: UIViewController
@@ -16,16 +16,16 @@ class ListingViewController: UITableViewController {
 		super.viewDidLoad()
 
 		self.title = "Notes"
-		
+
 		self.createButton.title = "Create"
-		
+
 		self.presenter = ListingPresenter(view: self)
 	}
-	
+
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "ShowDetails",
-			let destination = segue.destination as? DetailsViewController,
-			let noteIndex = self.tableView.indexPathForSelectedRow?.row {
+		   let destination = segue.destination as? DetailsViewController,
+		   let noteIndex = self.tableView.indexPathForSelectedRow?.row {
 			destination.noteIdentifier = self.viewModels[noteIndex].identifier
 		}
 	}
