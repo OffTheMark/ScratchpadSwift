@@ -26,6 +26,9 @@ class CreationViewController: UIViewController {
 
 		self.title = "Create Note"
 		self.automaticallyAdjustsScrollViewInsets = false
+		
+		self.navigationItem.setHidesBackButton(true, animated: false)
+		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelCreation))
 
 		self.contentView.backgroundColor = ColorTheme.lightBackground
 
@@ -36,7 +39,7 @@ class CreationViewController: UIViewController {
 
 		self.textTextFieldView = TextFieldView.make(identifier: CreationFieldIdentifier.text.rawValue, title: "Text", delegate: self)
 		self.fieldsStackView.addArrangedSubview(self.textTextFieldView!)
-
+		
 		self.saveButton.title = "Save"
 		self.saveButton.isEnabled = false
 
@@ -51,9 +54,29 @@ class CreationViewController: UIViewController {
 			self.presenter?.createNote(model: model)
 		}
 	}
+	
+	func cancelCreation() {
+		if let model = model,
+			self.presenter?.canSafelyCancel(model: model) ?? false {
+			self.presenter?.cancelCreation()
+		}
+		else {
+			let alertController = UIAlertController(title: "Cancel Creation", message: "Are you sure you wish to leave without saving?", preferredStyle: .alert)
+			let cancelAction    = UIAlertAction(title: "No", style: .default, handler: nil)
+			let confirmAction = UIAlertAction(title: "Yes", style: .default) {
+				result -> Void in
+				self.presenter?.cancelCreation()
+			}
+			alertController.addAction(cancelAction)
+			alertController.addAction(confirmAction)
+			self.present(alertController, animated: true, completion: nil)
+		}
+	}
 }
 
 extension CreationViewController: TextFieldViewDelegate {
+	// MARK:- TextFieldViewDelegate
+	
 	func textDidChange(identifier: FieldIdentifier, text: String) {
 		if identifier == CreationFieldIdentifier.title.rawValue {
 			self.model?.title = text

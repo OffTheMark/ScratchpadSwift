@@ -38,6 +38,14 @@ class CreationPresenter {
 			self.view?.display(errors: validationErrors)
 		}
 	}
+	
+	func canSafelyCancel(model: CreationViewModel) -> Bool {
+		return model.title.isEmpty && model.text.isEmpty
+	}
+	
+	func cancelCreation() {
+		self.view?.endCreation()
+	}
 
 	func validate(model: CreationViewModel) -> [ValidationError] {
 		var errors = [ValidationError]()

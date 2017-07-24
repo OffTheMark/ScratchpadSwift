@@ -24,6 +24,9 @@ class EditionViewController: UIViewController {
 		self.title = "Edit Note"
 		self.automaticallyAdjustsScrollViewInsets = false
 
+		self.navigationItem.setHidesBackButton(true, animated: false)
+		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelEdition))
+		
 		self.contentView.backgroundColor = ColorTheme.lightBackground
 
 		self.fieldsStackView.removeAllArrangedSubviews()
@@ -45,6 +48,24 @@ class EditionViewController: UIViewController {
 		if let model = self.model {
 			self.saveButton.isEnabled = false
 			self.presenter?.saveNote(model: model)
+		}
+	}
+	
+	func cancelEdition() {
+		if let model = model,
+			self.presenter?.canSafelyCancel(model: model) ?? false {
+			self.presenter?.cancelEdition()
+		}
+		else {
+			let alertController = UIAlertController(title: "Cancel Edition", message: "Are you sure you wish to leave without saving?", preferredStyle: .alert)
+			let cancelAction    = UIAlertAction(title: "No", style: .default, handler: nil)
+			let confirmAction = UIAlertAction(title: "Yes", style: .default) {
+				result -> Void in
+				self.presenter?.cancelEdition()
+			}
+			alertController.addAction(cancelAction)
+			alertController.addAction(confirmAction)
+			self.present(alertController, animated: true, completion: nil)
 		}
 	}
 }

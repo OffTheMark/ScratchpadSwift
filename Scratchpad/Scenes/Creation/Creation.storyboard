@@ -49,7 +49,7 @@
                         </constraints>
                     </view>
                     <toolbarItems>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Nbn-wG-d0n"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Cto-Lx-O77"/>
                         <barButtonItem title="Save" id="cw0-aW-Ucj">
                             <connections>
                                 <action selector="saveNote:" destination="PiT-5d-g0L" id="qQF-UK-CPW"/>
