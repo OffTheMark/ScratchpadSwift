@@ -31,10 +31,10 @@ class CreationViewController: UIViewController {
 
 		self.fieldsStackView.removeAllArrangedSubviews()
 
-		self.titleTextFieldView = TextFieldView.make(identifier: CreationFieldIdentifier.title.rawValue, titleText: "Title", delegate: self)
+		self.titleTextFieldView = TextFieldView.make(identifier: CreationFieldIdentifier.title.rawValue, title: "Title", delegate: self)
 		self.fieldsStackView.addArrangedSubview(self.titleTextFieldView!)
 
-		self.textTextFieldView = TextFieldView.make(identifier: CreationFieldIdentifier.text.rawValue, titleText: "Text", delegate: self)
+		self.textTextFieldView = TextFieldView.make(identifier: CreationFieldIdentifier.text.rawValue, title: "Text", delegate: self)
 		self.fieldsStackView.addArrangedSubview(self.textTextFieldView!)
 
 		self.saveButton.isEnabled = false
@@ -87,10 +87,10 @@ extension CreationViewController: CreationView {
 			self.textTextFieldView?.errors = textErrors
 
 			if !titleErrors.isEmpty {
-				self.titleTextFieldView?.textView.becomeFirstResponder()
+				self.titleTextFieldView?.giveFocus()
 			}
 			else if !textErrors.isEmpty {
-				self.textTextFieldView?.textView.becomeFirstResponder()
+				self.textTextFieldView?.giveFocus()
 			}
 		}
 		else {

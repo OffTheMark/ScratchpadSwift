@@ -5,7 +5,7 @@ class TextFieldView: UIView {
 	// MARK:- Outlets
 
 	@IBOutlet fileprivate weak var      titleLabel:      UILabel!
-	@IBOutlet fileprivate(set) weak var textView:        UITextView!
+	@IBOutlet fileprivate weak var textView:        UITextView!
 	@IBOutlet fileprivate weak var      errorsStackView: UIStackView!
 	@IBOutlet fileprivate weak var      errorsView:      UIView!
 
@@ -13,9 +13,20 @@ class TextFieldView: UIView {
 
 	fileprivate var delegate:   TextFieldViewDelegate?
 	fileprivate var identifier: FieldIdentifier?
-	var titleText: String? {
-		didSet {
-			self.titleLabel.text = self.titleText?.uppercased()
+	var title: String? {
+		set(newTitle) {
+			self.titleLabel.text = newTitle?.uppercased()
+		}
+		get {
+			return self.titleLabel.text
+		}
+	}
+	var text: String {
+		set(newText) {
+			self.textView.text = newText
+		}
+		get {
+			return self.textView.text
 		}
 	}
 	var errors:    [ValidationError]? {
@@ -51,12 +62,14 @@ class TextFieldView: UIView {
 
 	// MARK:- TextFieldView
 
-	static func make(identifier: FieldIdentifier, titleText: String, contentText: String? = nil, delegate: TextFieldViewDelegate) -> TextFieldView {
+	static func make(identifier: FieldIdentifier, title: String, text: String? = nil, delegate: TextFieldViewDelegate) -> TextFieldView {
 		let fieldView = UINib(nibName: "TextFieldView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! TextFieldView
 
 		fieldView.identifier = identifier
-		fieldView.titleText = titleText
-		fieldView.textView.text = contentText
+		fieldView.title = title
+		if let text = text {
+			fieldView.text = text
+		}
 		fieldView.delegate = delegate
 
 		return fieldView
@@ -75,6 +88,10 @@ class TextFieldView: UIView {
 
 	func dismissKeyboard() {
 		self.textView.endEditing(true)
+	}
+	
+	func giveFocus() {
+		self.textView.becomeFirstResponder()
 	}
 }
 
