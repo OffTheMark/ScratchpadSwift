@@ -57,7 +57,7 @@ class EditionViewController: UIViewController {
 			self.presenter?.cancelEdition()
 		}
 		else {
-			let alertController = UIAlertController(title: "Cancel Edition", message: "Are you sure you wish to leave without saving?", preferredStyle: .alert)
+			let alertController = UIAlertController(title: "Cancel", message: "Are you sure you wish to leave without saving?", preferredStyle: .alert)
 			let cancelAction    = UIAlertAction(title: "No", style: .default, handler: nil)
 			let confirmAction = UIAlertAction(title: "Yes", style: .default) {
 				result -> Void in
