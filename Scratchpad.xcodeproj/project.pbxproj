@@ -14,6 +14,10 @@
 		34D1F48A1F253134000F3198 /* DateFormatter_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D1F4891F253134000F3198 /* DateFormatter_Extension.swift */; };
 		34D1F48C1F253142000F3198 /* UIStackView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D1F48B1F253142000F3198 /* UIStackView_Extension.swift */; };
 		34D1F48E1F253427000F3198 /* CreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D1F48D1F253427000F3198 /* CreationViewController.swift */; };
+		34D1F4921F253EB1000F3198 /* Edition.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34D1F4911F253EB1000F3198 /* Edition.storyboard */; };
+		34D1F4941F253EBE000F3198 /* EditionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D1F4931F253EBE000F3198 /* EditionPresenter.swift */; };
+		34D1F4961F253EC9000F3198 /* EditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D1F4951F253EC9000F3198 /* EditionViewController.swift */; };
+		34D1F4981F253ED3000F3198 /* EditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D1F4971F253ED3000F3198 /* EditionView.swift */; };
 		34E7A02F1EF46548004EEDA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E7A02E1EF46548004EEDA8 /* AppDelegate.swift */; };
 		34E7A0411EF46A5E004EEDA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34E7A0401EF46A5E004EEDA8 /* GoogleService-Info.plist */; };
 		34E7A04B1EF4725F004EEDA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34E7A0431EF4725F004EEDA8 /* Assets.xcassets */; };
@@ -40,6 +44,10 @@
 		34D1F4891F253134000F3198 /* DateFormatter_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatter_Extension.swift; sourceTree = "<group>"; };
 		34D1F48B1F253142000F3198 /* UIStackView_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackView_Extension.swift; sourceTree = "<group>"; };
 		34D1F48D1F253427000F3198 /* CreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreationViewController.swift; sourceTree = "<group>"; };
+		34D1F4911F253EB1000F3198 /* Edition.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Edition.storyboard; sourceTree = "<group>"; };
+		34D1F4931F253EBE000F3198 /* EditionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditionPresenter.swift; sourceTree = "<group>"; };
+		34D1F4951F253EC9000F3198 /* EditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditionViewController.swift; sourceTree = "<group>"; };
+		34D1F4971F253ED3000F3198 /* EditionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditionView.swift; sourceTree = "<group>"; };
 		34E7A02B1EF46548004EEDA8 /* Scratchpad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scratchpad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34E7A02E1EF46548004EEDA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34E7A03A1EF46548004EEDA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -108,6 +116,17 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		34D1F4901F253EA4000F3198 /* Edition */ = {
+			isa = PBXGroup;
+			children = (
+				34D1F4911F253EB1000F3198 /* Edition.storyboard */,
+				34D1F4931F253EBE000F3198 /* EditionPresenter.swift */,
+				34D1F4971F253ED3000F3198 /* EditionView.swift */,
+				34D1F4951F253EC9000F3198 /* EditionViewController.swift */,
+			);
+			path = Edition;
+			sourceTree = "<group>";
+		};
 		34E7A0221EF46548004EEDA8 = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				34E7A0651EF48693004EEDA8 /* Creation */,
+				34D1F4901F253EA4000F3198 /* Edition */,
 				34E7A05C1EF47B24004EEDA8 /* Details */,
 				34E7A0451EF4725F004EEDA8 /* LaunchScreen.storyboard */,
 				34E7A0491EF4725F004EEDA8 /* Listing */,
@@ -287,6 +307,7 @@
 				34E7A04B1EF4725F004EEDA8 /* Assets.xcassets in Resources */,
 				3419CCD11F13F6F600203E14 /* Creation.storyboard in Resources */,
 				34E7A0411EF46A5E004EEDA8 /* GoogleService-Info.plist in Resources */,
+				34D1F4921F253EB1000F3198 /* Edition.storyboard in Resources */,
 				34E7A04D1EF4725F004EEDA8 /* Main.storyboard in Resources */,
 				34D1F4871F24EF4C000F3198 /* TextFieldView.xib in Resources */,
 			);
@@ -352,6 +373,8 @@
 				34E7A0641EF47B6F004EEDA8 /* DetailsViewController.swift in Sources */,
 				34E7A02F1EF46548004EEDA8 /* AppDelegate.swift in Sources */,
 				34E7A0621EF47B6F004EEDA8 /* DetailsPresenter.swift in Sources */,
+				34D1F4981F253ED3000F3198 /* EditionView.swift in Sources */,
+				34D1F4941F253EBE000F3198 /* EditionPresenter.swift in Sources */,
 				34E7A06D1EF48761004EEDA8 /* CreationView.swift in Sources */,
 				34E7A05B1EF47B05004EEDA8 /* ListingViewController.swift in Sources */,
 				3419CCD41F15080D00203E14 /* ValidationError.swift in Sources */,
@@ -361,6 +384,7 @@
 				34D1F48E1F253427000F3198 /* CreationViewController.swift in Sources */,
 				34D1F48A1F253134000F3198 /* DateFormatter_Extension.swift in Sources */,
 				34E7A0591EF474D1004EEDA8 /* Note.swift in Sources */,
+				34D1F4961F253EC9000F3198 /* EditionViewController.swift in Sources */,
 				34E7A06B1EF48755004EEDA8 /* CreationPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
