@@ -10,8 +10,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		FirebaseApp.configure()
 		
 		UINavigationBar.appearance().barTintColor = ColorTheme.primaryBackground
-		UINavigationBar.appearance().tintColor = ColorTheme.textOnPrimary
-		UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : ColorTheme.textOnPrimary]
+		UINavigationBar.appearance().tintColor = ColorTheme.whiteText
+		UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : ColorTheme.whiteText]
 		
 		UIToolbar.appearance().tintColor = ColorTheme.primaryBackground
 		
