@@ -32,17 +32,24 @@ class TextFieldView: UIView {
 	var errors:    [ValidationError]? {
 		didSet {
 			self.errorsStackView.removeAllArrangedSubviews()
+			let errorsViewIsHidden: Bool
+			let titleColor: UIColor
 
 			if let errors = self.errors, !errors.isEmpty {
 				for error in errors {
 					self.errorsStackView.addArrangedSubview(self.makeLabelForError(error))
 				}
-				self.titleLabel.textColor = ColorTheme.errorText
-				self.errorsView.isHidden = false
+				titleColor = ColorTheme.errorText
+				errorsViewIsHidden = false
 			}
 			else {
-				self.titleLabel.textColor = ColorTheme.darkText
-				self.errorsView.isHidden = true
+				titleColor = ColorTheme.darkText
+				errorsViewIsHidden = true
+			}
+			
+			UIView.animate(withDuration: 0.2) {
+				self.errorsView.isHidden = errorsViewIsHidden
+				self.titleLabel.textColor = titleColor
 			}
 		}
 	}
