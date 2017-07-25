@@ -19,7 +19,7 @@ class ListingViewController: UITableViewController {
 
 		self.tableView.rowHeight = UITableViewAutomaticDimension
 		self.tableView.estimatedRowHeight = 82
-		
+
 		self.createButton.title = "Create"
 
 		self.presenter = ListingPresenter(view: self)

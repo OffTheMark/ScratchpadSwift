@@ -4,10 +4,10 @@ import UIKit
 class TextFieldView: UIView {
 	// MARK:- Outlets
 
-	@IBOutlet fileprivate weak var      titleLabel:      UILabel!
+	@IBOutlet fileprivate weak var titleLabel:      UILabel!
 	@IBOutlet fileprivate weak var textView:        UITextView!
-	@IBOutlet fileprivate weak var      errorsStackView: UIStackView!
-	@IBOutlet fileprivate weak var      errorsView:      UIView!
+	@IBOutlet fileprivate weak var errorsStackView: UIStackView!
+	@IBOutlet fileprivate weak var errorsView:      UIView!
 
 	// MARK:- Properties
 
@@ -21,7 +21,7 @@ class TextFieldView: UIView {
 			return self.titleLabel.text
 		}
 	}
-	var text: String {
+	var text:  String {
 		set(newText) {
 			self.textView.text = newText
 		}
@@ -29,11 +29,11 @@ class TextFieldView: UIView {
 			return self.textView.text
 		}
 	}
-	var errors:    [ValidationError]? {
+	var errors: [ValidationError]? {
 		didSet {
 			self.errorsStackView.removeAllArrangedSubviews()
 			let errorsViewIsHidden: Bool
-			let titleColor: UIColor
+			let titleColor:         UIColor
 
 			if let errors = self.errors, !errors.isEmpty {
 				for error in errors {
@@ -46,7 +46,7 @@ class TextFieldView: UIView {
 				titleColor = ColorTheme.darkText
 				errorsViewIsHidden = true
 			}
-			
+
 			UIView.animate(withDuration: 0.2) {
 				self.errorsView.isHidden = errorsViewIsHidden
 				self.titleLabel.textColor = titleColor
@@ -96,7 +96,7 @@ class TextFieldView: UIView {
 	func dismissKeyboard() {
 		self.textView.endEditing(true)
 	}
-	
+
 	func giveFocus() {
 		self.textView.becomeFirstResponder()
 	}

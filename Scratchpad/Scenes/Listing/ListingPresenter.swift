@@ -17,23 +17,23 @@ class ListingPresenter {
 									  .reference(withPath: "notes")
 		self.referenceHandle = self.notesReference
 				.observe(.value, with: {
-					snapshot in
-					var notes = [Note]()
+			snapshot in
+			var notes = [Note]()
 
-					for item in snapshot.children {
-						let itemSnapshot = item as! DataSnapshot
-						let itemValue    = itemSnapshot.value as! [String:Any]
-						let note         = Note.make(from: itemValue)
-						notes.append(note)
-					}
-					
-					notes.sort {
-						(leftNote, rightNote) -> Bool in
-						return leftNote.updatedDate > rightNote.updatedDate
-					}
-					
-					self.view?.update(with: self.convert(notes: notes))
-				})
+			for item in snapshot.children {
+				let itemSnapshot = item as! DataSnapshot
+				let itemValue    = itemSnapshot.value as! [String:Any]
+				let note         = Note.make(from: itemValue)
+				notes.append(note)
+			}
+
+			notes.sort {
+				(leftNote, rightNote) -> Bool in
+				return leftNote.updatedDate > rightNote.updatedDate
+			}
+
+			self.view?.update(with: self.convert(notes: notes))
+		})
 	}
 
 	deinit {
