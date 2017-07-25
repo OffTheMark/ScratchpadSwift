@@ -8,5 +8,6 @@ protocol ListingView: class {
 struct ListingViewModel {
 	let identifier:  NoteIdentifier
 	let title:       String
-	let lastUpdated: String
+	let updatedDate: String
+	let createdDate: String
 }

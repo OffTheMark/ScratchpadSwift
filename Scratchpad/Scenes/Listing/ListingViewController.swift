@@ -17,6 +17,9 @@ class ListingViewController: UITableViewController {
 
 		self.title = "Notes"
 
+		self.tableView.rowHeight = UITableViewAutomaticDimension
+		self.tableView.estimatedRowHeight = 82
+		
 		self.createButton.title = "Create"
 
 		self.presenter = ListingPresenter(view: self)
@@ -41,11 +44,10 @@ class ListingViewController: UITableViewController {
 	}
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell  = self.tableView.dequeueReusableCell(withIdentifier: "NoteCell")!
+		let cell  = self.tableView.dequeueReusableCell(withIdentifier: "ListingTableViewCell") as! ListingTableViewCell
 		let model = self.models[indexPath.row]
 
-		cell.textLabel?.text = model.title
-		cell.detailTextLabel?.text = model.lastUpdated
+		cell.model = model
 
 		return cell
 	}

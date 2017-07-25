@@ -3,18 +3,18 @@ import Foundation
 typealias NoteIdentifier = String
 
 struct Note {
-	let identifier: NoteIdentifier
-	let title:      String
-	let text:       String
-	let updatedAt:  Date
-	let createdAt:  Date
+	let identifier:  NoteIdentifier
+	let title:       String
+	let text:        String
+	let updatedDate: Date
+	let createdDate: Date
 
 	init(identifier: String, title: String, text: String, updatedAt: Date, createdAt: Date) {
 		self.identifier = identifier
 		self.title = title
 		self.text = text
-		self.updatedAt = updatedAt
-		self.createdAt = createdAt
+		self.updatedDate = updatedAt
+		self.createdDate = createdAt
 	}
 
 	init(identifier: String, title: String, text: String) {
@@ -42,8 +42,8 @@ struct Note {
 				"identifier": self.identifier,
 				"title": self.title,
 				"text": self.text,
-				"updatedAt": self.updatedAt.timeIntervalSince1970,
-				"createdAt": self.createdAt.timeIntervalSince1970
+				"updatedAt": self.updatedDate.timeIntervalSince1970,
+				"createdAt": self.createdDate.timeIntervalSince1970
 		]
 	}
 }

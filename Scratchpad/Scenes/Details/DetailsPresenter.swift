@@ -43,8 +43,8 @@ class DetailsPresenter {
 				title: note.title,
 				text: note.text,
 				user: "",
-				lastUpdated: formatter.string(from: note.updatedAt),
-				created: formatter.string(from: note.createdAt)
+				lastUpdated: formatter.string(from: note.updatedDate),
+				created: formatter.string(from: note.createdDate)
 		)
 	}
 }

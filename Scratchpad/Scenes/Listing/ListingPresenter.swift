@@ -29,7 +29,7 @@ class ListingPresenter {
 					
 					notes.sort {
 						(leftNote, rightNote) -> Bool in
-						return leftNote.updatedAt > rightNote.updatedAt
+						return leftNote.updatedDate > rightNote.updatedDate
 					}
 					
 					self.view?.update(with: self.convert(notes: notes))
@@ -49,7 +49,8 @@ class ListingPresenter {
 			ListingViewModel(
 					identifier: note.identifier,
 					title: note.title,
-					lastUpdated: formatter.string(from: note.updatedAt)
+					updatedDate: formatter.string(from: note.updatedDate),
+					createdDate: formatter.string(from: note.createdDate)
 			)
 		}
 	}
