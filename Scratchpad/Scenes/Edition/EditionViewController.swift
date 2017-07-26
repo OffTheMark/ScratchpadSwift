@@ -59,7 +59,7 @@ class EditionViewController: UIViewController {
 		else {
 			let alertController = UIAlertController(title: "Cancel", message: "Are you sure you wish to leave without saving?", preferredStyle: .alert)
 			let cancelAction    = UIAlertAction(title: "No", style: .default, handler: nil)
-			let confirmAction = UIAlertAction(title: "Yes", style: .default) {
+			let confirmAction = UIAlertAction(title: "Yes", style: .destructive) {
 				result -> Void in
 				self.presenter?.cancelEdition()
 			}
@@ -82,8 +82,6 @@ extension EditionViewController: TextFieldViewDelegate {
 			self.model?.text = text
 			self.textTextFieldView?.errors = []
 		}
-
-		self.saveButton.isEnabled = true
 	}
 }
 
@@ -121,7 +119,7 @@ extension EditionViewController: EditionView {
 			self.textTextFieldView?.errors = []
 		}
 
-		self.saveButton.isEnabled = false
+		self.saveButton.isEnabled = true
 	}
 
 	func endEdition() {

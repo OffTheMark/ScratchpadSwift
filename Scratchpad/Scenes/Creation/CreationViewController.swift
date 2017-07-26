@@ -41,7 +41,6 @@ class CreationViewController: UIViewController {
 		self.fieldsStackView.addArrangedSubview(self.textTextFieldView!)
 
 		self.saveButton.title = "Save"
-		self.saveButton.isEnabled = false
 
 		self.presenter = CreationPresenter(view: self)
 	}
@@ -86,8 +85,6 @@ extension CreationViewController: TextFieldViewDelegate {
 			self.model?.text = text
 			self.textTextFieldView?.errors = []
 		}
-
-		self.saveButton.isEnabled = true
 	}
 }
 
@@ -123,8 +120,8 @@ extension CreationViewController: CreationView {
 			self.titleTextFieldView?.errors = []
 			self.textTextFieldView?.errors = []
 		}
-
-		self.saveButton.isEnabled = false
+		
+		self.saveButton.isEnabled = true
 	}
 
 	func endCreation() {
