@@ -76,11 +76,11 @@ extension EditionViewController: TextFieldViewDelegate {
 	func textDidChange(identifier: FieldIdentifier, text: String) {
 		if identifier == EditionFieldIdentifier.title.rawValue {
 			self.model?.title = text
-			self.titleTextFieldView?.errors = nil
+			self.titleTextFieldView?.errors = []
 		}
 		else if identifier == EditionFieldIdentifier.text.rawValue {
 			self.model?.text = text
-			self.textTextFieldView?.errors = nil
+			self.textTextFieldView?.errors = []
 		}
 
 		self.saveButton.isEnabled = true
@@ -117,8 +117,8 @@ extension EditionViewController: EditionView {
 			}
 		}
 		else {
-			self.titleTextFieldView?.errors = nil
-			self.textTextFieldView?.errors = nil
+			self.titleTextFieldView?.errors = []
+			self.textTextFieldView?.errors = []
 		}
 
 		self.saveButton.isEnabled = false

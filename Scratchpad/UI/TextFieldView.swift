@@ -29,28 +29,11 @@ class TextFieldView: UIView {
 			return self.textView.text
 		}
 	}
-	var errors: [ValidationError]? {
-		didSet {
-			self.errorsStackView.removeAllArrangedSubviews()
-			let errorsViewIsHidden: Bool
-			let titleColor:         UIColor
-
-			if let errors = self.errors, !errors.isEmpty {
-				for error in errors {
-					self.errorsStackView.addArrangedSubview(self.makeLabelForError(error))
-				}
-				titleColor = ColorTheme.errorText
-				errorsViewIsHidden = false
-			}
-			else {
-				titleColor = ColorTheme.darkText
-				errorsViewIsHidden = true
-			}
-
-			UIView.animate(withDuration: 0.2) {
-				self.errorsView.isHidden = errorsViewIsHidden
-				self.titleLabel.textColor = titleColor
-			}
+	var errors = [ValidationError]() {
+		willSet(newErrors) {
+			let oldErrors = self.errors
+			
+			self.animateErrorsView(oldErrors: oldErrors, newErrors: newErrors)
 		}
 	}
 
@@ -91,6 +74,65 @@ class TextFieldView: UIView {
 		label.lineBreakMode = .byWordWrapping
 
 		return label
+	}
+	
+	private func animateErrorsView(oldErrors: [ValidationError], newErrors: [ValidationError]) {
+		guard oldErrors != newErrors else {
+			return
+		}
+		
+		if oldErrors.isEmpty && !newErrors.isEmpty  {
+			self.showErrors(errors: newErrors, animated: true)
+		}
+		else if !oldErrors.isEmpty && !newErrors.isEmpty {
+			self.showErrors(errors: newErrors, animated: false)
+		}
+		else {
+			self.hideErrors(animated: true)
+		}
+	}
+	
+	private func showErrors(errors: [ValidationError], animated: Bool) {
+		self.errorsStackView.removeAllArrangedSubviews()
+		
+		var errorLabels = [UILabel]()
+		for error in errors {
+			errorLabels.append(self.makeLabelForError(error))
+		}
+		let showErrorsBlock = {
+			self.titleLabel.textColor = ColorTheme.errorText
+			self.errorsView.isHidden = false
+			for errorLabel in errorLabels {
+				self.errorsStackView.addArrangedSubview(errorLabel)
+			}
+		}
+		
+		if animated {
+			UIView.animate(withDuration: 0.2) {
+				showErrorsBlock()
+			}
+		}
+		else {
+			showErrorsBlock()
+		}
+	}
+	
+	private func hideErrors(animated: Bool) {
+		self.errorsStackView.removeAllArrangedSubviews()
+		
+		let hideErrorsBlock = {
+			self.titleLabel.textColor = ColorTheme.darkText
+			self.errorsView.isHidden = true
+		}
+		
+		if animated {
+			UIView.animate(withDuration: 0.2) {
+				hideErrorsBlock()
+			}
+		}
+		else {
+			hideErrorsBlock()
+		}
 	}
 
 	func dismissKeyboard() {

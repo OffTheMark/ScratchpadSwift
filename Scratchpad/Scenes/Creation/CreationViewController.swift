@@ -80,11 +80,11 @@ extension CreationViewController: TextFieldViewDelegate {
 	func textDidChange(identifier: FieldIdentifier, text: String) {
 		if identifier == CreationFieldIdentifier.title.rawValue {
 			self.model?.title = text
-			self.titleTextFieldView?.errors = nil
+			self.titleTextFieldView?.errors = []
 		}
 		else if identifier == CreationFieldIdentifier.text.rawValue {
 			self.model?.text = text
-			self.textTextFieldView?.errors = nil
+			self.textTextFieldView?.errors = []
 		}
 
 		self.saveButton.isEnabled = true
@@ -120,8 +120,8 @@ extension CreationViewController: CreationView {
 			}
 		}
 		else {
-			self.titleTextFieldView?.errors = nil
-			self.textTextFieldView?.errors = nil
+			self.titleTextFieldView?.errors = []
+			self.textTextFieldView?.errors = []
 		}
 
 		self.saveButton.isEnabled = false
