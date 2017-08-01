@@ -8,5 +8,6 @@ target 'Scratchpad' do
   # Pods for Scratchpad
   pod 'Firebase/Core'
   pod 'Firebase/Database'
+  pod 'Firebase/Auth'
 
 end
