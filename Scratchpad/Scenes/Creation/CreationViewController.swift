@@ -21,6 +21,7 @@ class CreationViewController: UIViewController {
 		super.viewDidLoad()
 
 		defer {
+			self.presenter = CreationPresenter(view: self)
 			self.presenter?.prepareView()
 		}
 
@@ -41,11 +42,9 @@ class CreationViewController: UIViewController {
 		self.fieldsStackView.addArrangedSubview(self.textTextFieldView!)
 
 		self.saveButton.title = "Save"
-
-		self.presenter = CreationPresenter(view: self)
 	}
 
-	// MARK:- CreationTableViewController
+	// MARK:- CreationViewController
 
 	@IBAction func saveNote(_ sender: Any) {
 		if let model = self.model {

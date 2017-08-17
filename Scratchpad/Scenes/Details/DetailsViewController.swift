@@ -22,6 +22,10 @@ class DetailsViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		defer {
+			self.presenter = DetailsPresenter(view: self, for: self.noteIdentifier!)
+		}
+		
 		self.title = "Note Details"
 
 		self.headerView.backgroundColor = ColorTheme.lightBackground
@@ -30,7 +34,6 @@ class DetailsViewController: UIViewController {
 
 		self.deleteButton.title = "Delete"
 
-		self.presenter = DetailsPresenter(view: self, for: self.noteIdentifier!)
 	}
 
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

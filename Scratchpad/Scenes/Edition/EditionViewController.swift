@@ -21,6 +21,10 @@ class EditionViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		defer {
+			self.presenter = EditionPresenter(view: self, identifier: self.noteIdentifier!)
+		}
+		
 		self.title = "Edit Note"
 		self.automaticallyAdjustsScrollViewInsets = false
 
@@ -39,7 +43,6 @@ class EditionViewController: UIViewController {
 
 		self.saveButton.title = "Save"
 
-		self.presenter = EditionPresenter(view: self, identifier: self.noteIdentifier!)
 	}
 
 	// MARK:- EditionViewController
