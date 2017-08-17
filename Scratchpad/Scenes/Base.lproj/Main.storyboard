@@ -13,7 +13,7 @@
         <!--Navigation Controller-->
         <scene sceneID="adH-0H-eb2">
             <objects>
-                <navigationController toolbarHidden="NO" id="HAq-Es-BzY" sceneMemberID="viewController">
+                <navigationController modalTransitionStyle="crossDissolve" toolbarHidden="NO" id="HAq-Es-BzY" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ke9-5W-fJq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -43,7 +43,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="82"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="alR-S3-vQM" id="y4A-ws-qi7">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="81.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="82"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Q6x-0v-XvB">

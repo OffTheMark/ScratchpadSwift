@@ -15,6 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		UIToolbar.appearance().tintColor = ColorTheme.primaryBackground
 		
+		// TODO: Remove once sign out functionality is implemented
+		do { try Auth.auth().signOut() }
+		catch { }
+		
+		if Auth.auth().currentUser == nil {
+			self.window?.rootViewController = LoginViewController.make()
+			self.window?.makeKeyAndVisible()
+		}
+		
 		return true
 	}
 }
