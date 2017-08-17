@@ -46,9 +46,9 @@ class DetailsViewController: UIViewController {
 	//MARK:- DetailsViewController
 
 	@IBAction func deleteNote(_ sender: Any) {
-		let alertController = UIAlertController(title: "Delete Note", message: "Are you sure you wish to delete this note?", preferredStyle: .alert)
-		let cancelAction    = UIAlertAction(title: "No", style: .default, handler: nil)
-		let confirmAction = UIAlertAction(title: "Yes", style: .default) {
+		let alertController = UIAlertController(title: "Delete Note", message: "Are you sure you wish to delete this note?", preferredStyle: .actionSheet)
+		let cancelAction    = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		let confirmAction = UIAlertAction(title: "Yes", style: .destructive) {
 			result -> Void in
 			self.presenter?.deleteNote()
 		}
