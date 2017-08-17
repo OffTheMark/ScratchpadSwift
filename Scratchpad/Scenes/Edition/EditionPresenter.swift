@@ -39,21 +39,17 @@ class EditionPresenter {
 	func saveNote(model: EditionViewModel) {
 		let validationErrors = self.validate(model: model)
 
-		if validationErrors.isEmpty {
-			let updatedDate = Date()
-
-			self.noteReference.child("title")
-							  .setValue(model.title)
-			self.noteReference.child("text")
-							  .setValue(model.text)
-			self.noteReference.child("updatedAt")
-							  .setValue(updatedDate.timeIntervalSince1970)
-
-			self.view?.endEdition()
-		}
-		else {
+		guard validationErrors.isEmpty else {
 			self.view?.display(errors: validationErrors)
+			return
 		}
+		
+		let updatedDate = Date()
+
+		self.noteReference.child("title") .setValue(model.title)
+		self.noteReference.child("text").setValue(model.text)
+		self.noteReference.child("updatedAt").setValue(updatedDate.timeIntervalSince1970)
+		self.view?.endEdition()
 	}
 
 	func canSafelyCancel(model: EditionViewModel) -> Bool {

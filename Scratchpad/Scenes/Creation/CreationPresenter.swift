@@ -28,15 +28,16 @@ class CreationPresenter {
 	func createNote(model: CreationViewModel) {
 		let validationErrors = self.validate(model: model)
 
-		if validationErrors.isEmpty {
-			let childReference = self.notesReference.childByAutoId()
-			let note           = Note(identifier: childReference.key, title: model.title, text: model.text)
-			childReference.setValue(note.toDictionary())
-			self.view?.endCreation()
-		}
-		else {
+		guard validationErrors.isEmpty else {
 			self.view?.display(errors: validationErrors)
+			return
 		}
+		
+		let childReference = self.notesReference.childByAutoId()
+		let note           = Note(identifier: childReference.key, title: model.title, text: model.text)
+		childReference.setValue(note.toDictionary())
+		self.view?.endCreation()
+		
 	}
 
 	func canSafelyCancel(model: CreationViewModel) -> Bool {
@@ -47,7 +48,7 @@ class CreationPresenter {
 		self.view?.endCreation()
 	}
 
-	func validate(model: CreationViewModel) -> [ValidationError] {
+	private func validate(model: CreationViewModel) -> [ValidationError] {
 		var errors = [ValidationError]()
 
 		if model.title.isEmpty {
