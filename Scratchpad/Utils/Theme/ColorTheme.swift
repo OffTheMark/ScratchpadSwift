@@ -9,6 +9,10 @@ struct ColorTheme {
 	static let lightBackground   = UIColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1)
 	static let whiteBackground   = UIColor.white
 
+	// MARK:- Border
+	
+	static let mediumBorder = UIColor.lightGray
+	
 	// MARK:- Text
 
 	static let blackText = UIColor.black

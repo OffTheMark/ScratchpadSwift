@@ -7,8 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		340D51281F30EE380088DF5F /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 340D51271F30EE380088DF5F /* Signup.storyboard */; };
+		340D512A1F30EE430088DF5F /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340D51291F30EE430088DF5F /* SignupView.swift */; };
+		340D512C1F30EE500088DF5F /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340D512B1F30EE500088DF5F /* SignupViewController.swift */; };
+		340D512E1F30EE5A0088DF5F /* SignupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340D512D1F30EE5A0088DF5F /* SignupPresenter.swift */; };
+		340D51321F3214CC0088DF5F /* String_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340D51311F3214CC0088DF5F /* String_Extension.swift */; };
 		3419CCD11F13F6F600203E14 /* Creation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3419CCD01F13F6F600203E14 /* Creation.storyboard */; };
 		3419CCD41F15080D00203E14 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3419CCD31F15080D00203E14 /* ValidationError.swift */; };
+		349184B81F2FBE4E0048B98A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 349184B71F2FBE4E0048B98A /* Login.storyboard */; };
+		349184BA1F2FBE610048B98A /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349184B91F2FBE610048B98A /* LoginPresenter.swift */; };
+		349184BC1F2FBE700048B98A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349184BB1F2FBE700048B98A /* LoginViewController.swift */; };
+		349184BE1F2FBE870048B98A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349184BD1F2FBE870048B98A /* LoginView.swift */; };
 		34D1F4851F24EE85000F3198 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D1F4841F24EE85000F3198 /* TextFieldView.swift */; };
 		34D1F4871F24EF4C000F3198 /* TextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34D1F4861F24EF4C000F3198 /* TextFieldView.xib */; };
 		34D1F48A1F253134000F3198 /* DateFormatter_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D1F4891F253134000F3198 /* DateFormatter_Extension.swift */; };
@@ -39,8 +48,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		340D51271F30EE380088DF5F /* Signup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Signup.storyboard; sourceTree = "<group>"; };
+		340D51291F30EE430088DF5F /* SignupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		340D512B1F30EE500088DF5F /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		340D512D1F30EE5A0088DF5F /* SignupPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupPresenter.swift; sourceTree = "<group>"; };
+		340D51311F3214CC0088DF5F /* String_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String_Extension.swift; sourceTree = "<group>"; };
 		3419CCD01F13F6F600203E14 /* Creation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Creation.storyboard; sourceTree = "<group>"; };
 		3419CCD31F15080D00203E14 /* ValidationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
+		349184B71F2FBE4E0048B98A /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		349184B91F2FBE610048B98A /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		349184BB1F2FBE700048B98A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		349184BD1F2FBE870048B98A /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		34D1F4841F24EE85000F3198 /* TextFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		34D1F4861F24EF4C000F3198 /* TextFieldView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldView.xib; sourceTree = "<group>"; };
 		34D1F4891F253134000F3198 /* DateFormatter_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatter_Extension.swift; sourceTree = "<group>"; };
@@ -94,6 +112,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		340D51261F30EE2A0088DF5F /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				340D51271F30EE380088DF5F /* Signup.storyboard */,
+				340D512D1F30EE5A0088DF5F /* SignupPresenter.swift */,
+				340D51291F30EE430088DF5F /* SignupView.swift */,
+				340D512B1F30EE500088DF5F /* SignupViewController.swift */,
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
 		3419CCD21F1507F700203E14 /* Validation */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,11 +141,23 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		349184B61F2FBE430048B98A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				349184B71F2FBE4E0048B98A /* Login.storyboard */,
+				349184B91F2FBE610048B98A /* LoginPresenter.swift */,
+				349184BD1F2FBE870048B98A /* LoginView.swift */,
+				349184BB1F2FBE700048B98A /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		34D1F4881F253125000F3198 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				34D1F4891F253134000F3198 /* DateFormatter_Extension.swift */,
 				34D1F48B1F253142000F3198 /* UIStackView_Extension.swift */,
+				340D51311F3214CC0088DF5F /* String_Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -189,6 +230,8 @@
 				34E7A05C1EF47B24004EEDA8 /* Details */,
 				34E7A0451EF4725F004EEDA8 /* LaunchScreen.storyboard */,
 				34E7A0491EF4725F004EEDA8 /* Listing */,
+				349184B61F2FBE430048B98A /* Login */,
+				340D51261F30EE2A0088DF5F /* Signup */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -324,6 +367,8 @@
 				34D1F4921F253EB1000F3198 /* Edition.storyboard in Resources */,
 				34E7A04D1EF4725F004EEDA8 /* Main.storyboard in Resources */,
 				34D1F4871F24EF4C000F3198 /* TextFieldView.xib in Resources */,
+				340D51281F30EE380088DF5F /* Signup.storyboard in Resources */,
+				349184B81F2FBE4E0048B98A /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,11 +431,17 @@
 				34D1F48C1F253142000F3198 /* UIStackView_Extension.swift in Sources */,
 				34E7A0641EF47B6F004EEDA8 /* DetailsViewController.swift in Sources */,
 				34E7A02F1EF46548004EEDA8 /* AppDelegate.swift in Sources */,
+				340D51321F3214CC0088DF5F /* String_Extension.swift in Sources */,
+				349184BE1F2FBE870048B98A /* LoginView.swift in Sources */,
 				34E7A0621EF47B6F004EEDA8 /* DetailsPresenter.swift in Sources */,
 				34D1F4981F253ED3000F3198 /* EditionView.swift in Sources */,
 				34D1F4A31F27BDEC000F3198 /* ListingTableViewCell.swift in Sources */,
+				340D512E1F30EE5A0088DF5F /* SignupPresenter.swift in Sources */,
 				34D1F49B1F26488B000F3198 /* ColorTheme.swift in Sources */,
 				34D1F4941F253EBE000F3198 /* EditionPresenter.swift in Sources */,
+				349184BA1F2FBE610048B98A /* LoginPresenter.swift in Sources */,
+				349184BC1F2FBE700048B98A /* LoginViewController.swift in Sources */,
+				340D512A1F30EE430088DF5F /* SignupView.swift in Sources */,
 				34E7A06D1EF48761004EEDA8 /* CreationView.swift in Sources */,
 				34E7A05B1EF47B05004EEDA8 /* ListingViewController.swift in Sources */,
 				3419CCD41F15080D00203E14 /* ValidationError.swift in Sources */,
@@ -400,6 +451,7 @@
 				34D1F48E1F253427000F3198 /* CreationViewController.swift in Sources */,
 				34D1F48A1F253134000F3198 /* DateFormatter_Extension.swift in Sources */,
 				34E7A0591EF474D1004EEDA8 /* Note.swift in Sources */,
+				340D512C1F30EE500088DF5F /* SignupViewController.swift in Sources */,
 				34D1F4961F253EC9000F3198 /* EditionViewController.swift in Sources */,
 				34E7A06B1EF48755004EEDA8 /* CreationPresenter.swift in Sources */,
 			);
