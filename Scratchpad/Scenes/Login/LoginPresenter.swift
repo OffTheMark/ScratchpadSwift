@@ -6,6 +6,7 @@ enum LoginFieldIdentifier: FieldIdentifier {
 	case password
 }
 
+
 class LoginPresenter {
 	// MARK:- Properties
 	
@@ -31,26 +32,41 @@ class LoginPresenter {
 		
 		Auth.auth().signIn(withEmail: model.email, password: model.password) {
 			(user, error) in
-			if let user = user {
-				
+			if let error = error as NSError? {
+				self.view?.display(errors: self.validate(error: error))
 			}
-			else if let error = error {
-				
+			else if let user = user /*, user.isEmailVerified */ /* TODO: Uncomment once sign up and email verification are implemented  */ {
+				self.view?.endLogin()
+			}
+			else {
+				let error = LoginError(field: LoginFieldIdentifier.email, description: "Email has not been verified.")
+				self.view?.display(errors: [error])
 			}
 		}
 	}
 	
-	private func validate(model: LoginViewModel) -> [ValidationError] {
-		var errors = [ValidationError]()
+	private func validate(error: NSError) -> [LoginError] {
+		var errors = [LoginError]()
 		
-		if model.email.isEmpty {
-			errors.append(ValidationError(field: LoginFieldIdentifier.email.rawValue, description: "Email is required."))
+		guard let errorCode = AuthErrorCode(rawValue: error.code) else {
+			return errors
 		}
-		else if !model.email.isEmail {
-			errors.append(ValidationError(field: LoginFieldIdentifier.email.rawValue, description: "Email must have a valid format."))
+		
+		if errorCode == .userNotFound {
+			errors.append(LoginError(field: LoginFieldIdentifier.email, description: "User not found."))
 		}
-		if model.password.isEmpty {
-			errors.append(ValidationError(field: LoginFieldIdentifier.password.rawValue, description: "Password is required."))
+		else if errorCode == .wrongPassword {
+			errors.append(LoginError(field: LoginFieldIdentifier.password, description: "Incorrect password."))
+		}
+		
+		return errors
+	}
+	
+	private func validate(model: LoginViewModel) -> [LoginError] {
+		var errors = [LoginError]()
+		
+		if !model.email.isEmail {
+			errors.append(LoginError(field: LoginFieldIdentifier.email, description: "Email must have a valid format."))
 		}
 		
 		return errors
