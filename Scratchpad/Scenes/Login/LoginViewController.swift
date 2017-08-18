@@ -40,6 +40,8 @@ class LoginViewController: UIViewController {
 		
 		self.subtitleLabel.text = "Write stuff down"
 		
+		self.view.backgroundColor = ColorTheme.lightBackground
+		
 		self.shadowView.layer.cornerRadius = 6.0
 		self.shadowView.layer.shadowRadius = 4.0
 		self.shadowView.layer.shadowOffset = CGSize(width: 0, height: 1)
@@ -62,29 +64,31 @@ class LoginViewController: UIViewController {
 		
 		self.loginButton.setTitle("Login", for: .normal)
 		self.loginButton.isEnabled = false
+		self.loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
 		
 		self.signupButton.setTitle("Sign up", for: .normal)
+		self.signupButton.addTarget(self, action: #selector(showSignup), for: .touchUpInside)
 		
 		self.separatorView.backgroundColor = ColorTheme.mediumBorder
 	}
 	
 	// MARK:- LoginViewController
 	
-	@IBAction func login(_ sender: Any) {
+	func login() {
 		if let model = self.model {
 			self.loginButton.isEnabled = false
 			self.presenter?.login(model: model)
 		}
 	}
 	
-	@IBAction func emailTextFieldDidChange(_ sender: UITextField) {
+	@IBAction func emailTextFieldChanged(_ sender: UITextField) {
 		if let text = sender.text {
 			self.model?.email = text
 		}
 		self.loginButton.isEnabled = self.canTryLogin
 	}
 	
-	@IBAction func passwordTextFieldDidChange(_ sender: UITextField) {
+	@IBAction func passwordTextFieldChanged(_ sender: UITextField) {
 		if let text = sender.text {
 			self.model?.password = text
 		}
@@ -108,13 +112,40 @@ class LoginViewController: UIViewController {
 		
 		return label
 	}
+}
+
+extension LoginViewController: LoginView {
+	// MARK:- LoginView
 	
-	fileprivate func showAlert(for error: LoginError) {
+	func display(model: LoginViewModel) {
+		self.model = model
+		self.loginButton.isEnabled = self.canTryLogin
+	}
+	
+	func display(error: LoginError) {
+		if let field = error.field {
+			if field == .email {
+				self.emailTextField.becomeFirstResponder()
+			}
+			else if field == .password {
+				self.passwordTextField.becomeFirstResponder()
+			}
+		}
+			
+		self.showErrorMessage(for: error)
+		self.loginButton.isEnabled = self.canTryLogin
+	}
+	
+	func endLogin() {
+		self.performSegue(withIdentifier: "LoginToListing", sender: nil)
+	}
+	
+	private func showErrorMessage(for error: LoginError) {
 		let view = MessageView.viewFromNib(layout: .MessageView)
-		var config = SwiftMessages.defaultConfig
+		var config = SwiftMessages.Config()
 		
 		config.presentationStyle = .bottom
-		config.ignoreDuplicates = true
+		config.ignoreDuplicates = false
 		
 		view.configureTheme(.error)
 		view.configureDropShadow()
@@ -130,36 +161,5 @@ class LoginViewController: UIViewController {
 		
 		SwiftMessages.hideAll()
 		SwiftMessages.show(config: config, view: view)
-	}
-}
-
-extension LoginViewController: LoginView {
-	// MARK:- LoginView
-	
-	func display(model: LoginViewModel) {
-		self.model = model
-		self.loginButton.isEnabled = self.canTryLogin
-	}
-	
-	func display(errors: [LoginError]) {
-		if let firstError = errors.first {
-			if let field = firstError.field {
-				if field == .email {
-					self.emailTextField.becomeFirstResponder()
-				}
-				else if field == .password {
-					self.passwordTextField.becomeFirstResponder()
-				
-				}
-			}
-			
-			self.showAlert(for: firstError)
-		}
-		
-		self.loginButton.isEnabled = self.canTryLogin
-	}
-	
-	func endLogin() {
-		self.performSegue(withIdentifier: "ShowListing", sender: nil)
 	}
 }

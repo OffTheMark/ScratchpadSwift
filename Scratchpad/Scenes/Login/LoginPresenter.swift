@@ -6,7 +6,6 @@ enum LoginFieldIdentifier: FieldIdentifier {
 	case password
 }
 
-
 class LoginPresenter {
 	// MARK:- Properties
 	
@@ -23,52 +22,53 @@ class LoginPresenter {
 	}
 	
 	func login(model: LoginViewModel) {
-		let errors = self.validate(model: model)
-		
-		guard errors.isEmpty else {
-			self.view?.display(errors: errors)
+		if let validationError = self.validate(model: model) {
+			self.view?.display(error: validationError)
 			return
 		}
 		
 		Auth.auth().signIn(withEmail: model.email, password: model.password) {
 			(user, error) in
-			if let error = error as NSError? {
-				self.view?.display(errors: self.validate(error: error))
+			if let error = error as NSError?, let loginError = self.convert(error: error) {
+				self.view?.display(error: loginError)
 			}
-			else if let user = user /*, user.isEmailVerified */ /* TODO: Uncomment once sign up and email verification are implemented  */ {
+			else if let user = user, user.isEmailVerified {
 				self.view?.endLogin()
 			}
 			else {
-				let error = LoginError(field: LoginFieldIdentifier.email, description: "Email has not been verified.")
-				self.view?.display(errors: [error])
+				let emailNotVerifiedError = LoginError(field: LoginFieldIdentifier.email, description: "Email has not been verified.")
+				self.view?.display(error: emailNotVerifiedError)
 			}
 		}
 	}
 	
-	private func validate(error: NSError) -> [LoginError] {
-		var errors = [LoginError]()
+	private func convert(error: NSError) -> LoginError? {
+		var loginError: LoginError? = nil
 		
 		guard let errorCode = AuthErrorCode(rawValue: error.code) else {
-			return errors
+			return loginError
 		}
 		
 		if errorCode == .userNotFound {
-			errors.append(LoginError(field: LoginFieldIdentifier.email, description: "User not found."))
+			loginError = LoginError(field: LoginFieldIdentifier.email, description: "User not found.")
 		}
 		else if errorCode == .wrongPassword {
-			errors.append(LoginError(field: LoginFieldIdentifier.password, description: "Incorrect password."))
+			loginError = LoginError(field: LoginFieldIdentifier.password, description: "Incorrect password.")
+		}
+		else if errorCode == .userDisabled {
+		loginError = LoginError(field: LoginFieldIdentifier.email, description: "User has been disabled.")
 		}
 		
-		return errors
+		return loginError
 	}
 	
-	private func validate(model: LoginViewModel) -> [LoginError] {
-		var errors = [LoginError]()
+	private func validate(model: LoginViewModel) -> LoginError? {
+		var error: LoginError? = nil
 		
 		if !model.email.isEmail {
-			errors.append(LoginError(field: LoginFieldIdentifier.email, description: "Email must have a valid format."))
+			error = LoginError(field: LoginFieldIdentifier.email, description: "Email must have a valid format.")
 		}
 		
-		return errors
+		return error
 	}
 }

@@ -3,7 +3,7 @@ import Foundation
 protocol LoginView: class {
 	func display(model: LoginViewModel)
 	
-	func display(errors: [LoginError])
+	func display(error: LoginError)
 	
 	func endLogin()
 }

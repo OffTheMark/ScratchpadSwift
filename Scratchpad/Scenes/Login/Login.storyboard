@@ -13,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="MpS-hZ-8Kv">
             <objects>
-                <viewController id="SLd-OG-tRE" customClass="LoginViewController" customModule="Scratchpad" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="SLd-OG-tRE" customClass="LoginViewController" customModule="Scratchpad" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="G2j-2G-MdX"/>
                         <viewControllerLayoutGuide type="bottom" id="MXU-MV-y2d"/>
@@ -63,7 +63,7 @@
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                                                         <connections>
-                                                                            <action selector="emailTextFieldDidChange:" destination="SLd-OG-tRE" eventType="editingChanged" id="hHe-rt-HtH"/>
+                                                                            <action selector="emailTextFieldChanged:" destination="SLd-OG-tRE" eventType="editingChanged" id="zn7-Tx-wui"/>
                                                                         </connections>
                                                                     </textField>
                                                                 </subviews>
@@ -88,7 +88,7 @@
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                                                         <connections>
-                                                                            <action selector="passwordTextFieldDidChange:" destination="SLd-OG-tRE" eventType="editingChanged" id="iG5-nv-o28"/>
+                                                                            <action selector="passwordTextFieldChanged:" destination="SLd-OG-tRE" eventType="editingChanged" id="lPt-MG-iE3"/>
                                                                         </connections>
                                                                     </textField>
                                                                 </subviews>
@@ -117,9 +117,6 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xtF-kU-oo4">
                                         <rect key="frame" x="0.0" y="208.5" width="343" height="30"/>
                                         <state key="normal" title="Login"/>
-                                        <connections>
-                                            <action selector="login:" destination="SLd-OG-tRE" eventType="touchUpInside" id="9IC-S1-OvX"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9IL-y1-Of3">
                                         <rect key="frame" x="0.0" y="254.5" width="343" height="30"/>
@@ -145,7 +142,8 @@
                         <outlet property="signupButton" destination="9IL-y1-Of3" id="tS9-yc-A9l"/>
                         <outlet property="subtitleLabel" destination="bYC-Sp-1On" id="jtv-ZL-f26"/>
                         <outlet property="titleLabel" destination="szw-0X-diQ" id="1j3-Bq-8ad"/>
-                        <segue destination="P3n-g0-dwV" kind="show" identifier="ShowListing" action="showDetailViewController:sender:" id="boi-4S-YOM"/>
+                        <segue destination="P3n-g0-dwV" kind="show" identifier="LoginToListing" action="showDetailViewController:sender:" id="boi-4S-YOM"/>
+                        <segue destination="Ht6-JS-109" kind="show" identifier="LoginToSignup" id="wB5-vC-lZi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vW-xl-Yze" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -158,7 +156,15 @@
                 <viewControllerPlaceholder storyboardName="Main" id="P3n-g0-dwV" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TA2-MF-IXR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="514" y="152"/>
+            <point key="canvasLocation" x="296" y="-23"/>
+        </scene>
+        <!--Signup-->
+        <scene sceneID="JBL-BY-s8W">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Signup" id="Ht6-JS-109" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PCx-rj-AvR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="306" y="338"/>
         </scene>
     </scenes>
 </document>
