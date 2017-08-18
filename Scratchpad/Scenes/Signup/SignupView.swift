@@ -3,7 +3,9 @@ import Foundation
 protocol SignupView: class {
 	func display(model: SignupViewModel)
 	
-	func display(errors: [ValidationError])
+	func display(error: SignupError)
+	
+	func endSignup()
 }
 
 struct SignupViewModel {
@@ -15,5 +17,15 @@ struct SignupViewModel {
 		self.email = email
 		self.password = password
 		self.confirmPassword = confirmPassword
+	}
+}
+
+struct SignupError {
+	let field: SignupFieldIdentifier?
+	let description: String
+	
+	init(field: SignupFieldIdentifier? = nil, description: String) {
+		self.field = field
+		self.description = description
 	}
 }

@@ -81,6 +81,10 @@ class LoginViewController: UIViewController {
 		}
 	}
 	
+	func showSignup() {
+		self.performSegue(withIdentifier: "LoginToSignup", sender: nil)
+	}
+	
 	@IBAction func emailTextFieldChanged(_ sender: UITextField) {
 		if let text = sender.text {
 			self.model?.email = text
