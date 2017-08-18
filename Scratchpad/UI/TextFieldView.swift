@@ -65,13 +65,14 @@ class TextFieldView: UIView {
 		return fieldView
 	}
 
-	private func makeLabelForError(_ error: ValidationError) -> UILabel {
+	private func makeLabel(for error: ValidationError) -> UILabel {
 		let label = UILabel()
 		label.text = error.description
 		label.textColor = ColorTheme.errorText
 		label.font = UIFont.systemFont(ofSize: 13)
 		label.numberOfLines = 0
 		label.lineBreakMode = .byWordWrapping
+		label.translatesAutoresizingMaskIntoConstraints = false
 
 		return label
 	}
@@ -97,7 +98,7 @@ class TextFieldView: UIView {
 		
 		var errorLabels = [UILabel]()
 		for error in errors {
-			errorLabels.append(self.makeLabelForError(error))
+			errorLabels.append(self.makeLabel(for: error))
 		}
 		let showErrorsBlock = {
 			self.titleLabel.textColor = ColorTheme.errorText
