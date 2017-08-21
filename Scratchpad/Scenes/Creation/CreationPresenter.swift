@@ -17,8 +17,7 @@ class CreationPresenter {
 
 	init(view: CreationView) {
 		self.view = view
-		self.notesReference = Database.database()
-									  .reference(withPath: "notes")
+		self.notesReference = Database.database().reference(withPath: "notes")
 	}
 
 	func prepareView() {
@@ -28,16 +27,16 @@ class CreationPresenter {
 	func createNote(model: CreationViewModel) {
 		let validationErrors = self.validate(model: model)
 
-		guard validationErrors.isEmpty else {
+		if validationErrors.isEmpty, let userIdentifier = Auth.auth().currentUser?.uid {
+			let childReference = self.notesReference.childByAutoId()
+			let note           = Note(identifier: childReference.key, owner: userIdentifier, title: model.title, text: model.text)
+			childReference.setValue(note.toDictionary())
+			self.view?.endCreation()
+		}
+		else {
 			self.view?.display(errors: validationErrors)
 			return
 		}
-		
-		let childReference = self.notesReference.childByAutoId()
-		let note           = Note(identifier: childReference.key, title: model.title, text: model.text)
-		childReference.setValue(note.toDictionary())
-		self.view?.endCreation()
-		
 	}
 
 	func canSafelyCancel(model: CreationViewModel) -> Bool {

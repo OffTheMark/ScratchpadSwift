@@ -18,6 +18,7 @@
 		349184BA1F2FBE610048B98A /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349184B91F2FBE610048B98A /* LoginPresenter.swift */; };
 		349184BC1F2FBE700048B98A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349184BB1F2FBE700048B98A /* LoginViewController.swift */; };
 		349184BE1F2FBE870048B98A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349184BD1F2FBE870048B98A /* LoginView.swift */; };
+		34B31F4F1F4B29EB00BE19E0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B31F4E1F4B29EB00BE19E0 /* User.swift */; };
 		34D1F4851F24EE85000F3198 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D1F4841F24EE85000F3198 /* TextFieldView.swift */; };
 		34D1F4871F24EF4C000F3198 /* TextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34D1F4861F24EF4C000F3198 /* TextFieldView.xib */; };
 		34D1F48A1F253134000F3198 /* DateFormatter_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D1F4891F253134000F3198 /* DateFormatter_Extension.swift */; };
@@ -59,6 +60,7 @@
 		349184B91F2FBE610048B98A /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		349184BB1F2FBE700048B98A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		349184BD1F2FBE870048B98A /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		34B31F4E1F4B29EB00BE19E0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		34D1F4841F24EE85000F3198 /* TextFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		34D1F4861F24EF4C000F3198 /* TextFieldView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldView.xib; sourceTree = "<group>"; };
 		34D1F4891F253134000F3198 /* DateFormatter_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatter_Extension.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				34E7A0581EF474D1004EEDA8 /* Note.swift */,
+				34B31F4E1F4B29EB00BE19E0 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				3419CCD41F15080D00203E14 /* ValidationError.swift in Sources */,
 				34E7A0631EF47B6F004EEDA8 /* DetailsView.swift in Sources */,
 				34E7A0501EF473DB004EEDA8 /* ListingPresenter.swift in Sources */,
+				34B31F4F1F4B29EB00BE19E0 /* User.swift in Sources */,
 				34D1F4851F24EE85000F3198 /* TextFieldView.swift in Sources */,
 				34D1F48E1F253427000F3198 /* CreationViewController.swift in Sources */,
 				34D1F48A1F253134000F3198 /* DateFormatter_Extension.swift in Sources */,
