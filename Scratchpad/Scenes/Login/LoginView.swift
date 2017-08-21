@@ -3,7 +3,9 @@ import Foundation
 protocol LoginView: class {
 	func display(model: LoginViewModel)
 	
-	func display(errors: [ValidationError])
+	func display(error: LoginError)
+	
+	func endLogin()
 }
 
 struct LoginViewModel {
@@ -13,5 +15,15 @@ struct LoginViewModel {
 	init(email: String = "", password: String = "") {
 		self.email = email
 		self.password = password
+	}
+}
+
+struct LoginError {
+	let field: LoginFieldIdentifier?
+	let description: String
+	
+	init(field: LoginFieldIdentifier? = nil, description: String) {
+		self.field = field
+		self.description = description
 	}
 }

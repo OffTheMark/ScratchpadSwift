@@ -13,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="MpS-hZ-8Kv">
             <objects>
-                <viewController id="SLd-OG-tRE" customClass="LoginViewController" customModule="Scratchpad" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="SLd-OG-tRE" customClass="LoginViewController" customModule="Scratchpad" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="G2j-2G-MdX"/>
                         <viewControllerLayoutGuide type="bottom" id="MXU-MV-y2d"/>
@@ -23,16 +23,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="5QN-l2-6Xq">
-                                <rect key="frame" x="16" y="207" width="343" height="253.5"/>
+                                <rect key="frame" x="16" y="192" width="343" height="284.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scratchpad" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szw-0X-diQ" userLabel="Title Label">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="g8D-9f-7Gy" userLabel="Header Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="51.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scratchpad" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szw-0X-diQ" userLabel="Title Label">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="23"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write stuff down" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYC-Sp-1On">
+                                                <rect key="frame" x="0.0" y="31" width="343" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DFT-Gr-kET" userLabel="Shadow View">
-                                        <rect key="frame" x="0.0" y="36.5" width="343" height="125"/>
+                                        <rect key="frame" x="0.0" y="67.5" width="343" height="125"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3sy-94-Qz8" userLabel="Fields View">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="125"/>
@@ -52,7 +63,7 @@
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                                                         <connections>
-                                                                            <action selector="emailTextFieldDidChange:" destination="SLd-OG-tRE" eventType="editingChanged" id="hHe-rt-HtH"/>
+                                                                            <action selector="emailTextFieldChanged:" destination="SLd-OG-tRE" eventType="editingChanged" id="zn7-Tx-wui"/>
                                                                         </connections>
                                                                     </textField>
                                                                 </subviews>
@@ -77,7 +88,7 @@
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                                                         <connections>
-                                                                            <action selector="passwordTextFieldDidChange:" destination="SLd-OG-tRE" eventType="editingChanged" id="iG5-nv-o28"/>
+                                                                            <action selector="passwordTextFieldChanged:" destination="SLd-OG-tRE" eventType="editingChanged" id="lPt-MG-iE3"/>
                                                                         </connections>
                                                                     </textField>
                                                                 </subviews>
@@ -104,14 +115,11 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xtF-kU-oo4">
-                                        <rect key="frame" x="0.0" y="177.5" width="343" height="30"/>
+                                        <rect key="frame" x="0.0" y="208.5" width="343" height="30"/>
                                         <state key="normal" title="Login"/>
-                                        <connections>
-                                            <action selector="login:" destination="SLd-OG-tRE" eventType="touchUpInside" id="9IC-S1-OvX"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9IL-y1-Of3">
-                                        <rect key="frame" x="0.0" y="223.5" width="343" height="30"/>
+                                        <rect key="frame" x="0.0" y="254.5" width="343" height="30"/>
                                         <state key="normal" title="Sign up"/>
                                     </button>
                                 </subviews>
@@ -132,12 +140,31 @@
                         <outlet property="separatorView" destination="QqF-OA-eEO" id="mmE-76-qeh"/>
                         <outlet property="shadowView" destination="DFT-Gr-kET" id="6M8-jb-irr"/>
                         <outlet property="signupButton" destination="9IL-y1-Of3" id="tS9-yc-A9l"/>
+                        <outlet property="subtitleLabel" destination="bYC-Sp-1On" id="jtv-ZL-f26"/>
                         <outlet property="titleLabel" destination="szw-0X-diQ" id="1j3-Bq-8ad"/>
+                        <segue destination="P3n-g0-dwV" kind="show" identifier="LoginToListing" action="showDetailViewController:sender:" id="boi-4S-YOM"/>
+                        <segue destination="Ht6-JS-109" kind="show" identifier="LoginToSignup" id="wB5-vC-lZi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vW-xl-Yze" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-265" y="153"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="rdc-f1-NST">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="P3n-g0-dwV" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TA2-MF-IXR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="296" y="-23"/>
+        </scene>
+        <!--Signup-->
+        <scene sceneID="JBL-BY-s8W">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Signup" id="Ht6-JS-109" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PCx-rj-AvR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="306" y="338"/>
         </scene>
     </scenes>
 </document>

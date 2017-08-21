@@ -9,5 +9,7 @@ target 'Scratchpad' do
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
-
+  
+  pod 'SwiftMessages', '~> 3.4.0'
+  
 end
