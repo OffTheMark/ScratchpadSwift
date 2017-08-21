@@ -80,6 +80,7 @@ class SignupViewController: UIViewController {
 	
 	func submit() {
 		if let model = self.model {
+			self.submitButton.isEnabled = false
 			self.presenter?.signup(model: model)
 		}
 	}
