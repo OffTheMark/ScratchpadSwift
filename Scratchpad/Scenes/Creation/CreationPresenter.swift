@@ -11,13 +11,15 @@ class CreationPresenter {
 	// MARK: Properties
 
 	weak private var view: CreationView?
-	private let notesReference: DatabaseReference
+	private let database: Database
+	private let authentication: Auth
 
 	// MARK: CreationPresenter
 
-	init(view: CreationView) {
+	init(view: CreationView, database: Database = Database.database(), authentication: Auth = Auth.auth()) {
 		self.view = view
-		self.notesReference = Database.database().reference(withPath: "notes")
+		self.database = database
+		self.authentication = authentication
 	}
 
 	func prepareView() {
@@ -27,10 +29,16 @@ class CreationPresenter {
 	func createNote(model: CreationViewModel) {
 		let validationErrors = self.validate(model: model)
 
-		if validationErrors.isEmpty, let userIdentifier = Auth.auth().currentUser?.uid {
-			let childReference = self.notesReference.childByAutoId()
-			let note           = Note(identifier: childReference.key, owner: userIdentifier, title: model.title, text: model.text)
-			childReference.setValue(note.toDictionary())
+		if validationErrors.isEmpty, let userIdentifier = self.authentication.currentUser?.uid {
+			let noteReference = self.database.reference(withPath: "notes").childByAutoId()
+			let userReference = self.database.reference(withPath: "users").child(userIdentifier)
+			
+			let noteIdentifier = noteReference.key
+			let note           = Note(identifier: noteIdentifier, owner: userIdentifier, title: model.title, text: model.text)
+			
+			userReference.setValue(note.toDictionary())
+			userReference.child(noteIdentifier).setValue(true)
+			
 			self.view?.endCreation()
 		}
 		else {
