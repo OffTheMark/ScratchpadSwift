@@ -101,6 +101,9 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="0dt-Wp-wt0"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="ZmL-j4-wXS">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                     <connections>
                         <outlet property="createButton" destination="MNg-Zl-7HF" id="9GS-7U-t7C"/>
                     </connections>

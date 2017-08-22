@@ -6,43 +6,75 @@ class ListingPresenter {
 	// MARK: Properties
 
 	private weak var view: ListingView?
-	private let notesReference:  DatabaseReference
-	private var referenceHandle: UInt?
-
+	private let database: Database
+	private let authentication: Auth
+	
 	// MARK: ListingPresenter
 
-	init(view: ListingView) {
+	init(view: ListingView, database: Database = Database.database(), authentication: Auth = Auth.auth()) {
 		self.view = view
-		self.notesReference = Database.database()
-									  .reference(withPath: "notes")
-		self.referenceHandle = self.notesReference
-				.observe(.value, with: {
-			snapshot in
-			var notes = [Note]()
-
-			for item in snapshot.children {
-				let itemSnapshot = item as! DataSnapshot
-				let itemValue    = itemSnapshot.value as! [String:Any]
-				let note         = Note.make(from: itemValue)
-				notes.append(note)
-			}
-
-			notes.sort {
-				(leftNote, rightNote) -> Bool in
-				return leftNote.updatedDate > rightNote.updatedDate
-			}
-
-			self.view?.update(with: self.convert(notes: notes))
-		})
+		self.database = database
+		self.authentication = authentication
 	}
-
-	deinit {
-		if let handle = self.referenceHandle {
-			self.notesReference.removeObserver(withHandle: handle)
+	
+	func refreshListing() {
+		if let userIdentifier = self.authentication.currentUser?.uid {
+			self.database
+				.reference(withPath: "users")
+				.child(userIdentifier)
+				.observeSingleEvent(of: .value, with: {
+					userNotesSnapshot in
+					
+					var noteIdentifiers = [NoteIdentifier]()
+					
+					for item in userNotesSnapshot.children {
+						if let noteIdentifierSnapshot = item as? DataSnapshot {
+							noteIdentifiers.append(noteIdentifierSnapshot.key)
+						}
+					}
+					
+					if !noteIdentifiers.isEmpty {
+						self.database
+							.reference(withPath: "notes")
+							.queryOrdered(byChild: "owner")
+							.queryEqual(toValue: userIdentifier)
+							.observeSingleEvent(of: .value, with: {
+								notesSnapshot in
+								
+								var notes = [Note]()
+								
+								for item in notesSnapshot.children {
+									if let noteSnapshot = item as? DataSnapshot,
+										let value = noteSnapshot.value as? [String:Any] {
+										let note = Note.make(from: value)
+										notes.append(note)
+									}
+								}
+								
+								notes.sort {
+									(leftNote, rightNote) -> Bool in
+									return leftNote.updatedDate > rightNote.updatedDate
+								}
+								
+								self.view?.update(with: self.convert(notes: notes))
+							}, withCancel: {
+								error in
+								print("Notes query")
+								print(error.localizedDescription)
+							})
+					}
+					else {
+						self.view?.update(with: [])
+					}
+				}, withCancel: {
+					error in
+					print("Users query")
+					print(error.localizedDescription)
+				})
 		}
 	}
 
-	internal func convert(notes: [Note]) -> [ListingViewModel] {
+	private func convert(notes: [Note]) -> [ListingViewModel] {
 		let formatter = DateFormatter.cached(withFormat: "MM/dd/yyyy")
 		return notes.map {
 			note in

@@ -15,16 +15,26 @@ class ListingViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		defer {
+			self.presenter = ListingPresenter(view: self)
+		}
+		
 		self.title = "Notes"
 
 		self.tableView.rowHeight = UITableViewAutomaticDimension
-		self.tableView.estimatedRowHeight = 82
+		self.tableView.estimatedRowHeight = 80
 
 		self.createButton.title = "Create"
-
-		self.presenter = ListingPresenter(view: self)
+		
+		self.refreshControl?.addTarget(self, action: #selector(handleRefresh(_:)), for: .valueChanged)
 	}
 
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		self.presenter?.refreshListing()
+	}
+	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "ShowDetails",
 		   let destination = segue.destination as? DetailsViewController,
@@ -51,6 +61,10 @@ class ListingViewController: UITableViewController {
 
 		return cell
 	}
+	
+	func handleRefresh(_ refreshControl: UIRefreshControl) {
+		self.presenter?.refreshListing()
+	}
 }
 
 extension ListingViewController: ListingView {
@@ -58,6 +72,7 @@ extension ListingViewController: ListingView {
 
 	func update(with models: [ListingViewModel]) {
 		self.models = models
+		self.refreshControl?.endRefreshing()
 		self.tableView.reloadData()
 	}
 }
