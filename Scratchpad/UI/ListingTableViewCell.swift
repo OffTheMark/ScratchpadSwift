@@ -15,7 +15,7 @@ class ListingTableViewCell: UITableViewCell {
 			if let model = self.model {
 				self.titleLabel.text = model.title
 				self.createdDateLabel.text = "Created on \(model.createdDate)"
-				self.updatedDateLabel.text = "Updated on \(model.updatedDate)"
+				self.updatedDateLabel.text = "Last updated on \(model.updatedDate)"
 			}
 		}
 	}
