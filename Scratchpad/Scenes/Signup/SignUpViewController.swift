@@ -52,7 +52,7 @@ class SignUpViewController: UIViewController {
 		self.fieldsView.clipsToBounds = true
 		self.fieldsView.backgroundColor = ColorTheme.whiteBackground
 		
-		self.emailTextField.placeholder = "Email"
+		self.emailTextField.placeholder = "Email Address"
 		self.emailTextField.keyboardType = .emailAddress
 		self.emailTextField.autocorrectionType = .no
 		self.emailTextField.spellCheckingType = .no
@@ -62,7 +62,7 @@ class SignUpViewController: UIViewController {
 		self.passwordTextField.autocorrectionType = .no
 		self.passwordTextField.spellCheckingType = .no
 		
-		self.confirmPasswordTextField.placeholder = "Confirm password"
+		self.confirmPasswordTextField.placeholder = "Confirm Password"
 		self.confirmPasswordTextField.isSecureTextEntry = true
 		self.confirmPasswordTextField.autocorrectionType = .no
 		self.confirmPasswordTextField.spellCheckingType = .no
@@ -167,7 +167,7 @@ extension SignUpViewController: SignUpView {
 		view.configureTheme(.success)
 		view.configureDropShadow()
 		view.configureContent(
-			title: "Account created",
+			title: "Account Created",
 			body: "Please confirm your email before signing in to your account.",
 			iconImage: nil,
 			iconText: nil,

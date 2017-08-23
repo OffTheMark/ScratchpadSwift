@@ -38,7 +38,7 @@ class SignInPresenter {
 				self.view?.endSignIn()
 			}
 			else {
-				let emailNotVerifiedError = SignInError(field: SignInFieldIdentifier.email, description: "Email has not been verified.")
+				let emailNotVerifiedError = SignInError(field: SignInFieldIdentifier.email, description: "This email address has not been verified.")
 				self.view?.display(error: emailNotVerifiedError)
 			}
 		}
@@ -52,13 +52,13 @@ class SignInPresenter {
 		}
 		
 		if errorCode == .userNotFound {
-			signInError = SignInError(field: SignInFieldIdentifier.email, description: "User not found.")
+			signInError = SignInError(field: SignInFieldIdentifier.email, description: "There is no user with this email address.")
 		}
 		else if errorCode == .wrongPassword {
-			signInError = SignInError(field: SignInFieldIdentifier.password, description: "Incorrect password.")
+			signInError = SignInError(field: SignInFieldIdentifier.password, description: "The password is incorrect.")
 		}
 		else if errorCode == .userDisabled {
-			signInError = SignInError(field: SignInFieldIdentifier.email, description: "User has been disabled.")
+			signInError = SignInError(field: SignInFieldIdentifier.email, description: "This user account has been disabled.")
 		}
 		
 		return signInError
@@ -68,7 +68,7 @@ class SignInPresenter {
 		var error: SignInError? = nil
 		
 		if !model.email.isEmail {
-			error = SignInError(field: SignInFieldIdentifier.email, description: "Email must have a valid format.")
+			error = SignInError(field: SignInFieldIdentifier.email, description: "The email address must have a valid format.")
 		}
 		
 		return error

@@ -54,7 +54,7 @@ class SignUpPresenter {
 		var error: SignUpError? = nil
 		
 		if !model.email.isEmail {
-			error = SignUpError(field: SignUpFieldIdentifier.email, description: "Email is required.")
+			error = SignUpError(field: SignUpFieldIdentifier.email, description: "Email address is required.")
 		}
 		else if model.password != model.confirmPassword {
 			error = SignUpError(field: SignUpFieldIdentifier.password, description: "Passwords don't match.")
@@ -71,7 +71,7 @@ class SignUpPresenter {
 		}
 		
 		if errorCode == .emailAlreadyInUse {
-			signUpError = SignUpError(field: SignUpFieldIdentifier.email, description: "Email already in use.")
+			signUpError = SignUpError(field: SignUpFieldIdentifier.email, description: "This email address already in use.")
 		}
 		
 		return signUpError

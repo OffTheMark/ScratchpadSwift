@@ -52,7 +52,7 @@ class SignInViewController: UIViewController {
 		self.fieldsView.clipsToBounds = true
 		self.fieldsView.backgroundColor = ColorTheme.whiteBackground
 		
-		self.emailTextField.placeholder = "Email"
+		self.emailTextField.placeholder = "Email Address"
 		self.emailTextField.keyboardType = .emailAddress
 		self.emailTextField.autocorrectionType = .no
 		self.emailTextField.spellCheckingType = .no
@@ -62,11 +62,11 @@ class SignInViewController: UIViewController {
 		self.passwordTextField.autocorrectionType = .no
 		self.passwordTextField.spellCheckingType = .no
 		
-		self.signInButton.setTitle("Sign in", for: .normal)
+		self.signInButton.setTitle("Sign In", for: .normal)
 		self.signInButton.isEnabled = false
 		self.signInButton.addTarget(self, action: #selector(signIn), for: .touchUpInside)
 		
-		self.signUpButton.setTitle("Sign up", for: .normal)
+		self.signUpButton.setTitle("Sign Up", for: .normal)
 		self.signUpButton.addTarget(self, action: #selector(showSignUp), for: .touchUpInside)
 		
 		self.separatorView.backgroundColor = ColorTheme.mediumBorder
@@ -154,8 +154,8 @@ extension SignInViewController: SignInView {
 		view.configureTheme(.error)
 		view.configureDropShadow()
 		view.configureContent(
-			title: error.description,
-			body: nil,
+			title: "Error",
+			body: error.description,
 			iconImage: nil,
 			iconText: nil,
 			buttonImage: nil,
