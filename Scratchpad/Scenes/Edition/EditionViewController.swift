@@ -23,6 +23,7 @@ class EditionViewController: UIViewController {
 
 		defer {
 			self.presenter = EditionPresenter(view: self, identifier: self.noteIdentifier!)
+			self.presenter?.prepareView()
 		}
 		
 		self.title = "Edit Note"
@@ -124,8 +125,25 @@ extension EditionViewController: EditionView {
 
 		self.saveButton.isEnabled = true
 	}
-
-	func endEdition() {
-		self.navigationController?.popViewController(animated: true)
+	
+	func endEdition(with result: EditionEndResult) {
+		if result == .success {
+			self.navigationController?.popViewController(animated: true)
+		}
+		else if result == .cancel {
+			self.navigationController?.popViewController(animated: true)
+		}
+		else if result == .accessDenied {
+			self.showAccessDeniedAlert()
+		}
+	}
+	private func showAccessDeniedAlert() {
+		let alertController = UIAlertController(title: "Access Denied", message: "You do not have permission to edit this note.", preferredStyle: .alert)
+		let okAction = UIAlertAction(title: "OK", style: .default) {
+			result -> Void in
+			self.navigationController?.popViewController(animated: true)
+		}
+		alertController.addAction(okAction)
+		self.present(alertController, animated: true, completion: nil)
 	}
 }
