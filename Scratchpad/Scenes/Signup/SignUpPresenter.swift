@@ -1,30 +1,30 @@
 import Foundation
 import Firebase
 
-enum SignupFieldIdentifier: FieldIdentifier {
+enum SignUpFieldIdentifier: FieldIdentifier {
 	case email
 	case password
 	case confirmPassword
 }
 
-class SignupPresenter {
+class SignUpPresenter {
 	// MARK:- Properties
 	
-	private weak var view: SignupView?
+	private weak var view: SignUpView?
 	private let authentication: Auth
 	
-	// MARK:- SignupPresenter
+	// MARK:- SignUpPresenter
 	
-	init(view: SignupView, authentication: Auth = Auth.auth()) {
+	init(view: SignUpView, authentication: Auth = Auth.auth()) {
 		self.view = view
 		self.authentication = authentication
 	}
 	
 	func prepareView() {
-		self.view?.display(model: SignupViewModel())
+		self.view?.display(model: SignUpViewModel())
 	}
 	
-	func signup(model: SignupViewModel) {
+	func signUp(model: SignUpViewModel) {
 		if let validationError = self.validate(model: model) {
 			self.view?.display(error: validationError)
 			return
@@ -38,7 +38,7 @@ class SignupPresenter {
 			else if let user = user {
 				self.signOutUser()
 				user.sendEmailVerification(completion: nil)
-				self.view?.endSignup()
+				self.view?.endSignUp()
 			}
 		}
 	}
@@ -50,30 +50,30 @@ class SignupPresenter {
 		catch {}
 	}
 	
-	private func validate(model: SignupViewModel) -> SignupError? {
-		var error: SignupError? = nil
+	private func validate(model: SignUpViewModel) -> SignUpError? {
+		var error: SignUpError? = nil
 		
 		if !model.email.isEmail {
-			error = SignupError(field: SignupFieldIdentifier.email, description: "Email is required.")
+			error = SignUpError(field: SignUpFieldIdentifier.email, description: "Email is required.")
 		}
 		else if model.password != model.confirmPassword {
-			error = SignupError(field: SignupFieldIdentifier.password, description: "Passwords don't match.")
+			error = SignUpError(field: SignUpFieldIdentifier.password, description: "Passwords don't match.")
 		}
 		
 		return error
 	}
 	
-	private func convert(error: NSError) -> SignupError? {
-		var signupError: SignupError? = nil
+	private func convert(error: NSError) -> SignUpError? {
+		var signUpError: SignUpError? = nil
 		
 		guard let errorCode = AuthErrorCode(rawValue: error.code) else {
-			return signupError
+			return signUpError
 		}
 		
 		if errorCode == .emailAlreadyInUse {
-			signupError = SignupError(field: SignupFieldIdentifier.email, description: "Email already in use.")
+			signUpError = SignUpError(field: SignUpFieldIdentifier.email, description: "Email already in use.")
 		}
 		
-		return signupError
+		return signUpError
 	}
 }

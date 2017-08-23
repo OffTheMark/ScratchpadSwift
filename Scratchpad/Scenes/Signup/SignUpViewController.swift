@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 import SwiftMessages
 
-class SignupViewController: UIViewController {
+class SignUpViewController: UIViewController {
 	// MARK:- Outlets
 	
 	@IBOutlet private weak var titleLabel: UILabel!
@@ -18,9 +18,9 @@ class SignupViewController: UIViewController {
 	
 	// MARK:- Properties
 	
-	private var presenter: SignupPresenter?
-	fileprivate var model: SignupViewModel?
-	fileprivate var canTrySignup: Bool {
+	private var     presenter:    SignUpPresenter?
+	fileprivate var model:        SignUpViewModel?
+	fileprivate var canTrySignUp: Bool {
 		guard let model = self.model else {
 			return false
 		}
@@ -33,7 +33,7 @@ class SignupViewController: UIViewController {
 		super.viewDidLoad()
 		
 		defer {
-			self.presenter = SignupPresenter(view: self)
+			self.presenter = SignUpPresenter(view: self)
 			self.presenter?.prepareView()
 		}
 		
@@ -76,12 +76,12 @@ class SignupViewController: UIViewController {
 		self.separatorView.backgroundColor = ColorTheme.mediumBorder
 	}
 	
-	// MARK:- SignupViewController
+	// MARK:- SignUpViewController
 	
 	func submit() {
 		if let model = self.model {
 			self.submitButton.isEnabled = false
-			self.presenter?.signup(model: model)
+			self.presenter?.signUp(model: model)
 		}
 	}
 	
@@ -89,32 +89,32 @@ class SignupViewController: UIViewController {
 		if let text = sender.text {
 			self.model?.email = text
 		}
-		self.submitButton.isEnabled = self.canTrySignup
+		self.submitButton.isEnabled = self.canTrySignUp
 	}
 	
 	@IBAction func passwordTextFieldChanged(_ sender: UITextField) {
 		if let text = sender.text {
 			self.model?.password = text
 		}
-		self.submitButton.isEnabled = self.canTrySignup
+		self.submitButton.isEnabled = self.canTrySignUp
 	}
 	
 	@IBAction func confirmPasswordTextFieldChanged(_ sender: UITextField) {
 		if let text = sender.text {
 			self.model?.confirmPassword = text
 		}
-		self.submitButton.isEnabled = self.canTrySignup
+		self.submitButton.isEnabled = self.canTrySignUp
 	}
 }
 
-extension SignupViewController: SignupView {
-	// MARK:- SignupView
+extension SignUpViewController: SignUpView {
+	// MARK:- SignUpView
 	
-	func display(model: SignupViewModel) {
+	func display(model: SignUpViewModel) {
 		self.model = model
 	}
 	
-	func display(error: SignupError) {
+	func display(error: SignUpError) {
 		if let field = error.field {
 			if field == .email {
 				self.emailTextField.becomeFirstResponder()
@@ -126,15 +126,15 @@ extension SignupViewController: SignupView {
 		
 		self.showErrorMessage(for: error)
 		
-		self.submitButton.isEnabled = self.canTrySignup
+		self.submitButton.isEnabled = self.canTrySignUp
 	}
 	
-	func endSignup() {
+	func endSignUp() {
 		self.showSuccessMessage()
-		self.performSegue(withIdentifier: "SignupToLogin", sender: nil)
+		self.performSegue(withIdentifier: "SignUpToSignIn", sender: nil)
 	}
 	
-	private func showErrorMessage(for error: SignupError) {
+	private func showErrorMessage(for error: SignUpError) {
 		let view = MessageView.viewFromNib(layout: .MessageView)
 		var config = SwiftMessages.Config()
 		

@@ -1,14 +1,14 @@
 import Foundation
 
-protocol SignupView: class {
-	func display(model: SignupViewModel)
+protocol SignUpView: class {
+	func display(model: SignUpViewModel)
 	
-	func display(error: SignupError)
+	func display(error: SignUpError)
 	
-	func endSignup()
+	func endSignUp()
 }
 
-struct SignupViewModel {
+struct SignUpViewModel {
 	var email: String
 	var password: String
 	var confirmPassword: String
@@ -20,11 +20,11 @@ struct SignupViewModel {
 	}
 }
 
-struct SignupError {
-	let field: SignupFieldIdentifier?
+struct SignUpError {
+	let field:       SignUpFieldIdentifier?
 	let description: String
 	
-	init(field: SignupFieldIdentifier? = nil, description: String) {
+	init(field: SignUpFieldIdentifier? = nil, description: String) {
 		self.field = field
 		self.description = description
 	}

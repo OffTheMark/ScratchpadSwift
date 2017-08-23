@@ -13,7 +13,7 @@ class SignInViewController: UIViewController {
 	@IBOutlet fileprivate weak var passwordTextField: UITextField!
 	@IBOutlet private weak var     separatorView:     UIView!
 	@IBOutlet fileprivate weak var signInButton:      UIButton!
-	@IBOutlet private weak var     signupButton:      UIButton!
+	@IBOutlet private weak var     signUpButton:      UIButton!
 	
 	// MARK:- Properties
 	
@@ -66,13 +66,13 @@ class SignInViewController: UIViewController {
 		self.signInButton.isEnabled = false
 		self.signInButton.addTarget(self, action: #selector(signIn), for: .touchUpInside)
 		
-		self.signupButton.setTitle("Sign up", for: .normal)
-		self.signupButton.addTarget(self, action: #selector(showSignUp), for: .touchUpInside)
+		self.signUpButton.setTitle("Sign up", for: .normal)
+		self.signUpButton.addTarget(self, action: #selector(showSignUp), for: .touchUpInside)
 		
 		self.separatorView.backgroundColor = ColorTheme.mediumBorder
 	}
 	
-	// MARK:- LoginViewController
+	// MARK:- SignInViewController
 	
 	func signIn() {
 		if let model = self.model {
@@ -119,7 +119,7 @@ class SignInViewController: UIViewController {
 }
 
 extension SignInViewController: SignInView {
-	// MARK:- LoginView
+	// MARK:- SignInView
 	
 	func display(model: SignInViewModel) {
 		self.model = model

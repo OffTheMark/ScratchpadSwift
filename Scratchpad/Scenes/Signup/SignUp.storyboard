@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Signup View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="xYY-IZ-XMY">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" id="fME-Y6-eb1" customClass="SignupViewController" customModule="Scratchpad" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="fME-Y6-eb1" customClass="SignUpViewController" customModule="Scratchpad" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mu1-tU-Nj7"/>
                         <viewControllerLayoutGuide type="bottom" id="eRM-27-Arb"/>
@@ -147,7 +147,7 @@
                                         <rect key="frame" x="0.0" y="317.5" width="343" height="30"/>
                                         <state key="normal" title="Cancel"/>
                                         <connections>
-                                            <segue destination="seH-k3-sIk" kind="show" identifier="SignupToLogin" id="pz9-VB-ieM"/>
+                                            <segue destination="seH-k3-sIk" kind="show" identifier="SignUpToSignIn" id="pz9-VB-ieM"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -177,10 +177,10 @@
             </objects>
             <point key="canvasLocation" x="447" y="-200"/>
         </scene>
-        <!--Login-->
+        <!--SignIn-->
         <scene sceneID="p88-dx-ePo">
             <objects>
-                <viewControllerPlaceholder storyboardName="Login" id="seH-k3-sIk" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="SignIn" id="seH-k3-sIk" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ipf-72-IEd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1039" y="-201"/>
