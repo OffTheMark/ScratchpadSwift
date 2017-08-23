@@ -11,11 +11,13 @@ class SignupPresenter {
 	// MARK:- Properties
 	
 	private weak var view: SignupView?
+	private let authentication: Auth
 	
 	// MARK:- SignupPresenter
 	
-	init(view: SignupView) {
+	init(view: SignupView, authentication: Auth = Auth.auth()) {
 		self.view = view
+		self.authentication = authentication
 	}
 	
 	func prepareView() {
@@ -28,7 +30,7 @@ class SignupPresenter {
 			return
 		}
 		
-		Auth.auth().createUser(withEmail: model.email, password: model.password) {
+		self.authentication.createUser(withEmail: model.email, password: model.password) {
 			(user, error) in
 			if let error = error as NSError?, let signupError = self.convert(error: error) {
 				self.view?.display(error: signupError)
@@ -43,7 +45,7 @@ class SignupPresenter {
 	
 	private func signOutUser() {
 		do {
-			try Auth.auth().signOut()
+			try self.authentication.signOut()
 		}
 		catch {}
 	}
