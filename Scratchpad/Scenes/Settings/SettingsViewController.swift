@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import SwiftMessages
 
 enum SettingsTableViewSection: Int {
 	case account = 0
@@ -107,8 +108,36 @@ extension SettingsViewController: SettingsView {
 	}
 	
 	func endSignOut() {
-		let window = self.view.window
-		window?.rootViewController = SignInViewController.make()
-		window?.makeKeyAndVisible()
+		if let window = self.view.window {
+			UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
+				window.rootViewController = SignInViewController.make()
+				window.makeKeyAndVisible()
+			}, completion: {
+				_ in
+				self.showSignOutMessage()
+			})
+		}
+	}
+	
+	private func showSignOutMessage() {
+		let view = MessageView.viewFromNib(layout: .MessageView)
+		var config = SwiftMessages.Config()
+		
+		config.presentationStyle = .bottom
+		config.ignoreDuplicates = false
+		
+		view.configureTheme(.success)
+		view.configureDropShadow()
+		view.configureContent(
+			title: nil,
+			body: "You have been signed out from your account.",
+			iconImage: nil,
+			iconText: nil,
+			buttonImage: nil,
+			buttonTitle: nil,
+			buttonTapHandler: nil)
+		view.button?.isHidden = true
+		
+		SwiftMessages.show(config: config, view: view)
 	}
 }
