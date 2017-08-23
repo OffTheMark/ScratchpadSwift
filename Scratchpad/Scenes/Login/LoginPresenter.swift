@@ -10,11 +10,13 @@ class LoginPresenter {
 	// MARK:- Properties
 	
 	private weak var view: LoginView?
+	private let authentication: Auth
 	
 	// MARK:- LoginPresenter
 	
-	init(view: LoginView) {
+	init(view: LoginView, authentication: Auth = Auth.auth()) {
 		self.view = view
+		self.authentication = authentication
 	}
 	
 	func prepareView() {
@@ -27,7 +29,7 @@ class LoginPresenter {
 			return
 		}
 		
-		Auth.auth().signIn(withEmail: model.email, password: model.password) {
+		self.authentication.signIn(withEmail: model.email, password: model.password) {
 			(user, error) in
 			if let error = error as NSError?, let loginError = self.convert(error: error) {
 				self.view?.display(error: loginError)
