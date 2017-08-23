@@ -6,9 +6,8 @@ enum SettingsTableViewSection: Int {
 	case account = 0
 }
 
-enum SettingsAccountSectionRow: Int {
-	case email
-	case signOut
+enum SettingsTableViewAccountSectionRow: Int {
+	case signOut = 0
 }
 
 class SettingsViewController: UIViewController {
@@ -53,20 +52,20 @@ extension SettingsViewController: UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 2
+		if section == SettingsTableViewSection.account.rawValue {
+			return 1
+		}
+		
+		return 0
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		if indexPath.section == SettingsTableViewSection.account.rawValue {
 			let accountCell = tableView.dequeueReusableCell(withIdentifier: "AccountTableViewCell")!
 			
-			if indexPath.row == SettingsAccountSectionRow.email.rawValue {
-				accountCell.textLabel?.text = "Signed in as"
-				accountCell.detailTextLabel?.text = self.model?.userEmail
-			}
-			else if indexPath.row == SettingsAccountSectionRow.signOut.rawValue {
+			if indexPath.row == SettingsTableViewAccountSectionRow.signOut.rawValue {
 				accountCell.textLabel?.text = "Sign out"
-				accountCell.detailTextLabel?.text = nil
+				accountCell.detailTextLabel?.text = "You are signed in as \(self.model?.userEmail ?? "")"
 			}
 			
 			return accountCell
@@ -92,7 +91,7 @@ extension SettingsViewController: UITableViewDelegate {
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		if indexPath.section == SettingsTableViewSection.account.rawValue {
-			if indexPath.row == SettingsAccountSectionRow.signOut.rawValue {
+			if indexPath.row == SettingsTableViewAccountSectionRow.signOut.rawValue {
 				self.presenter?.signOut()
 			}
 		}
@@ -129,8 +128,8 @@ extension SettingsViewController: SettingsView {
 		view.configureTheme(.success)
 		view.configureDropShadow()
 		view.configureContent(
-			title: nil,
-			body: "You have been signed out from your account.",
+			title: "Sign Out",
+			body: "You have succesfully signed out.",
 			iconImage: nil,
 			iconText: nil,
 			buttonImage: nil,
