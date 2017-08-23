@@ -5,7 +5,13 @@ protocol EditionView: class {
 
 	func display(errors: [ValidationError])
 
-	func endEdition()
+	func endEdition(with result: EditionEndResult)
+}
+
+enum EditionEndResult {
+	case success
+	case cancel
+	case accessDenied
 }
 
 struct EditionViewModel: Equatable {

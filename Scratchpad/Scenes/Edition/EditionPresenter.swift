@@ -10,30 +10,42 @@ class EditionPresenter {
 	// MARK:- Properties
 
 	weak private var view: EditionView?
-	private let noteReference:   DatabaseReference
-	private var referenceHandle: UInt?
-	private var initialModel:    EditionViewModel?
+	private let noteIdentifier: NoteIdentifier
+	private let database: Database
+	private let authentication: Auth
+	private var initialModel: EditionViewModel?
 
-	init(view: EditionView, identifier: NoteIdentifier) {
+	init(view: EditionView, identifier: NoteIdentifier, database: Database = Database.database(), authentication: Auth = Auth.auth()) {
 		self.view = view
-		self.noteReference = Database.database()
-									 .reference(withPath: "notes")
-									 .child(identifier)
-		self.noteReference.observeSingleEvent(of: .value, with: {
-			snapshot in
-			if let value = snapshot.value as? [String:Any] {
-				let note  = Note.make(from: value)
-				let model = self.convert(note: note)
-				self.initialModel = model
-				self.view?.display(model: model)
-			}
-		})
+		self.noteIdentifier = identifier
+		self.database = database
+		self.authentication = authentication
 	}
-
-	deinit {
-		if let handle = self.referenceHandle {
-			self.noteReference.removeObserver(withHandle: handle)
-		}
+	
+	func prepareView() {
+		self.database
+			.reference(withPath: "notes")
+			.child(self.noteIdentifier)
+			.observeSingleEvent(of: .value, with: {
+				snapshot in
+				if let value = snapshot.value as? [String:Any] {
+					let note = Note.make(from: value)
+					
+					guard let userIdentifier = self.authentication.currentUser?.uid,
+						note.owner == userIdentifier
+					else {
+						self.view?.endEdition(with: .accessDenied)
+						return
+					}
+					
+					let model = self.convert(note: note)
+					self.initialModel = model
+					self.view?.display(model: model)
+				}
+			}, withCancel: {
+				error in
+				print(error.localizedDescription)
+			})
 	}
 
 	func saveNote(model: EditionViewModel) {
@@ -44,12 +56,13 @@ class EditionPresenter {
 			return
 		}
 		
+		let noteReference = self.database.reference(withPath: "notes").child(self.noteIdentifier)
 		let updatedDate = Date()
 
-		self.noteReference.child("title") .setValue(model.title)
-		self.noteReference.child("text").setValue(model.text)
-		self.noteReference.child("updatedAt").setValue(updatedDate.timeIntervalSince1970)
-		self.view?.endEdition()
+		noteReference.child("title").setValue(model.title)
+		noteReference.child("text").setValue(model.text)
+		noteReference.child("updatedAt").setValue(updatedDate.timeIntervalSince1970)
+		self.view?.endEdition(with: .success)
 	}
 
 	func canSafelyCancel(model: EditionViewModel) -> Bool {
@@ -61,7 +74,7 @@ class EditionPresenter {
 	}
 
 	func cancelEdition() {
-		self.view?.endEdition()
+		self.view?.endEdition(with: .cancel)
 	}
 
 	private func convert(note: Note) -> EditionViewModel {
