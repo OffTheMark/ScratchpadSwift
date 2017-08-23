@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		catch { }
 		
 		if Auth.auth().currentUser == nil {
-			self.window?.rootViewController = LoginViewController.make()
+			self.window?.rootViewController = SignInViewController.make()
 			self.window?.makeKeyAndVisible()
 		}
 		
