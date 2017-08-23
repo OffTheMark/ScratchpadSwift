@@ -3,7 +3,8 @@ import UIKit
 class ListingViewController: UITableViewController {
 	// MARK:- Outlets
 
-	@IBOutlet weak var createButton: UIBarButtonItem!
+	@IBOutlet private weak var createButton: UIBarButtonItem!
+	@IBOutlet private weak var settingsButton: UIBarButtonItem!
 
 	// MARK: Properties
 
@@ -25,6 +26,12 @@ class ListingViewController: UITableViewController {
 		self.tableView.estimatedRowHeight = 80
 
 		self.createButton.title = "Create"
+		self.createButton.target = self
+		self.createButton.action = #selector(createNote)
+		
+		self.settingsButton.title = "Settings"
+		self.settingsButton.target = self
+		self.settingsButton.action = #selector(editSettings)
 		
 		self.refreshControl?.addTarget(self, action: #selector(handleRefresh(_:)), for: .valueChanged)
 	}
@@ -32,15 +39,18 @@ class ListingViewController: UITableViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
+		self.navigationController?.setToolbarHidden(false, animated: animated)
+		
 		self.presenter?.refreshListing()
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == "ShowDetails",
+		if segue.identifier == "ListingToDetails",
 		   let destination = segue.destination as? DetailsViewController,
 		   let noteIndex = self.tableView.indexPathForSelectedRow?.row {
 			destination.noteIdentifier = self.models[noteIndex].identifier
 		}
+		
 	}
 
 	// MARK: UITableViewDataSource
@@ -61,9 +71,19 @@ class ListingViewController: UITableViewController {
 
 		return cell
 	}
+
+	// MARK:- ListingViewController
 	
 	func handleRefresh(_ refreshControl: UIRefreshControl) {
 		self.presenter?.refreshListing()
+	}
+	
+	func createNote() {
+		self.performSegue(withIdentifier: "ListingToCreation", sender: nil)
+	}
+	
+	func editSettings() {
+		self.performSegue(withIdentifier: "ListingToSettings", sender: nil)
 	}
 }
 

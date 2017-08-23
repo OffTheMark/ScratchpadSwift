@@ -2,24 +2,24 @@ import Foundation
 import UIKit
 import SwiftMessages
 
-class LoginViewController: UIViewController {
+class SignInViewController: UIViewController {
 	// MARK:- Outlets
 	
-	@IBOutlet private weak var titleLabel: UILabel!
-	@IBOutlet private weak var subtitleLabel: UILabel!
-	@IBOutlet private weak var shadowView: UIView!
-	@IBOutlet private weak var fieldsView: UIView!
-	@IBOutlet fileprivate weak var emailTextField: UITextField!
+	@IBOutlet private weak var     titleLabel:        UILabel!
+	@IBOutlet private weak var     subtitleLabel:     UILabel!
+	@IBOutlet private weak var     shadowView:        UIView!
+	@IBOutlet private weak var     fieldsView:        UIView!
+	@IBOutlet fileprivate weak var emailTextField:    UITextField!
 	@IBOutlet fileprivate weak var passwordTextField: UITextField!
-	@IBOutlet private weak var separatorView: UIView!
-	@IBOutlet fileprivate weak var loginButton: UIButton!
-	@IBOutlet private weak var signupButton: UIButton!
+	@IBOutlet private weak var     separatorView:     UIView!
+	@IBOutlet fileprivate weak var signInButton:      UIButton!
+	@IBOutlet private weak var     signUpButton:      UIButton!
 	
 	// MARK:- Properties
 	
-	private var presenter: LoginPresenter?
-	fileprivate var model: LoginViewModel?
-	fileprivate var canTryLogin: Bool {
+	private var     presenter:    SignInPresenter?
+	fileprivate var model:        SignInViewModel?
+	fileprivate var canTrySignIn: Bool {
 		guard let model = self.model else {
 			return false
 		}
@@ -32,7 +32,7 @@ class LoginViewController: UIViewController {
 		super.viewDidLoad()
 		
 		defer {
-			self.presenter = LoginPresenter(view: self)
+			self.presenter = SignInPresenter(view: self)
 			self.presenter?.prepareView()
 		}
 		
@@ -52,7 +52,7 @@ class LoginViewController: UIViewController {
 		self.fieldsView.clipsToBounds = true
 		self.fieldsView.backgroundColor = ColorTheme.whiteBackground
 		
-		self.emailTextField.placeholder = "Email"
+		self.emailTextField.placeholder = "Email Address"
 		self.emailTextField.keyboardType = .emailAddress
 		self.emailTextField.autocorrectionType = .no
 		self.emailTextField.spellCheckingType = .no
@@ -62,50 +62,50 @@ class LoginViewController: UIViewController {
 		self.passwordTextField.autocorrectionType = .no
 		self.passwordTextField.spellCheckingType = .no
 		
-		self.loginButton.setTitle("Login", for: .normal)
-		self.loginButton.isEnabled = false
-		self.loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
+		self.signInButton.setTitle("Sign In", for: .normal)
+		self.signInButton.isEnabled = false
+		self.signInButton.addTarget(self, action: #selector(signIn), for: .touchUpInside)
 		
-		self.signupButton.setTitle("Sign up", for: .normal)
-		self.signupButton.addTarget(self, action: #selector(showSignup), for: .touchUpInside)
+		self.signUpButton.setTitle("Sign Up", for: .normal)
+		self.signUpButton.addTarget(self, action: #selector(showSignUp), for: .touchUpInside)
 		
 		self.separatorView.backgroundColor = ColorTheme.mediumBorder
 	}
 	
-	// MARK:- LoginViewController
+	// MARK:- SignInViewController
 	
-	func login() {
+	func signIn() {
 		if let model = self.model {
-			self.loginButton.isEnabled = false
-			self.presenter?.login(model: model)
+			self.signInButton.isEnabled = false
+			self.presenter?.signIn(model: model)
 		}
 	}
 	
-	func showSignup() {
-		self.performSegue(withIdentifier: "LoginToSignup", sender: nil)
+	func showSignUp() {
+		self.performSegue(withIdentifier: "SignInToSignUp", sender: nil)
 	}
 	
 	@IBAction func emailTextFieldChanged(_ sender: UITextField) {
 		if let text = sender.text {
 			self.model?.email = text
 		}
-		self.loginButton.isEnabled = self.canTryLogin
+		self.signInButton.isEnabled = self.canTrySignIn
 	}
 	
 	@IBAction func passwordTextFieldChanged(_ sender: UITextField) {
 		if let text = sender.text {
 			self.model?.password = text
 		}
-		self.loginButton.isEnabled = self.canTryLogin
+		self.signInButton.isEnabled = self.canTrySignIn
 	}
 	
-	class func make() -> LoginViewController {
-		let storyboard = UIStoryboard(name: "Login", bundle: nil)
-		let controller = storyboard.instantiateInitialViewController() as! LoginViewController
+	class func make() -> SignInViewController {
+		let storyboard = UIStoryboard(name: "SignIn", bundle: nil)
+		let controller = storyboard.instantiateInitialViewController() as! SignInViewController
 		return controller
 	}
 	
-	fileprivate func makeLabel(for error: LoginError) -> UILabel {
+	fileprivate func makeLabel(for error: SignInError) -> UILabel {
 		let label = UILabel()
 		label.text = error.description
 		label.textColor = ColorTheme.errorText
@@ -118,15 +118,15 @@ class LoginViewController: UIViewController {
 	}
 }
 
-extension LoginViewController: LoginView {
-	// MARK:- LoginView
+extension SignInViewController: SignInView {
+	// MARK:- SignInView
 	
-	func display(model: LoginViewModel) {
+	func display(model: SignInViewModel) {
 		self.model = model
-		self.loginButton.isEnabled = self.canTryLogin
+		self.signInButton.isEnabled = self.canTrySignIn
 	}
 	
-	func display(error: LoginError) {
+	func display(error: SignInError) {
 		if let field = error.field {
 			if field == .email {
 				self.emailTextField.becomeFirstResponder()
@@ -137,14 +137,14 @@ extension LoginViewController: LoginView {
 		}
 			
 		self.showErrorMessage(for: error)
-		self.loginButton.isEnabled = self.canTryLogin
+		self.signInButton.isEnabled = self.canTrySignIn
 	}
 	
-	func endLogin() {
-		self.performSegue(withIdentifier: "LoginToListing", sender: nil)
+	func endSignIn() {
+		self.performSegue(withIdentifier: "SignInToListing", sender: nil)
 	}
 	
-	private func showErrorMessage(for error: LoginError) {
+	private func showErrorMessage(for error: SignInError) {
 		let view = MessageView.viewFromNib(layout: .MessageView)
 		var config = SwiftMessages.Config()
 		
@@ -154,8 +154,8 @@ extension LoginViewController: LoginView {
 		view.configureTheme(.error)
 		view.configureDropShadow()
 		view.configureContent(
-			title: error.description,
-			body: nil,
+			title: "Error",
+			body: error.description,
 			iconImage: nil,
 			iconText: nil,
 			buttonImage: nil,

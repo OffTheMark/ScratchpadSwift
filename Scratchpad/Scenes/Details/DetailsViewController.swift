@@ -38,7 +38,12 @@ class DetailsViewController: UIViewController {
 		self.deleteButton.title = "Delete"
 		
 		self.headerView.backgroundColor = ColorTheme.lightBackground
-
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		self.navigationController?.setToolbarHidden(false, animated: animated)
 	}
 
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

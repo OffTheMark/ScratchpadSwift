@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
+        <!--Sign In View Controller-->
         <scene sceneID="MpS-hZ-8Kv">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" id="SLd-OG-tRE" customClass="LoginViewController" customModule="Scratchpad" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="SLd-OG-tRE" customClass="SignInViewController" customModule="Scratchpad" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="G2j-2G-MdX"/>
                         <viewControllerLayoutGuide type="bottom" id="MXU-MV-y2d"/>
@@ -116,7 +116,7 @@
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xtF-kU-oo4">
                                         <rect key="frame" x="0.0" y="208.5" width="343" height="30"/>
-                                        <state key="normal" title="Login"/>
+                                        <state key="normal" title="Sign in"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9IL-y1-Of3">
                                         <rect key="frame" x="0.0" y="254.5" width="343" height="30"/>
@@ -135,15 +135,15 @@
                     <connections>
                         <outlet property="emailTextField" destination="dZz-Wb-prw" id="Lwg-Xp-4T7"/>
                         <outlet property="fieldsView" destination="3sy-94-Qz8" id="xUw-Tl-Pp5"/>
-                        <outlet property="loginButton" destination="xtF-kU-oo4" id="J9h-wK-bum"/>
                         <outlet property="passwordTextField" destination="LsI-EO-nmC" id="9s6-UB-0un"/>
                         <outlet property="separatorView" destination="QqF-OA-eEO" id="mmE-76-qeh"/>
                         <outlet property="shadowView" destination="DFT-Gr-kET" id="6M8-jb-irr"/>
-                        <outlet property="signupButton" destination="9IL-y1-Of3" id="tS9-yc-A9l"/>
+                        <outlet property="signInButton" destination="xtF-kU-oo4" id="21z-7t-zZx"/>
+                        <outlet property="signUpButton" destination="9IL-y1-Of3" id="2Ab-ig-6Nt"/>
                         <outlet property="subtitleLabel" destination="bYC-Sp-1On" id="jtv-ZL-f26"/>
                         <outlet property="titleLabel" destination="szw-0X-diQ" id="1j3-Bq-8ad"/>
-                        <segue destination="P3n-g0-dwV" kind="show" identifier="LoginToListing" action="showDetailViewController:sender:" id="boi-4S-YOM"/>
-                        <segue destination="Ht6-JS-109" kind="show" identifier="LoginToSignup" id="wB5-vC-lZi"/>
+                        <segue destination="P3n-g0-dwV" kind="show" identifier="SignInToListing" action="showDetailViewController:sender:" id="boi-4S-YOM"/>
+                        <segue destination="Ht6-JS-109" kind="show" identifier="SignInToSignUp" id="wB5-vC-lZi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vW-xl-Yze" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -158,10 +158,10 @@
             </objects>
             <point key="canvasLocation" x="296" y="-23"/>
         </scene>
-        <!--Signup-->
+        <!--SignUp-->
         <scene sceneID="JBL-BY-s8W">
             <objects>
-                <viewControllerPlaceholder storyboardName="Signup" id="Ht6-JS-109" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="SignUp" id="Ht6-JS-109" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PCx-rj-AvR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="306" y="338"/>

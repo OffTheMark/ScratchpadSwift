@@ -28,7 +28,7 @@ class EditionViewController: UIViewController {
 		
 		self.title = "Edit Note"
 		self.automaticallyAdjustsScrollViewInsets = false
-
+		
 		self.navigationItem.setHidesBackButton(true, animated: false)
 		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelEdition))
 
@@ -43,7 +43,12 @@ class EditionViewController: UIViewController {
 		self.fieldsStackView.addArrangedSubview(self.textTextFieldView!)
 
 		self.saveButton.title = "Save"
-
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		self.navigationController?.setToolbarHidden(false, animated: animated)
 	}
 
 	// MARK:- EditionViewController
