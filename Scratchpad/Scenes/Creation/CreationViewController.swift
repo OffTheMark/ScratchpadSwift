@@ -43,6 +43,12 @@ class CreationViewController: UIViewController {
 
 		self.saveButton.title = "Save"
 	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		self.navigationController?.setToolbarHidden(false, animated: animated)
+	}
 
 	// MARK:- CreationViewController
 
