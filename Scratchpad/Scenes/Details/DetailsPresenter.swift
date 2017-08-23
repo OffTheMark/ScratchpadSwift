@@ -30,7 +30,7 @@ class DetailsPresenter {
 					let note = Note.make(from: value)
 					
 					guard let userIdentifier = self.authentication.currentUser?.uid,
-						note.owner != userIdentifier else {
+						note.owner == userIdentifier else {
 							self.view?.endDetailsAccessDenied()
 							return
 					}
