@@ -6,33 +6,55 @@ class DetailsPresenter {
 	// MARK: Properties
 
 	weak private var view: DetailsView?
-	private let noteReference:   DatabaseReference
-	private var referenceHandle: UInt?
+	private let identifier: String
+	private let database: Database
+	private let authentication: Auth
+	private var referenceHandles: Set<UInt> = []
 
 	// MARK: DetailsPresenter
 
-	init(view: DetailsView, for identifier: String) {
+	init(view: DetailsView, for identifier: String, database: Database = Database.database(), authentication: Auth = Auth.auth()) {
 		self.view = view
-		self.noteReference = Database.database()
-									 .reference(withPath: "notes")
-									 .child(identifier)
-		self.referenceHandle = self.noteReference.observe(.value, with: {
-			snapshot in
-			if let value = snapshot.value as? [String:Any] {
-				let note = Note.make(from: value)
-				self.view?.update(viewModel: self.convert(note: note))
-			}
-		})
+		self.database = database
+		self.authentication = authentication
+		self.identifier = identifier
+	}
+	
+	func prepareView() {
+		let referenceHandle = self.database
+			.reference(withPath: "notes")
+			.child(self.identifier)
+			.observe(.value, with: {
+				snapshot in
+				if let value = snapshot.value as? [String:Any] {
+					let note = Note.make(from: value)
+					
+					guard let userIdentifier = self.authentication.currentUser?.uid,
+						note.owner != userIdentifier else {
+							self.view?.endDetailsAccessDenied()
+							return
+					}
+					
+					self.view?.update(viewModel: self.convert(note: note))
+				}
+			})
+		self.referenceHandles.insert(referenceHandle)
 	}
 
 	deinit {
-		if let handle = self.referenceHandle {
-			self.noteReference.removeObserver(withHandle: handle)
+		for handle in self.referenceHandles {
+			self.database
+				.reference(withPath: "notes")
+				.child(self.identifier)
+				.removeObserver(withHandle: handle)
 		}
 	}
 
 	func deleteNote() {
-		self.noteReference.removeValue()
+		self.database
+			.reference(withPath: "notes")
+			.child(self.identifier)
+			.removeValue()
 		self.view?.endDetails()
 	}
 

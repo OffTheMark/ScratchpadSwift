@@ -24,15 +24,20 @@ class DetailsViewController: UIViewController {
 
 		defer {
 			self.presenter = DetailsPresenter(view: self, for: self.noteIdentifier!)
+			self.presenter?.prepareView()
 		}
 		
 		self.title = "Note Details"
-
-		self.headerView.backgroundColor = ColorTheme.lightBackground
+		
+		self.titleLabel.text = ""
+		self.createdLabel.text = ""
+		self.updatedLabel.text = ""
+		self.textTextView.text = ""
 
 		self.editButton.title = "Edit"
-
 		self.deleteButton.title = "Delete"
+		
+		self.headerView.backgroundColor = ColorTheme.lightBackground
 
 	}
 
@@ -70,5 +75,15 @@ extension DetailsViewController: DetailsView {
 
 	func endDetails() {
 		self.navigationController?.popViewController(animated: true)
+	}
+	
+	func endDetailsAccessDenied() {
+		let alertController = UIAlertController(title: "Access Denied", message: "You do not have access to this note.", preferredStyle: .alert)
+		let okAction = UIAlertAction(title: "OK", style: .default) {
+			result -> Void in
+			self.navigationController?.popViewController(animated: true)
+		}
+		alertController.addAction(okAction)
+		self.present(alertController, animated: true, completion: nil)
 	}
 }
