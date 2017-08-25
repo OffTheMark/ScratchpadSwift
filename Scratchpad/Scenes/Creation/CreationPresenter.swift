@@ -34,7 +34,7 @@ class CreationPresenter {
 			let noteIdentifier = noteReference.key
 			let note           = Note(identifier: noteIdentifier, owner: userIdentifier, title: model.title, text: model.text)
 			
-			userReference.setValue(note.toDictionary())
+			noteReference.setValue(note.toDictionary())
 			userReference.child(noteIdentifier).setValue(true)
 			
 			self.view?.endCreation()
