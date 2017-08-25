@@ -24,8 +24,6 @@
 		3419CCD11F13F6F600203E14 /* Creation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3419CCD01F13F6F600203E14 /* Creation.storyboard */; };
 		3419CCD41F15080D00203E14 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3419CCD31F15080D00203E14 /* ValidationError.swift */; };
 		34B31F4F1F4B29EB00BE19E0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B31F4E1F4B29EB00BE19E0 /* User.swift */; };
-		34D1F4851F24EE85000F3198 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D1F4841F24EE85000F3198 /* TextFieldView.swift */; };
-		34D1F4871F24EF4C000F3198 /* TextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34D1F4861F24EF4C000F3198 /* TextFieldView.xib */; };
 		34D1F48A1F253134000F3198 /* DateFormatter_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D1F4891F253134000F3198 /* DateFormatter_Extension.swift */; };
 		34D1F48C1F253142000F3198 /* UIStackView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D1F48B1F253142000F3198 /* UIStackView_Extension.swift */; };
 		34D1F48E1F253427000F3198 /* CreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D1F48D1F253427000F3198 /* CreationViewController.swift */; };
@@ -70,8 +68,6 @@
 		3419CCD01F13F6F600203E14 /* Creation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Creation.storyboard; sourceTree = "<group>"; };
 		3419CCD31F15080D00203E14 /* ValidationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
 		34B31F4E1F4B29EB00BE19E0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		34D1F4841F24EE85000F3198 /* TextFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
-		34D1F4861F24EF4C000F3198 /* TextFieldView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldView.xib; sourceTree = "<group>"; };
 		34D1F4891F253134000F3198 /* DateFormatter_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatter_Extension.swift; sourceTree = "<group>"; };
 		34D1F48B1F253142000F3198 /* UIStackView_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackView_Extension.swift; sourceTree = "<group>"; };
 		34D1F48D1F253427000F3198 /* CreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreationViewController.swift; sourceTree = "<group>"; };
@@ -165,15 +161,6 @@
 			path = Validation;
 			sourceTree = "<group>";
 		};
-		3433120D1F13DFEB001D110D /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				34D1F4841F24EE85000F3198 /* TextFieldView.swift */,
-				34D1F4861F24EF4C000F3198 /* TextFieldView.xib */,
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
 		34D1F4881F253125000F3198 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,7 +217,6 @@
 				34E7A0571EF474C4004EEDA8 /* Models */,
 				34E7A0421EF4725F004EEDA8 /* Resource */,
 				34E7A0441EF4725F004EEDA8 /* Scenes */,
-				3433120D1F13DFEB001D110D /* UI */,
 				34E7A0541EF47482004EEDA8 /* Utils */,
 			);
 			path = Scratchpad;
@@ -394,7 +380,6 @@
 				34E7A0411EF46A5E004EEDA8 /* GoogleService-Info.plist in Resources */,
 				34D1F4921F253EB1000F3198 /* Edition.storyboard in Resources */,
 				34E7A04D1EF4725F004EEDA8 /* Main.storyboard in Resources */,
-				34D1F4871F24EF4C000F3198 /* TextFieldView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,7 +462,6 @@
 				34E7A0501EF473DB004EEDA8 /* ListingPresenter.swift in Sources */,
 				3416EFB01F4DC0890093AB7D /* SignUpPresenter.swift in Sources */,
 				34B31F4F1F4B29EB00BE19E0 /* User.swift in Sources */,
-				34D1F4851F24EE85000F3198 /* TextFieldView.swift in Sources */,
 				3416EFB21F4DC0890093AB7D /* SignUpViewController.swift in Sources */,
 				34D1F48E1F253427000F3198 /* CreationViewController.swift in Sources */,
 				34D1F48A1F253134000F3198 /* DateFormatter_Extension.swift in Sources */,
