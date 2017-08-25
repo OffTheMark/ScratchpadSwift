@@ -7,13 +7,22 @@ class CreationViewController: UIViewController {
 	@IBOutlet fileprivate weak var saveButton: UIBarButtonItem!
 	@IBOutlet fileprivate var contentView: UIView!
 	@IBOutlet fileprivate weak var fieldsStackView: UIStackView!
+	@IBOutlet private weak var titleLabelView: UIView!
+	@IBOutlet private weak var titleLabel: UILabel!
+	@IBOutlet private weak var titleTextView: UITextView!
+	@IBOutlet private weak var textLabelView: UIView!
+	@IBOutlet private weak var textLabel: UILabel!
+	@IBOutlet private weak var textTextView: UITextView!
 
 	// MARK:- Properties
 
 	private var     presenter:          CreationPresenter?
-	fileprivate var model:              CreationViewModel?
-	fileprivate var titleTextFieldView: TextFieldView?
-	fileprivate var textTextFieldView:  TextFieldView?
+	fileprivate var model:              CreationViewModel? {
+		didSet {
+			self.titleTextView.text = self.model?.title
+			self.textTextView.text = self.model?.text
+		}
+	}
 
 	// MARK:- UIViewController
 
@@ -31,16 +40,24 @@ class CreationViewController: UIViewController {
 		self.navigationItem.setHidesBackButton(true, animated: false)
 		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelCreation))
 
-		self.contentView.backgroundColor = ColorTheme.lightBackground
+		self.view.backgroundColor = ColorTheme.lightBackground
 
-		self.fieldsStackView.removeAllArrangedSubviews()
-
-		self.titleTextFieldView = TextFieldView.make(identifier: CreationFieldIdentifier.title.rawValue, title: "Title", delegate: self)
-		self.fieldsStackView.addArrangedSubview(self.titleTextFieldView!)
-
-		self.textTextFieldView = TextFieldView.make(identifier: CreationFieldIdentifier.text.rawValue, title: "Text", delegate: self)
-		self.fieldsStackView.addArrangedSubview(self.textTextFieldView!)
-
+		self.titleLabelView.backgroundColor = UIColor.clear
+		self.titleLabel.font = UIFont.systemFont(ofSize: 13)
+		self.titleLabel.textColor = ColorTheme.darkText
+		self.titleLabel.text = "Title".uppercased()
+		
+		self.textLabelView.backgroundColor = UIColor.clear
+		self.textLabel.font = UIFont.systemFont(ofSize: 13)
+		self.textLabel.textColor = ColorTheme.darkText
+		self.textLabel.text = "Text".uppercased()
+		
+		self.titleTextView.tag = CreationFieldIdentifier.title.rawValue
+		self.titleTextView.delegate = self
+		
+		self.textTextView.tag = CreationFieldIdentifier.text.rawValue
+		self.textTextView.delegate = self
+		
 		self.saveButton.title = "Save"
 	}
 	
@@ -78,17 +95,15 @@ class CreationViewController: UIViewController {
 	}
 }
 
-extension CreationViewController: TextFieldViewDelegate {
-	// MARK:- TextFieldViewDelegate
-
-	func textDidChange(identifier: FieldIdentifier, text: String) {
-		if identifier == CreationFieldIdentifier.title.rawValue {
-			self.model?.title = text
-			self.titleTextFieldView?.errors = []
+extension CreationViewController: UITextViewDelegate {
+	// MARK:- UITextViewDelegate
+	
+	func textViewDidEndEditing(_ textView: UITextView) {
+		if textView.tag == CreationFieldIdentifier.title.rawValue {
+			self.model?.title = textView.text
 		}
-		else if identifier == CreationFieldIdentifier.text.rawValue {
-			self.model?.text = text
-			self.textTextFieldView?.errors = []
+		else if textView.tag == CreationFieldIdentifier.text.rawValue {
+			self.model?.text = textView.text
 		}
 	}
 }
@@ -98,37 +113,8 @@ extension CreationViewController: CreationView {
 
 	func display(model: CreationViewModel) {
 		self.model = model
-		self.titleTextFieldView?.text = model.title
-		self.textTextFieldView?.text = model.text
 	}
-
-	func display(errors: [ValidationError]) {
-		if !errors.isEmpty {
-			let titleErrors = errors.filter {
-				$0.field == CreationFieldIdentifier.title.rawValue
-			}
-			let textErrors = errors.filter {
-				$0.field == CreationFieldIdentifier.text.rawValue
-			}
-
-			self.titleTextFieldView?.errors = titleErrors
-			self.textTextFieldView?.errors = textErrors
-
-			if !titleErrors.isEmpty {
-				self.titleTextFieldView?.giveFocus()
-			}
-			else if !textErrors.isEmpty {
-				self.textTextFieldView?.giveFocus()
-			}
-		}
-		else {
-			self.titleTextFieldView?.errors = []
-			self.textTextFieldView?.errors = []
-		}
-		
-		self.saveButton.isEnabled = true
-	}
-
+	
 	func endCreation() {
 		self.navigationController?.popViewController(animated: true)
 	}
