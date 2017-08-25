@@ -50,9 +50,13 @@ class EditionViewController: UIViewController {
 		self.textLabel.textColor = ColorTheme.darkText
 		self.textLabel.text = "Text".uppercased()
 		
+		self.titleTextView.isScrollEnabled = false
+		self.titleTextView.textContainerInset = self.titleLabelView.layoutMargins
 		self.titleTextView.tag = EditionFieldIdentifier.title.rawValue
 		self.titleTextView.delegate = self
 		
+		self.textTextView.isScrollEnabled = false
+		self.textTextView.textContainerInset = self.textLabelView.layoutMargins
 		self.textTextView.tag = EditionFieldIdentifier.text.rawValue
 		self.textTextView.delegate = self
 

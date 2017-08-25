@@ -52,9 +52,13 @@ class CreationViewController: UIViewController {
 		self.textLabel.textColor = ColorTheme.darkText
 		self.textLabel.text = "Text".uppercased()
 		
+		self.titleTextView.isScrollEnabled = false
+		self.titleTextView.textContainerInset = self.titleLabelView.layoutMargins
 		self.titleTextView.tag = CreationFieldIdentifier.title.rawValue
 		self.titleTextView.delegate = self
 		
+		self.textTextView.isScrollEnabled = false
+		self.textTextView.textContainerInset = self.textLabelView.layoutMargins
 		self.textTextView.tag = CreationFieldIdentifier.text.rawValue
 		self.textTextView.delegate = self
 		
