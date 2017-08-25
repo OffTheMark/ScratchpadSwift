@@ -93,10 +93,27 @@ class CreationViewController: UIViewController {
 			self.present(alertController, animated: true, completion: nil)
 		}
 	}
+	
+	func dismissKeyboard() {
+		self.view.endEditing(true)
+	}
 }
 
 extension CreationViewController: UITextViewDelegate {
 	// MARK:- UITextViewDelegate
+	
+	func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+		let toolbar       = UIToolbar()
+		let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+		let doneButton    = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(dismissKeyboard))
+		
+		toolbar.items = [flexibleSpace, doneButton]
+		toolbar.sizeToFit()
+		
+		textView.inputAccessoryView = toolbar
+		
+		return true
+	}
 	
 	func textViewDidEndEditing(_ textView: UITextView) {
 		if textView.tag == CreationFieldIdentifier.title.rawValue {
