@@ -49,19 +49,13 @@ class EditionPresenter {
 	}
 
 	func saveNote(model: EditionViewModel) {
-		let validationErrors = self.validate(model: model)
-
-		guard validationErrors.isEmpty else {
-			self.view?.display(errors: validationErrors)
-			return
-		}
-		
 		let noteReference = self.database.reference(withPath: "notes").child(self.noteIdentifier)
 		let updatedDate = Date()
 
 		noteReference.child("title").setValue(model.title)
 		noteReference.child("text").setValue(model.text)
 		noteReference.child("updatedAt").setValue(updatedDate.timeIntervalSince1970)
+		
 		self.view?.endEdition(with: .success)
 	}
 
@@ -83,15 +77,5 @@ class EditionPresenter {
 				title: note.title,
 				text: note.text
 		)
-	}
-
-	private func validate(model: EditionViewModel) -> [ValidationError] {
-		var errors = [ValidationError]()
-
-		if model.title.isEmpty {
-			errors.append(ValidationError(field: EditionFieldIdentifier.title.rawValue, description: "Title is required."))
-		}
-
-		return errors
 	}
 }

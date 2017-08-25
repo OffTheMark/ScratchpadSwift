@@ -3,8 +3,6 @@ import Foundation
 protocol EditionView: class {
 	func display(model: EditionViewModel)
 
-	func display(errors: [ValidationError])
-
 	func endEdition(with result: EditionEndResult)
 }
 

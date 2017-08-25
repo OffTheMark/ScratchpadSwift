@@ -6,15 +6,23 @@ class EditionViewController: UIViewController {
 
 	@IBOutlet fileprivate weak var saveButton:      UIBarButtonItem!
 	@IBOutlet private weak var     fieldsStackView: UIStackView!
-	@IBOutlet private var contentView: UIView!
+	@IBOutlet private weak var titleLabelView: UIView!
+	@IBOutlet private weak var titleLabel: UILabel!
+	@IBOutlet private weak var titleTextView: UITextView!
+	@IBOutlet private weak var textLabelView: UIView!
+	@IBOutlet private weak var textLabel: UILabel!
+	@IBOutlet private weak var textTextView: UITextView!
 
 	// MARK:- Properties
 
 	var noteIdentifier: NoteIdentifier?
 	private var     presenter:          EditionPresenter?
-	fileprivate var model:              EditionViewModel?
-	fileprivate var titleTextFieldView: TextFieldView?
-	fileprivate var textTextFieldView:  TextFieldView?
+	fileprivate var model:              EditionViewModel? {
+		didSet {
+			self.titleTextView.text = self.model?.title
+			self.textTextView.text = self.model?.text
+		}
+	}
 
 	// MARK:- UIViewController
 
@@ -32,15 +40,21 @@ class EditionViewController: UIViewController {
 		self.navigationItem.setHidesBackButton(true, animated: false)
 		self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelEdition))
 
-		self.contentView.backgroundColor = ColorTheme.lightBackground
+		self.view.backgroundColor = ColorTheme.lightBackground
 
-		self.fieldsStackView.removeAllArrangedSubviews()
-
-		self.titleTextFieldView = TextFieldView.make(identifier: EditionFieldIdentifier.title.rawValue, title: "Title", delegate: self)
-		self.fieldsStackView.addArrangedSubview(self.titleTextFieldView!)
-
-		self.textTextFieldView = TextFieldView.make(identifier: EditionFieldIdentifier.text.rawValue, title: "Text", delegate: self)
-		self.fieldsStackView.addArrangedSubview(self.textTextFieldView!)
+		self.titleLabelView.backgroundColor = UIColor.clear
+		self.titleLabel.textColor = ColorTheme.darkText
+		self.titleLabel.text = "Title".uppercased()
+		
+		self.textLabelView.backgroundColor = UIColor.clear
+		self.textLabel.textColor = ColorTheme.darkText
+		self.textLabel.text = "Text".uppercased()
+		
+		self.titleTextView.tag = EditionFieldIdentifier.title.rawValue
+		self.titleTextView.delegate = self
+		
+		self.textTextView.tag = EditionFieldIdentifier.text.rawValue
+		self.textTextView.delegate = self
 
 		self.saveButton.title = "Save"
 	}
@@ -77,19 +91,34 @@ class EditionViewController: UIViewController {
 			self.present(alertController, animated: true, completion: nil)
 		}
 	}
+	
+	func dismissKeyboard() {
+		self.view.endEditing(true)
+	}
 }
 
-extension EditionViewController: TextFieldViewDelegate {
-	// MARK:- TextFieldViewDelegate
-
-	func textDidChange(identifier: FieldIdentifier, text: String) {
-		if identifier == EditionFieldIdentifier.title.rawValue {
-			self.model?.title = text
-			self.titleTextFieldView?.errors = []
+extension EditionViewController: UITextViewDelegate {
+	// MARK:- UITextViewDelegate
+	
+	func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+		let toolbar       = UIToolbar()
+		let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+		let doneButton    = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(dismissKeyboard))
+		
+		toolbar.items = [flexibleSpace, doneButton]
+		toolbar.sizeToFit()
+		
+		textView.inputAccessoryView = toolbar
+		
+		return true
+	}
+	
+	func textViewDidEndEditing(_ textView: UITextView) {
+		if textView.tag == EditionFieldIdentifier.title.rawValue {
+			self.model?.title = textView.text
 		}
-		else if identifier == EditionFieldIdentifier.text.rawValue {
-			self.model?.text = text
-			self.textTextFieldView?.errors = []
+		else if textView.tag == EditionFieldIdentifier.text.rawValue {
+			self.model?.text = textView.text
 		}
 	}
 }
@@ -99,36 +128,6 @@ extension EditionViewController: EditionView {
 
 	func display(model: EditionViewModel) {
 		self.model = model
-
-		self.titleTextFieldView?.text = model.title
-		self.textTextFieldView?.text = model.text
-	}
-
-	func display(errors: [ValidationError]) {
-		if !errors.isEmpty {
-			let titleErrors = errors.filter {
-				$0.field == EditionFieldIdentifier.title.rawValue
-			}
-			let textErrors = errors.filter {
-				$0.field == EditionFieldIdentifier.text.rawValue
-			}
-
-			self.titleTextFieldView?.errors = titleErrors
-			self.textTextFieldView?.errors = textErrors
-
-			if !titleErrors.isEmpty {
-				self.titleTextFieldView?.giveFocus()
-			}
-			else if !textErrors.isEmpty {
-				self.textTextFieldView?.giveFocus()
-			}
-		}
-		else {
-			self.titleTextFieldView?.errors = []
-			self.textTextFieldView?.errors = []
-		}
-
-		self.saveButton.isEnabled = true
 	}
 	
 	func endEdition(with result: EditionEndResult) {
@@ -142,6 +141,7 @@ extension EditionViewController: EditionView {
 			self.showAccessDeniedAlert()
 		}
 	}
+	
 	private func showAccessDeniedAlert() {
 		let alertController = UIAlertController(title: "Access Denied", message: "You do not have permission to edit this note.", preferredStyle: .alert)
 		let okAction = UIAlertAction(title: "OK", style: .default) {
