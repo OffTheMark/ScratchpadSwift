@@ -11,7 +11,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		UINavigationBar.appearance().barTintColor = ColorTheme.primaryBackground
 		UINavigationBar.appearance().tintColor = ColorTheme.whiteText
-		UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : ColorTheme.whiteText]
+		UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : ColorTheme.whiteText]
 		
 		UIToolbar.appearance().tintColor = ColorTheme.primaryBackground
 		

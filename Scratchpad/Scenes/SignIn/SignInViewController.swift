@@ -74,14 +74,14 @@ class SignInViewController: UIViewController {
 	
 	// MARK:- SignInViewController
 	
-	func signIn() {
+	@objc func signIn() {
 		if let model = self.model {
 			self.signInButton.isEnabled = false
 			self.presenter?.signIn(model: model)
 		}
 	}
 	
-	func showSignUp() {
+	@objc func showSignUp() {
 		self.performSegue(withIdentifier: "SignInToSignUp", sender: nil)
 	}
 	

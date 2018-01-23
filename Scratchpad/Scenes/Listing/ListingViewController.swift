@@ -74,15 +74,15 @@ class ListingViewController: UITableViewController {
 
 	// MARK:- ListingViewController
 	
-	func handleRefresh(_ refreshControl: UIRefreshControl) {
+	@objc func handleRefresh(_ refreshControl: UIRefreshControl) {
 		self.presenter?.refreshListing()
 	}
 	
-	func createNote() {
+	@objc func createNote() {
 		self.performSegue(withIdentifier: "ListingToCreation", sender: nil)
 	}
 	
-	func editSettings() {
+	@objc func editSettings() {
 		self.performSegue(withIdentifier: "ListingToSettings", sender: nil)
 	}
 }

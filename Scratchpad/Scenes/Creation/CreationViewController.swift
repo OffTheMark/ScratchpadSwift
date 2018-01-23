@@ -80,7 +80,7 @@ class CreationViewController: UIViewController {
 		}
 	}
 
-	func cancelCreation() {
+	@objc func cancelCreation() {
 		if let model = model,
 		   self.presenter?.canSafelyCancel(model: model) ?? false {
 			self.presenter?.cancelCreation()
@@ -98,7 +98,7 @@ class CreationViewController: UIViewController {
 		}
 	}
 	
-	func dismissKeyboard() {
+	@objc func dismissKeyboard() {
 		self.view.endEditing(true)
 	}
 }

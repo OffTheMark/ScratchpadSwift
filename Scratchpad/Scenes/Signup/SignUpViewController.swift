@@ -78,7 +78,7 @@ class SignUpViewController: UIViewController {
 	
 	// MARK:- SignUpViewController
 	
-	func submit() {
+	@objc func submit() {
 		if let model = self.model {
 			self.submitButton.isEnabled = false
 			self.presenter?.signUp(model: model)

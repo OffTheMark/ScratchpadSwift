@@ -78,7 +78,7 @@ class EditionViewController: UIViewController {
 		}
 	}
 
-	func cancelEdition() {
+	@objc func cancelEdition() {
 		if let model = model,
 		   self.presenter?.canSafelyCancel(model: model) ?? false {
 			self.presenter?.cancelEdition()
@@ -96,7 +96,7 @@ class EditionViewController: UIViewController {
 		}
 	}
 	
-	func dismissKeyboard() {
+	@objc func dismissKeyboard() {
 		self.view.endEditing(true)
 	}
 }
